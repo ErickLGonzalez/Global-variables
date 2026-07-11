@@ -3,7 +3,7 @@
 **Observational decompilation of physics.** Treat physical law as an unknown rule system; recover its grammar — types, invariants, operators, composition rules — one certified constraint at a time. Constants are conjectured to be invariants of a positive, compositional operator structure 𝕽, not primitive numbers.
 
 Core documents:
-- [`docs/constant-atlas-v0.2.md`](docs/constant-atlas-v0.2.md) — constant atlas, restraint matrix, bridge formula, discipline formula, decoding chain (the base algorithm).
+- [`docs/constant-atlas-v0.3.md`](docs/constant-atlas-v0.3.md) — constant atlas, restraint matrix, bridge formula, discipline formula, decoding chain (the base algorithm). *(v0.2 retained as [`docs/constant-atlas-v0.2.md`](docs/constant-atlas-v0.2.md).)*
 - [`docs/conjectures-v0.1.md`](docs/conjectures-v0.1.md) — the ten blank-filling conjectures ?₁–?₁₀, each with formalization, test protocol, and falsifier.
 
 ## B1 — Truncated moment solver (implemented ✅)
@@ -72,15 +72,14 @@ Extends the exact-rational certificate class to **Gaussian-rational Hermitian ma
 
 Plus exact CPTP audit (Choi's theorem as the gate) and a negative control (corrupted Choi rejected with exact witness pivot). Run: `python3 tests/test_b2.py` — 5/5 pass, certificate in `certificates/b2_certificate.json`.
 
-## Atlas edit 001 (conditions met — atlas apply pending)
+## Atlas edit 001 (applied — atlas v0.3)
 
-[`docs/atlas-edits/edit-001-conjecture3-promotion.md`](docs/atlas-edits/edit-001-conjecture3-promotion.md) — formal promotion record for **?₃ → P (H-track)**. Both apply conditions are checked (REAL certificate committed). Remaining step: apply the matrix cell change and bump the atlas to v0.3.
+[`docs/atlas-edits/edit-001-conjecture3-promotion.md`](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** in [`docs/constant-atlas-v0.3.md`](docs/constant-atlas-v0.3.md). Gravity Composition column is the first blank filled.
 
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **Apply edit-001** — promote ?₃ → P in the atlas and bump to v0.3.
-2. **B3** — electroweak closed-system test: the chain must *discover* e = g sinθ_W, M_W = gv/2, M_Z = (v/2)√(g²+g′²), G_F = 1/(√2v²) from pseudo-data and report d_identifiable = 3. B2's exact machinery now covers the linear-forcing patterns B3 needs.
+1. **B3** — electroweak closed-system test: the chain must *discover* e = g sinθ_W, M_W = gv/2, M_Z = (v/2)√(g²+g′²), G_F = 1/(√2v²) from pseudo-data and report d_identifiable = 3. B2's exact machinery now covers the linear-forcing patterns B3 needs.
 
 **Near-term:**
 3. **?₅ formalization** — cluster-decomposition entries promoted to H; B3 extension with multi-channel factorization.

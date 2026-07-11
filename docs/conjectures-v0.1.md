@@ -54,9 +54,9 @@ A conjecture is *never* evidence for the synthesis that generated it. Promotion 
 
 **Falsifier.** A merger with certified area decrease (would also violate the GSL — catastrophic for the whole program, which is what makes it a *good* test).
 
-**Status.** ? → **P now, H-track**. The only conjecture we can promote with existing public data. Do this first.
+**Status.** **PROMOTED to P (H-track)** — atlas edit-001, `constant-atlas-v0.3.md` (2026-07-11). B4 REAL certificate: GW250114 P_lower=0.99977, GW150914 P_lower=0.99862. H requires population ringdown tests and structural unification with ?₂.
 
-**Anchors.** Hawking area theorem; Isi–Farr–Giesler–Scheel–Teukolsky 2021; GWTC-3 catalog.
+**Anchors.** Hawking area theorem; Isi–Farr–Giesler–Scheel–Teukolsky 2021; LVK PRL 135, 111403 (2025); GWTC-4 ≳5σ analyses; `certificates/b4_certificate.json`.
 
 ---
 
@@ -191,7 +191,7 @@ A conjecture is *never* evidence for the synthesis that generated it. Promotion 
 Dependencies: ?₇ ⇒ ?₈ ⇒ ?₉; ?₇ + ?₉ ⇒ ?₁₀. ?₂ + ?₃ share the GSL. ?₄ ⇔ ?₉ share 𝓡_μ universality. ?₆ stands alone (highest risk, highest payoff).
 
 Priority ordering by (testability × payoff):
-1. **?₃** — promotable now with public gravitational-wave data (→ benchmark B4).
+1. **?₃** — **done (P, H-track)** via B4 REAL + edit-001 / atlas v0.3.
 2. **?₅** — formalization + B3 extension; converts a blank column to H cheaply.
 3. **?₂** — Gram/Schur reformulation of QNEC; directly reuses the certified verifier.
 4. **?₇** — toy dS rank-saturation study; B1 is the engine.

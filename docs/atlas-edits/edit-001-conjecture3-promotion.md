@@ -1,6 +1,6 @@
 # Atlas Edit 001 — Promotion of Conjecture ?₃ (area theorem as gravity's composition law)
 
-**Status: CONDITIONS MET (2026-07-11 REAL certificate) — atlas promotion to v0.3 still pending apply to `constant-atlas-v0.2.md`.**
+**Status: APPLIED (2026-07-11) — atlas bumped to [`constant-atlas-v0.3.md`](../constant-atlas-v0.3.md).**
 
 ## Proposed change
 
@@ -19,7 +19,7 @@ Dependency-graph change: add the first **cross-domain composition edge** — {th
 3. GW230814 + GW231226 (GWTC-4 data), arXiv:2509.03480 — area law verified at effectively ≳5σ.
 
 **Internal (this program):**
-4. B4 pipeline (statistical certificate class): demo-mode certification on GW150914 (P_lower = 0.994) and GW250114 (P_lower = 1.000) with exact Clopper–Pearson bounds; falsifier-injection test confirms the pipeline can flag violations; INCONCLUSIVE outputs on degraded inputs confirm it does not over-claim.
+4. B4 pipeline (statistical certificate class): REAL-mode certification on GW250114 (P_lower = 0.99977) and GW150914 (P_lower = 0.99862) with exact Clopper–Pearson bounds; demo-mode and falsifier-injection tests confirm the pipeline can flag violations and does not over-claim on degraded inputs.
 
 ## Conditions to apply this edit (both required)
 
@@ -38,4 +38,4 @@ Dependency-graph change: add the first **cross-domain composition edge** — {th
 2. Structural unification: exhibit the area theorem and the GSL as instances of one certified positivity statement (bridges to ?₂; the Wall proof is the anchor).
 3. Negative-control power: demonstrate the pipeline would detect an area-decreasing population at the achieved sensitivities (injection studies at catalog scale).
 
-— Drafted 2026-07-11, B2/B4 session. Apply by moving matrix cell to P, appending this file's hash to the atlas changelog, and bumping the atlas to v0.3.
+— Drafted 2026-07-11, B2/B4 session. Applied 2026-07-11: matrix cell → P (H-track), changelog hash `1ff977d4bcf2ae2b3525a7b6ea29e0b84fffb192`, atlas v0.3.
