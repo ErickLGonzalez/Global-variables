@@ -90,9 +90,9 @@ A conjecture is *never* evidence for the synthesis that generated it. Promotion 
 
 **Falsifier.** Any certified need for channel-dependent couplings after scheme/RG effects are removed — this would falsify locality itself.
 
-**Status.** ? → H-track; mostly formalization work.
+**Status.** **PROMOTED to H** — atlas edit-002, `constant-atlas-v0.4.md` (2026-07-11). B5 certificate: factorization R_24 = A_22²; d_identifiable = 1; channel-dependent couplings rejected.
 
-**Anchors.** Weinberg QFT Vol. 1 (cluster decomposition); Haag, Local Quantum Physics.
+**Anchors.** Weinberg QFT Vol. 1 (cluster decomposition); Haag, Local Quantum Physics; `certificates/b5_certificate.json`.
 
 ---
 
@@ -192,7 +192,7 @@ Dependencies: ?₇ ⇒ ?₈ ⇒ ?₉; ?₇ + ?₉ ⇒ ?₁₀. ?₂ + ?₃ share
 
 Priority ordering by (testability × payoff):
 1. **?₃** — **done (P, H-track)** via B4 REAL + edit-001 / atlas v0.3.
-2. **?₅** — formalization + B3 extension; converts a blank column to H cheaply.
+2. **?₅** — **done (H)** via B5 factorization + edit-002 / atlas v0.4.
 3. **?₂** — Gram/Schur reformulation of QNEC; directly reuses the certified verifier.
 4. **?₇** — toy dS rank-saturation study; B1 is the engine.
 5. **?₁** — toy causal-thermal model.

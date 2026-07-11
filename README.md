@@ -3,7 +3,7 @@
 **Observational decompilation of physics.** Treat physical law as an unknown rule system; recover its grammar — types, invariants, operators, composition rules — one certified constraint at a time. Constants are conjectured to be invariants of a positive, compositional operator structure 𝕽, not primitive numbers.
 
 Core documents:
-- [`docs/constant-atlas-v0.3.md`](docs/constant-atlas-v0.3.md) — constant atlas, restraint matrix, bridge formula, discipline formula, decoding chain (the base algorithm). *(v0.2 retained as [`docs/constant-atlas-v0.2.md`](docs/constant-atlas-v0.2.md).)*
+- [`docs/constant-atlas-v0.4.md`](docs/constant-atlas-v0.4.md) — constant atlas, restraint matrix, bridge formula, discipline formula, decoding chain (the base algorithm). *(Prior: [v0.3](docs/constant-atlas-v0.3.md), [v0.2](docs/constant-atlas-v0.2.md).)*
 - [`docs/conjectures-v0.1.md`](docs/conjectures-v0.1.md) — the ten blank-filling conjectures ?₁–?₁₀, each with formalization, test protocol, and falsifier.
 
 ## B1 — Truncated moment solver (implemented ✅)
@@ -96,15 +96,35 @@ b3_electroweak/
   discover.py     end-to-end pipeline
 ```
 
-## Atlas edit 001 (applied — atlas v0.3)
+## B5 — Cluster / multi-channel factorization (?₅ → H) (implemented ✅)
 
-[`docs/atlas-edits/edit-001-conjecture3-promotion.md`](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** in [`docs/constant-atlas-v0.3.md`](docs/constant-atlas-v0.3.md). Gravity Composition column is the first blank filled.
+Benchmark B5 is the B3 extension named in conjecture ?₅: 2→2 and 2→4 toy channels with exact-Fraction amplitudes. The engine must discover that **one coupling** controls all factorization residues (`R_24 = A_22²`) and reject channel-dependent couplings.
+
+```bash
+python3 tests/test_b5.py
+```
+
+Results (5/5): factorization identities hold; **d_identifiable = 1**; falsifier FAIL as required. Atlas edit-002 promotes gauge Cmp (?₅) → **H** for α, α_s, and the electroweak block.
+
+```
+b5_cluster/
+  exact.py        Fraction helpers
+  pseudo_data.py  local vs channel-dependent counterexample tables
+  relations.py    factorization template discovery (F1–F6)
+  rank.py         Jacobian rank → d_identifiable
+  discover.py     end-to-end pipeline
+```
+
+## Atlas edits
+
+- [edit-001](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** (atlas v0.3)
+- [edit-002](docs/atlas-edits/edit-002-conjecture5-promotion.md) — **?₅ → H** (atlas v0.4)
 
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **?₅ formalization** — cluster-decomposition entries promoted to H; B3 extension with multi-channel factorization.
-2. **?₂** — reformulate the 2D-CFT QNEC proof as certified Schur-pivot positivity inside the verifier (B2's Hermitian certificates are the needed machinery).
+1. **?₂** — reformulate the 2D-CFT QNEC proof as certified Schur-pivot positivity inside the verifier (B2's Hermitian certificates are the needed machinery).
+2. **PDG layer for B5** — replace toy channels with held-out empirical cross-section ratios.
 
 **Near-term:**
 3. **?₇** — toy-dS rank-saturation study (B1 is the engine).

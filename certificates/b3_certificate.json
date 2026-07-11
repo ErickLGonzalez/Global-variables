@@ -2,7 +2,7 @@
   "certificate_version": "0.3",
   "certificate_class": "EXACT-RATIONAL (Fraction; Jacobian rank over Q); same epistemic class as B1/B2",
   "problem": "B3 electroweak closed system: discover tree-level relations and report d_identifiable = 3",
-  "timestamp_utc": "2026-07-11T06:44:17Z",
+  "timestamp_utc": "2026-07-11T07:36:35Z",
   "headline": "discovered e=g sin\u03b8_W, M_W=gv/2, M_Z=(v/2)\u221a(g\u00b2+g\u2032\u00b2), G_F=1/(\u221a2 v\u00b2); d_identifiable = 3 with FREE basis {g, g\u2032, v}",
   "d_identifiable": 3,
   "free_sources": [

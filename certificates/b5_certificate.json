@@ -1,0 +1,180 @@
+{
+  "certificate_version": "0.4",
+  "certificate_class": "EXACT-RATIONAL (Fraction; Jacobian rank over Q); same epistemic class as B1/B2/B3",
+  "problem": "B5 / ?5: cluster decomposition as gauge Cmp column \u2014 one coupling governs all factorization channels",
+  "timestamp_utc": "2026-07-11T07:36:38Z",
+  "headline": "R_24 = A_22^2 across channels; d_identifiable = 1; channel-dependent couplings falsified",
+  "d_identifiable": 1,
+  "free_sources": [
+    "alpha_22"
+  ],
+  "forced_quantities": [
+    "A_22",
+    "A_22_cross",
+    "R_24",
+    "R_24_b",
+    "alpha_22_cross",
+    "alpha_24",
+    "alpha_24_b"
+  ],
+  "relations": [
+    {
+      "name": "F1",
+      "formula": "R_24 = A_22\u00b2",
+      "inputs": [
+        "A_22"
+      ],
+      "output": "R_24",
+      "mechanism": "exact factorization residue forcing",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "F2",
+      "formula": "R_24_b = A_22_cross\u00b2",
+      "inputs": [
+        "A_22_cross"
+      ],
+      "output": "R_24_b",
+      "mechanism": "exact factorization residue forcing (channel b)",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "F3",
+      "formula": "A_22 = A_22_cross",
+      "inputs": [
+        "A_22"
+      ],
+      "output": "A_22_cross",
+      "mechanism": "exact cross-sector equality (one coupling)",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "F4_alpha_24",
+      "formula": "alpha_24 = alpha_22",
+      "inputs": [
+        "alpha_22"
+      ],
+      "output": "alpha_24",
+      "mechanism": "exact channel-coupling collapse (cluster / locality)",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "F4_alpha_22_cross",
+      "formula": "alpha_22_cross = alpha_22",
+      "inputs": [
+        "alpha_22"
+      ],
+      "output": "alpha_22_cross",
+      "mechanism": "exact channel-coupling collapse (cluster / locality)",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "F4_alpha_24_b",
+      "formula": "alpha_24_b = alpha_22",
+      "inputs": [
+        "alpha_22"
+      ],
+      "output": "alpha_24_b",
+      "mechanism": "exact channel-coupling collapse (cluster / locality)",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "F5",
+      "formula": "A_22 = \u03ba \u00b7 \u03b1_22",
+      "inputs": [
+        "kappa",
+        "alpha_22"
+      ],
+      "output": "A_22",
+      "mechanism": "exact scheme link",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "F6",
+      "formula": "R_24 = (\u03ba \u00b7 \u03b1_24)\u00b2",
+      "inputs": [
+        "kappa",
+        "alpha_24"
+      ],
+      "output": "R_24",
+      "mechanism": "exact residue\u2013coupling link",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    }
+  ],
+  "rank_analysis": {
+    "n_quantities": 8,
+    "holding_constraints": [
+      "F1",
+      "F2",
+      "F3",
+      "F4a",
+      "F4b",
+      "F4c",
+      "F5",
+      "F6"
+    ],
+    "n_holding": 8,
+    "constraint_rank": 7,
+    "d_identifiable": 1,
+    "formula": "d = n_quantities - rank(Jacobian); \u03ba treated as known scheme",
+    "target": 1
+  },
+  "composition_claim": "One coupling governs all factorization channels (cluster decomposition / locality \u2192 Cmp column = H).",
+  "results": {
+    "T1_factorization": {
+      "factorization": true,
+      "cross_sector_equal": true
+    },
+    "T2_headline_discovery": {
+      "relations": [
+        "F1",
+        "F2",
+        "F3",
+        "F4_alpha_22_cross",
+        "F4_alpha_24",
+        "F4_alpha_24_b",
+        "F5",
+        "F6"
+      ]
+    },
+    "T3_d_identifiable": {
+      "n_quantities": 8,
+      "holding_constraints": [
+        "F1",
+        "F2",
+        "F3",
+        "F4a",
+        "F4b",
+        "F4c",
+        "F5",
+        "F6"
+      ],
+      "n_holding": 8,
+      "constraint_rank": 7,
+      "d_identifiable": 1,
+      "formula": "d = n_quantities - rank(Jacobian); \u03ba treated as known scheme",
+      "target": 1
+    },
+    "T4_held_out_residue": {
+      "predicted_R_24": "4/18769",
+      "status": "FORCED"
+    },
+    "T5_falsifier": {
+      "status": "REJECTED_AS_EXPECTED",
+      "broken": [
+        "F1",
+        "F2",
+        "F4a",
+        "F4c"
+      ]
+    }
+  }
+}
