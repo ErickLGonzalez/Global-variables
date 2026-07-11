@@ -96,6 +96,13 @@ if __name__ == "__main__":
         "timestamp_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "headline": "R_24 = A_22^2 across channels; d_identifiable = 1; "
                     "channel-dependent couplings falsified",
+        "m_layer_stipulations": [
+            "Toy 2→2 / 2→4 channels with exact-Fraction amplitudes "
+            "(not PDG cross sections)",
+            "Factorization residue identified with product of 2→2 strengths "
+            "(locality / cluster template)",
+            "Scheme factor κ treated as known (not a physical source)",
+        ],
         "d_identifiable": full["d_identifiable"],
         "free_sources": full["free_sources"],
         "forced_quantities": full["forced_quantities"],

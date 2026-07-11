@@ -2,8 +2,13 @@
   "certificate_version": "0.4",
   "certificate_class": "EXACT-RATIONAL (Fraction; Jacobian rank over Q); same epistemic class as B1/B2/B3",
   "problem": "B5 / ?5: cluster decomposition as gauge Cmp column \u2014 one coupling governs all factorization channels",
-  "timestamp_utc": "2026-07-11T13:51:09Z",
+  "timestamp_utc": "2026-07-11T14:07:16Z",
   "headline": "R_24 = A_22^2 across channels; d_identifiable = 1; channel-dependent couplings falsified",
+  "m_layer_stipulations": [
+    "Toy 2\u21922 / 2\u21924 channels with exact-Fraction amplitudes (not PDG cross sections)",
+    "Factorization residue identified with product of 2\u21922 strengths (locality / cluster template)",
+    "Scheme factor \u03ba treated as known (not a physical source)"
+  ],
   "d_identifiable": 1,
   "free_sources": [
     "alpha_22"

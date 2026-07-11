@@ -1,9 +1,9 @@
 {
-  "certificate_version": "0.2",
+  "certificate_version": "0.3",
   "certificate_class": "STATISTICAL (Monte Carlo + exact Clopper-Pearson bound); NOT the exact-rational class of B1",
   "problem": "B4: area theorem as gravity's composition law (conjecture ?3)",
   "mode": "DEMO -- reconstructed summary-statistic posteriors; run REAL mode with official GWOSC samples before any promotion decision",
-  "timestamp_utc": "2026-07-11T13:51:09Z",
+  "timestamp_utc": "2026-07-11T14:07:16Z",
   "seed": 20260711,
   "conservative_choices": [
     "component spins set to 0 (maximizes initial area, hardest test direction)",
@@ -69,6 +69,12 @@
   },
   "composition_law_statement": "A_f >= A_1 + A_2 realized as entropy subadditivity under merger; dimensionless invariant eta_A",
   "aggregate": "MIXED (see known_caveats)",
+  "m_layer_stipulations": [
+    "DEMO reconstructed independent truncated-Gaussian posteriors from published summary stats (not official PE samples)",
+    "Component spins set to 0 (conservative interface choice)",
+    "Catalog-fit remnant masses/spins from summary literature (NR-fit circularity)",
+    "INCONCLUSIVE outcomes on GW190521/GW190814 are M-layer artifacts of the independence approximation"
+  ],
   "external_anchors": [
     "Isi et al., PRL 127, 011103 (2021): GW150914 area law ~97%",
     "LVK, PRL 135, 111403 (2025): GW250114 area law, highest-precision test",

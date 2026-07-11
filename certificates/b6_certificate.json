@@ -1,10 +1,15 @@
 {
-  "certificate_version": "0.2",
+  "certificate_version": "0.3",
   "certificate_class": "EXACT-RATIONAL + SYMBOLIC-IDENTITY (no statistical or floating-point content)",
   "problem": "B6: strengthened 2D QNEC as certified Schur-pivot positivity (conjecture ?2)",
-  "timestamp_utc": "2026-07-11T13:51:09Z",
+  "timestamp_utc": "2026-07-11T14:07:16Z",
   "central_fact": "2piT >= S'' + (6/c)(S')^2  <=>  PSD([[c/6, S'],[S', 2piT - S'']]); saturation <=> rank 1 (flat boundary)",
   "epistemic_scope": "exact reformulation + certified instances; NOT a new proof of QNEC (Wall 2011; Balakrishnan-Faulkner-Khandker-Wang 2017); GNS/Gram operator identification of M remains the open item for P -> H",
+  "m_layer_stipulations": [
+    "2D CFT vacuum/coherent/thermal formulas for (S', S'', T) taken as standard textbook inputs (not re-derived)",
+    "Q22 entries required to be rationally representable (2\u03c0T handled symbolically or as T=0 cases)",
+    "Equivalence claim is algebraic (Schur complement), not a replacement for Wall/BFKW proofs"
+  ],
   "results": {
     "T1_equivalence": {
       "cases": 500,

@@ -89,6 +89,15 @@ def main():
             "dimensionless invariant eta_A"
         ),
         "aggregate": "ALL_EVENTS_SUPPORTED" if all_supported else "MIXED",
+        "m_layer_stipulations": [
+            "Official PESummary/GWOSC posterior samples treated as the "
+            "measurement interface (download URLs recorded in data_files)",
+            "Final states from NR-fit columns when ringdown keys absent "
+            "(partial circularity; labeled per event)",
+            "Component spins taken as |spin_1z|, |spin_2z| from posterior",
+            "Statistical certificate class: Monte Carlo + exact "
+            "Clopper-Pearson bound (not exact-rational)",
+        ],
         "external_anchors": [
             "Isi et al., PRL 127, 011103 (2021): GW150914 area law ~97%",
             "LVK, PRL 135, 111403 (2025): GW250114 area law, highest-precision test",

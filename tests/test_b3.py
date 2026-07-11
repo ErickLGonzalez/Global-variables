@@ -112,6 +112,16 @@ if __name__ == "__main__":
         "timestamp_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "headline": "discovered e=g sinθ_W, M_W=gv/2, M_Z=(v/2)√(g²+g′²), "
                     "G_F=1/(√2 v²); d_identifiable = 3 with FREE basis {g, g′, v}",
+        "m_layer_stipulations": [
+            "Tree-level electroweak map; loop/RG corrections not included",
+            "Weinberg angle represented by a Pythagorean rational proxy "
+            "(exact Fraction); physical sin²θ_W scheme (on-shell vs MS-bar) "
+            "not selected",
+            "G_F certified via squared identity 1/G_F² = 2 v⁴ (√2 not a "
+            "rational observable)",
+            "Pseudo-data presented as exact independent measurements "
+            "(no experimental noise model)",
+        ],
         "d_identifiable": full["d_identifiable"],
         "free_sources": full["dependency_graph"]["free_sources"],
         "forced_quantities": full["dependency_graph"]["forced"],

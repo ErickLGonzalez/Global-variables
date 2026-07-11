@@ -113,7 +113,7 @@ if __name__ == "__main__":
     r4 = t4_restraint_stacking()
     r5 = t5_negative_control()
     cert = {
-        "certificate_version": "0.2",
+        "certificate_version": "0.3",
         "certificate_class": "EXACT-RATIONAL (Gaussian-rational Hermitian; "
                              "same class as B1)",
         "problem": "B2 qubit process completion via Choi positivity + "
@@ -121,6 +121,12 @@ if __name__ == "__main__":
         "timestamp_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "headline": "restraint stacking demonstrated: PSD -> PERMITTED; "
                     "PSD+TP -> FORCED; rank-1 -> FORCED (flat-extension analogue)",
+        "m_layer_stipulations": [
+            "Device↔POVM / Choi-map association is an M-layer stipulation "
+            "(R14 scope clause): completion is certified given that identification",
+            "Process tomography inputs treated as exact Choi matrix entries "
+            "(no apparatus model derived)",
+        ],
         "results": {"T1_cptp_audit": r1, "T2_tp_forced": r2,
                     "T3_rank1_forced": r3, "T4_restraint_stacking": r4,
                     "T5_negative_control": r5},

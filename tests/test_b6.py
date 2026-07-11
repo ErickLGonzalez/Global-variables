@@ -108,7 +108,7 @@ if __name__ == "__main__":
     r4 = t4_thermal_identity()
     r5 = t5_negative_control()
     cert = {
-        "certificate_version": "0.2",
+        "certificate_version": "0.3",
         "certificate_class": "EXACT-RATIONAL + SYMBOLIC-IDENTITY "
                              "(no statistical or floating-point content)",
         "problem": "B6: strengthened 2D QNEC as certified Schur-pivot "
@@ -122,6 +122,14 @@ if __name__ == "__main__":
                            "Faulkner-Khandker-Wang 2017); GNS/Gram operator "
                            "identification of M remains the open item for "
                            "P -> H",
+        "m_layer_stipulations": [
+            "2D CFT vacuum/coherent/thermal formulas for (S', S'', T) taken "
+            "as standard textbook inputs (not re-derived)",
+            "Q22 entries required to be rationally representable "
+            "(2πT handled symbolically or as T=0 cases)",
+            "Equivalence claim is algebraic (Schur complement), not a "
+            "replacement for Wall/BFKW proofs",
+        ],
         "results": {"T1_equivalence": r1, "T2_vacuum_saturation": r2,
                     "T3_coherent_strict": r3, "T4_thermal_identity": r4,
                     "T5_negative_control": r5},

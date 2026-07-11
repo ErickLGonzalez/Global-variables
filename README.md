@@ -136,6 +136,10 @@ b6_qnec/
 - [edit-002](docs/atlas-edits/edit-002-conjecture5-promotion.md) — **?₅ → H** (atlas v0.4)
 - [edit-003](docs/atlas-edits/edit-003-conjecture2-qnec.md) — **?₂ → P (H-track)** (atlas v0.5)
 
+## Research library
+
+[`docs/references.md`](docs/references.md) — the research-paper ledger (anchors, methods, targets). Latest addition: **R14, Maudlin arXiv:2512.22618** (measurement-interface analysis) — assessed in [`docs/notes/measurement-interface-maudlin.md`](docs/notes/measurement-interface-maudlin.md). Adopted: (a) mandatory `m_layer_stipulations` field in certificate format v0.3, (b) scope clause for B2-class device↔POVM associations, (c) queued arrival-time track as a high-U_prediction held-out domain (Pauli's theorem read as a Pos-column forcing fact).
+
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
@@ -145,7 +149,8 @@ b6_qnec/
 
 **Near-term:**
 4. Unification of GSL / area theorem (?₂ + ?₃ toward joint H).
-5. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
+5. **Arrival-time track** (queued from R14) — catalogue rival predictions + falsifier before any experiment.
+6. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
 
 ## Discipline
 

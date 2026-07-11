@@ -88,6 +88,12 @@ if __name__ == "__main__":
         {"known_moments": "m_0..m_6", "hidden": "m_7..m_12 (T1), m_4 (T2)"},
         {"T1_forced_tail": r1, "T2_permitted_hole": r2,
          "T3_negative_control": r3, "T4_atom_audit": r4},
+        m_layer_stipulations=[
+            "Reported m_0..m_k are moments of a positive Borel measure "
+            "(calibration/normalization audit not re-derived here)",
+            "Exact-arithmetic claims cover positivity/rank/forcing; atom "
+            "extraction numerics are quarantined with audited residual",
+        ],
     )
     save_certificate(cert, os.path.join(os.path.dirname(__file__), "..",
                                         "certificates", "b1_certificate.json"))

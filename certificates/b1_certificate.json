@@ -1,10 +1,14 @@
 {
-  "certificate_version": "0.2",
+  "certificate_version": "0.3",
   "problem": "B1 truncated Hankel moment problem (3-atom ground truth)",
-  "timestamp_utc": "2026-07-11T13:51:06Z",
+  "timestamp_utc": "2026-07-11T14:07:13Z",
   "arithmetic": "exact rational (Fraction); numerics quarantined to atom layer with audited residuals",
   "hard_constraints_certified": false,
   "score": "infinity (violated or uncertified)",
+  "m_layer_stipulations": [
+    "Reported m_0..m_k are moments of a positive Borel measure (calibration/normalization audit not re-derived here)",
+    "Exact-arithmetic claims cover positivity/rank/forcing; atom extraction numerics are quarantined with audited residual"
+  ],
   "inputs": {
     "known_moments": "m_0..m_6",
     "hidden": "m_7..m_12 (T1), m_4 (T2)"
