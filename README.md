@@ -3,7 +3,7 @@
 **Observational decompilation of physics.** Treat physical law as an unknown rule system; recover its grammar — types, invariants, operators, composition rules — one certified constraint at a time. Constants are conjectured to be invariants of a positive, compositional operator structure 𝕽, not primitive numbers.
 
 Core documents:
-- [`docs/constant-atlas-v0.4.md`](docs/constant-atlas-v0.4.md) — constant atlas, restraint matrix, bridge formula, discipline formula, decoding chain (the base algorithm). *(Prior: [v0.3](docs/constant-atlas-v0.3.md), [v0.2](docs/constant-atlas-v0.2.md).)*
+- [`docs/constant-atlas-v0.5.md`](docs/constant-atlas-v0.5.md) — constant atlas, restraint matrix, bridge formula, discipline formula, decoding chain (the base algorithm). *(Prior: [v0.4](docs/constant-atlas-v0.4.md), [v0.3](docs/constant-atlas-v0.3.md), [v0.2](docs/constant-atlas-v0.2.md).)*
 - [`docs/conjectures-v0.1.md`](docs/conjectures-v0.1.md) — the ten blank-filling conjectures ?₁–?₁₀, each with formalization, test protocol, and falsifier.
 
 ## B1 — Truncated moment solver (implemented ✅)
@@ -115,20 +115,37 @@ b5_cluster/
   discover.py     end-to-end pipeline
 ```
 
+## B6 — 2D QNEC as Schur-pivot positivity (?₂ → P) (implemented ✅)
+
+Benchmark B6 places the strengthened 2D QNEC inside the certified verifier: `2π⟨T⟩ ≥ S'' + (6/c)(S')²` **⇔** PSD of `M = [[c/6, S'], [S', 2πT − S'']]`. Saturation ⇔ rank-1 flat boundary (same structure B1 uses for forcing).
+
+```bash
+python3 tests/test_b6.py
+```
+
+Results (5/5): 500-case equivalence audit; vacuum saturation (pivot exactly 0); coherent-state strictness; thermal symbolic identity; negative control (witness pivot −1/12). Atlas edit-003 promotes G Pos (?₂) → **P (H-track)**. Epistemic scope: exact reformulation + certified instances — not a new QNEC proof; GNS realization of M remains open for H.
+
+```
+b6_qnec/
+  qnec.py   matrix, Schur pivot, vacuum / coherent / thermal / falsifier instances
+```
+
 ## Atlas edits
 
 - [edit-001](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** (atlas v0.3)
 - [edit-002](docs/atlas-edits/edit-002-conjecture5-promotion.md) — **?₅ → H** (atlas v0.4)
+- [edit-003](docs/atlas-edits/edit-003-conjecture2-qnec.md) — **?₂ → P (H-track)** (atlas v0.5)
 
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **?₂** — reformulate the 2D-CFT QNEC proof as certified Schur-pivot positivity inside the verifier (B2's Hermitian certificates are the needed machinery).
-2. **PDG layer for B5** — replace toy channels with held-out empirical cross-section ratios.
+1. **?₂ → H** — GNS realization: exhibit operators/state with ω(A_i†A_j) = M_ij.
+2. **?₇** — toy-dS rank-saturation study (B1 is the engine).
+3. **PDG layer for B5** — replace toy channels with held-out empirical cross-section ratios.
 
 **Near-term:**
-3. **?₇** — toy-dS rank-saturation study (B1 is the engine).
-4. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
+4. Unification of GSL / area theorem (?₂ + ?₃ toward joint H).
+5. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
 
 ## Discipline
 

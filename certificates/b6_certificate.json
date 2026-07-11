@@ -1,0 +1,59 @@
+{
+  "certificate_version": "0.2",
+  "certificate_class": "EXACT-RATIONAL + SYMBOLIC-IDENTITY (no statistical or floating-point content)",
+  "problem": "B6: strengthened 2D QNEC as certified Schur-pivot positivity (conjecture ?2)",
+  "timestamp_utc": "2026-07-11T13:51:09Z",
+  "central_fact": "2piT >= S'' + (6/c)(S')^2  <=>  PSD([[c/6, S'],[S', 2piT - S'']]); saturation <=> rank 1 (flat boundary)",
+  "epistemic_scope": "exact reformulation + certified instances; NOT a new proof of QNEC (Wall 2011; Balakrishnan-Faulkner-Khandker-Wang 2017); GNS/Gram operator identification of M remains the open item for P -> H",
+  "results": {
+    "T1_equivalence": {
+      "cases": 500,
+      "status": "EXACT_EQUIVALENCE_VERIFIED"
+    },
+    "T2_vacuum_saturation": {
+      "grid_cases": 5,
+      "status": "SATURATED_EXACT"
+    },
+    "T3_coherent_strict": [
+      {
+        "vacuum_bracket_exact": "0",
+        "vacuum_bracket_is_zero": true,
+        "pivot": "2*pi*9/49 + 0",
+        "strict_part_rational": "9/49",
+        "verdict": "QNEC_STRICT"
+      },
+      {
+        "vacuum_bracket_exact": "0",
+        "vacuum_bracket_is_zero": true,
+        "pivot": "2*pi*4/25 + 0",
+        "strict_part_rational": "4/25",
+        "verdict": "QNEC_STRICT"
+      },
+      {
+        "vacuum_bracket_exact": "0",
+        "vacuum_bracket_is_zero": true,
+        "pivot": "2*pi*0 + 0",
+        "strict_part_rational": "0",
+        "verdict": "QNEC_SATURATED (rank-deficient boundary)"
+      }
+    ],
+    "T4_thermal_identity": {
+      "coefficients": [
+        "0",
+        "0",
+        "0"
+      ],
+      "status": "SYMBOLIC_IDENTITY_CERTIFIED"
+    },
+    "T5_negative_control": {
+      "psd_status": "NOT_PSD_CERTIFIED",
+      "schur_pivots": [
+        "1/6",
+        "-1/12"
+      ],
+      "rank": 1,
+      "qnec_combination": "-1/12",
+      "verdict": "QNEC_VIOLATED (REJECTED)"
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "certificate_version": "0.2",
   "certificate_class": "EXACT-RATIONAL (Gaussian-rational Hermitian; same class as B1)",
   "problem": "B2 qubit process completion via Choi positivity + trace preservation + rank conditions",
-  "timestamp_utc": "2026-07-11T07:36:35Z",
+  "timestamp_utc": "2026-07-11T13:51:06Z",
   "headline": "restraint stacking demonstrated: PSD -> PERMITTED; PSD+TP -> FORCED; rank-1 -> FORCED (flat-extension analogue)",
   "results": {
     "T1_cptp_audit": {

@@ -36,9 +36,9 @@ A conjecture is *never* evidence for the synthesis that generated it. Promotion 
 
 **Falsifier.** A consistent QFT-coupled-to-gravity regime with certified QNEC violation and intact unitarity/causality.
 
-**Status.** ? → near-P: QNEC is proven in wide QFT classes (Balakrishnan–Faulkner–Khandker–Wang); the *Gram/Schur reformulation* is our open work item.
+**Status.** **PROMOTED to P (H-track)** — atlas edit-003, `constant-atlas-v0.5.md` (2026-07-11). B6: 2D QNEC ≡ certified Schur-pivot positivity; vacuum/coherent/thermal instances + negative control. H requires GNS realization of M as a literal Gram matrix.
 
-**Anchors.** Bousso et al. (QNEC); Faulkner et al. proof via modular theory; Wall's GSL proof.
+**Anchors.** Wall (2011); Balakrishnan–Faulkner–Khandker–Wang (2017); `certificates/b6_certificate.json`.
 
 ---
 
@@ -193,7 +193,7 @@ Dependencies: ?₇ ⇒ ?₈ ⇒ ?₉; ?₇ + ?₉ ⇒ ?₁₀. ?₂ + ?₃ share
 Priority ordering by (testability × payoff):
 1. **?₃** — **done (P, H-track)** via B4 REAL + edit-001 / atlas v0.3.
 2. **?₅** — **done (H)** via B5 factorization + edit-002 / atlas v0.4.
-3. **?₂** — Gram/Schur reformulation of QNEC; directly reuses the certified verifier.
+3. **?₂** — **done (P, H-track)** via B6 QNEC/Schur + edit-003 / atlas v0.5; GNS remains for H.
 4. **?₇** — toy dS rank-saturation study; B1 is the engine.
 5. **?₁** — toy causal-thermal model.
 6. **?₄, ?₈, ?₉** — modeling programs; **?₆** — long-horizon; **?₁₀** — marker.
