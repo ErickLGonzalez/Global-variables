@@ -130,16 +130,6 @@ b6_qnec/
   qnec.py   matrix, Schur pivot, vacuum / coherent / thermal / falsifier instances
 ```
 
-## Atlas edits
-
-- [edit-001](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** (atlas v0.3)
-- [edit-002](docs/atlas-edits/edit-002-conjecture5-promotion.md) — **?₅ → H** (atlas v0.4)
-- [edit-003](docs/atlas-edits/edit-003-conjecture2-qnec.md) — **?₂ → P (H-track)** (atlas v0.5)
-
-## Research library
-
-[`docs/references.md`](docs/references.md) — the research-paper ledger (anchors, methods, targets). Latest additions: **R15, Chen et al., Nat. Comput. Sci. 4, 66-85 (2024)** (S-OnsagerNet, constraint-native discovery) — assessed in [`docs/notes/onsager-sonsagernet-chen2024.md`](docs/notes/onsager-sonsagernet-chen2024.md); adopted constraint-native generators for decoding-chain step 5 (with the by-construction-is-not-certified firewall), closure-as-dynamical-d_identifiable, and **benchmark B7: Onsager transport-matrix completion** (implemented). Previously: **R14, Maudlin arXiv:2512.22618** (measurement-interface analysis) — assessed in [`docs/notes/measurement-interface-maudlin.md`](docs/notes/measurement-interface-maudlin.md). Adopted: (a) mandatory `m_layer_stipulations` field in certificate format v0.3, (b) scope clause for B2-class device↔POVM associations, (c) queued arrival-time track as a high-U_prediction held-out domain (Pauli's theorem read as a Pos-column forcing fact).
-
 ## B7 — Onsager transport-matrix completion (implemented ✅)
 
 Benchmark B7 (seeded by R15) exercises restraint stacking on **effective coefficients**: near-equilibrium transport `J = L X` with `L ⪰ 0` (second law) and `L = Lᵀ` (Onsager reciprocity).
@@ -148,7 +138,7 @@ Benchmark B7 (seeded by R15) exercises restraint stacking on **effective coeffic
 python3 tests/test_b7.py
 ```
 
-Results (5/5): ground-truth PD+symmetric; PSD alone → PERMITTED off-diagonal interval; +reciprocity → FORCED exactly; second-law and reciprocity falsifiers rejected. Certificate: `certificates/b7_certificate.json`.
+Results (5/5): ground-truth PD+symmetric; PSD alone → PERMITTED; +reciprocity → FORCED; second-law and reciprocity falsifiers rejected. Certificate: `certificates/b7_certificate.json`.
 
 ```
 b7_onsager/
@@ -157,18 +147,29 @@ b7_onsager/
   complete.py      PSD audit, reciprocity forcing, permitted intervals
 ```
 
+## Atlas edits
+
+- [edit-001](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** (atlas v0.3)
+- [edit-002](docs/atlas-edits/edit-002-conjecture5-promotion.md) — **?₅ → H** (atlas v0.4)
+- [edit-003](docs/atlas-edits/edit-003-conjecture2-qnec.md) — **?₂ → P (H-track)** (atlas v0.5)
+
+## Research library
+
+[`docs/references.md`](docs/references.md) — research-paper ledger. **R15** Chen et al. 2024 + [addendum](docs/notes/r15-addendum-cross-agent-review.md): constraint-native generators, canonicalization / distill-before-score rules, **B7 done**, **B8 queued** (blind grammar identification). **R14** Maudlin: M-layer stipulations + arrival-time track. Notes: [`onsager-sonsagernet-chen2024.md`](docs/notes/onsager-sonsagernet-chen2024.md), [`measurement-interface-maudlin.md`](docs/notes/measurement-interface-maudlin.md).
+
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **?₂ → H** — GNS realization: exhibit operators/state with ω(A_i†A_j) = M_ij.
-2. **?₇** — toy-dS rank-saturation study (B1 is the engine).
-3. **PDG layer for B5** — replace toy channels with held-out empirical cross-section ratios.
+1. **B8** — blind grammar identification (Hamiltonian vs Onsager/GENERIC vs CPTP); AMBIGUOUS when underdetermined; cross-grammar falsifiers.
+2. **?₂ → H** — GNS realization: exhibit operators/state with ω(A_i†A_j) = M_ij.
+3. **?₇** — toy-dS rank-saturation study (B1 is the engine).
 
 **Near-term:**
-4. Unification of GSL / area theorem (?₂ + ?₃ toward joint H).
-5. **Arrival-time track** (queued from R14) — catalogue rival predictions + falsifier before any experiment.
-6. Empirical thermoelectric layer for B7 (Seebeck/Peltier / Kelvin relation).
-7. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
+4. **PDG layer for B5** — replace toy channels with held-out empirical cross-section ratios.
+5. Unification of GSL / area theorem (?₂ + ?₃ toward joint H).
+6. **Arrival-time track** (queued from R14) — catalogue rival predictions + falsifier before any experiment.
+7. Empirical thermoelectric layer for B7 (Seebeck/Peltier / Kelvin relation).
+8. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
 
 ## Discipline
 

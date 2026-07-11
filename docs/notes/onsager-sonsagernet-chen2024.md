@@ -2,6 +2,8 @@
 
 **Paper:** Chen, Soh, Ooi, Vissol-Gaudin, Yu, Novoselov, Hippalgaonkar, Li, "Constructing custom thermodynamics using deep learning," *Nat. Comput. Sci.* 4, 66–85 (2024). Open access; arXiv:2308.04119; code Zenodo 10.5281/zenodo.10212239. Pointer arrived via its paywalled Research Briefing (doi:10.1038/s43588-023-00590-4). Ledger entry **R15, METHOD**.
 
+**Erratum (2026-07-12):** the evolution law below is compressed; the full structure is Ż = −[M(Z)+W(Z)]∇V(Z) + σ(Z)Ḃ with W antisymmetric (conservative part) — three atlas columns (Pos, Sym, Thm) in one architecture. See `r15-addendum-cross-agent-review.md`.
+
 ## The method, compressed
 
 S-OnsagerNet learns, from microscopic trajectories of a stochastic dissipative system, (i) a set of low-dimensional **closure coordinates** Z = (Z*, Ẑ) sufficient to close the dynamics of chosen macroscopic variables Z*, and (ii) an evolution law on them of generalized-Onsager form — deterministic core Ż = −M∇V(Z) with **M symmetric PSD** (dissipation) and V a learned generalized potential, extended with stochastic fluctuations. The physical structure is enforced **by network architecture**, not by regularization. Demonstration: polymer chains with ~900 DOF compressed to **3** thermodynamic coordinates; energy landscape with stable/transition states; validation on single-molecule DNA stretching experiments including predicted fluctuation correlations.
