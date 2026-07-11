@@ -2,7 +2,7 @@
   "certificate_version": "0.4",
   "certificate_class": "EXACT-RATIONAL (Fraction; Jacobian rank over Q); same epistemic class as B1/B2/B3",
   "problem": "B5 / ?5: cluster decomposition as gauge Cmp column \u2014 one coupling governs all factorization channels",
-  "timestamp_utc": "2026-07-11T14:07:16Z",
+  "timestamp_utc": "2026-07-11T14:31:18Z",
   "headline": "R_24 = A_22^2 across channels; d_identifiable = 1; channel-dependent couplings falsified",
   "m_layer_stipulations": [
     "Toy 2\u21922 / 2\u21924 channels with exact-Fraction amplitudes (not PDG cross sections)",

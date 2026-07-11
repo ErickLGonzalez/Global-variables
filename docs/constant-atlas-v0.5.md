@@ -156,6 +156,7 @@ Promotion requires ALL of: (1) all hard constraints certified, (2) ≥ 2 domains
 | B4 | BH thermodynamics: LIGO merger catalog → verify area theorem as composition law (?₃) | First cross-domain blank-fill promoted from ? to P | **DONE** — `certificates/b4_certificate.json` (REAL); ?₃ → P (H-track) |
 | B5 | Multi-channel factorization / cluster decomposition (?₅) | Gauge Cmp column → H; one coupling across channels | **DONE** — `certificates/b5_certificate.json`; d_identifiable = 1; ?₅ → H |
 | B6 | 2D QNEC as certified Schur-pivot positivity (?₂) | G Pos column → P (H-track); verifier-standard reformulation | **DONE** — `certificates/b6_certificate.json`; ?₂ → P (H-track) |
+| B7 | Onsager transport-matrix completion (L ⪰ 0 + L = Lᵀ) | Restraint stacking on effective-coefficient type; Thm/Sym columns | **DONE** — `certificates/b7_certificate.json` (R15 seed) |
 
 Then: GNS realization of the QNEC matrix M (P→H for ?₂); unification of GSL/?₃; ?₇ toy-dS rank saturation; PDG layer for B5; flavor/topology search (?₆).
 
@@ -169,7 +170,7 @@ Then: GNS realization of the QNEC matrix M (P→H for ?₂); unification of GSL/
 - One-structure-for-everything — **conjecture**; the narrower compatibility claim is the working assertion.
 - Composition column — **G Cmp = P (H-track)**; **gauge Cmp = H** (α, α_s, EW); remaining Cmp blanks (Yukawa/Λ/…) still open.
 - Positivity column — **G Pos = P (H-track)** via 2D QNEC ≡ Schur pivot (B6); GNS identification of M remains open for H.
-- B1–B6 — **implemented** with certificates; next: ?₇ / GNS for ?₂ / PDG for B5.
+- B1–B7 — **implemented** with certificates; next: ?₇ / GNS for ?₂ / PDG for B5.
 
 ---
 
@@ -182,3 +183,4 @@ Then: GNS realization of the QNEC matrix M (P→H for ?₂); unification of GSL/
 | v0.4 | 2026-07-11 | [edit-002](atlas-edits/edit-002-conjecture5-promotion.md) `73376f9ca3453efc1a4d88206634f09135ff6b64` | Promote gauge Cmp ?₅ → **H** for α, α_s, electroweak. Evidence: B5 factorization certificate (d_identifiable = 1) + Weinberg/Haag anchors. |
 | v0.5 | 2026-07-11 | [edit-003](atlas-edits/edit-003-conjecture2-qnec.md) `43a9a8b1e1158a2e4519726c2d95a32e58879ecf` | Promote G Pos ?₂ → **P (H-track)** (2D QNEC ≡ certified Schur-pivot positivity). Evidence: B6 certificate + Wall/BFKW anchors. H requires GNS realization of M. |
 | v0.5+R14 | 2026-07-11 | — (infra; no matrix cell) | Adopt Maudlin arXiv:2512.22618 as METHOD R14: mandatory `m_layer_stipulations` in certificate format v0.3; B2 device↔POVM scope clause; queued arrival-time track. See `docs/references.md`, `docs/notes/measurement-interface-maudlin.md`. |
+| v0.5+R15 | 2026-07-11 | — (infra + B7; no matrix cell) | Adopt Chen et al. Nat. Comput. Sci. 2024 as METHOD R15: constraint-native generators (firewall), closure-as-dynamical-d_identifiable; implement B7 Onsager transport-matrix completion. See `docs/notes/onsager-sonsagernet-chen2024.md`. |

@@ -19,6 +19,7 @@ Papers researched for the program, with role classification. Roles:
 | R12 | Schmidt & Lipson; AI Feynman; SINDy | METHOD | decoding-chain step 5 (candidate generators only) |
 | R13 | Chamseddine & Connes — spectral action | METHOD (hypothesis) | bridge formula; flagged conjectural |
 | R14 | **Maudlin, "Actual Physics, Observation, and Quantum Theory," arXiv:2512.22618 (physics.hist-ph, Dec 2025)** | **METHOD** | **𝓜-layer (decoding-chain step 1); certificate format; arrival-time track** |
+| R15 | **Chen, Soh, Ooi, Vissol-Gaudin, Yu, Novoselov, Hippalgaonkar, Li — "Constructing custom thermodynamics using deep learning," Nat. Comput. Sci. 4, 66–85 (2024); arXiv:2308.04119; code: Zenodo 10.5281/zenodo.10212239** | **METHOD** | **decoding-chain step 5 (constraint-native generators); closure-as-d_identifiable; seeds benchmark B7** |
 
 ## R14 annotation (added 2026-07-11)
 
@@ -26,3 +27,10 @@ Philosophy-of-physics essay; produces no theorems or certificates and changes no
 1. **M-layer stipulation ledger** — every certificate must list its un-derived measurement-interface stipulations explicitly (Einstein's clocks-and-rods "incurred obligation," systematized).
 2. **Scope clause for process-type certificates (B2 class)** — completions certify consistency *given* a device↔POVM association; the association itself is an M-layer stipulation, not a certified object.
 3. **Arrival-time track (candidate held-out domain)** — standard QM supplies no unique arrival-time observable (Pauli's theorem: spectral positivity of H forbids a conjugate self-adjoint T — an atlas-native restraint fact); rival completions differ measurably. Rare domain where candidate rule-objects 𝕽 genuinely disagree → high U_prediction value in the Score function.
+
+## R15 annotation (added 2026-07-11)
+
+Open-access research article (pointer received via its paywalled Research Briefing, doi:10.1038/s43588-023-00590-4). S-OnsagerNet: learns closed macroscopic stochastic dynamics Ż = −M∇V(Z) (+ stochastic extension) from microscopic trajectories, with M ⪰ 0 (dissipation) and generalized-potential structure ENFORCED BY ARCHITECTURE, while simultaneously learning the minimal closure coordinates (polymer stretching: ~900 DOF → 3 coordinates; DNA-experiment validation). Adopted contributions (see `docs/notes/onsager-sonsagernet-chen2024.md`):
+1. **Constraint-native candidate generation** — restraint bundles embedded in the generator's hypothesis space (structured) vs applied as post-hoc gates (unstructured, SINDy/R12). Firewall: by-construction constraints characterize the hypothesis class, never the learned object; certification classes and held-out gates unchanged.
+2. **Closure coordinates = dynamical d_identifiable** — algorithmic pattern for extending rank discovery (B3/B5) from static relations to evolution laws.
+3. **Benchmark B7 queued: Onsager transport-matrix completion** — hide entries of a transport matrix L; second law (L ⪰ 0) alone → PERMITTED intervals; + Onsager reciprocity L = Lᵀ (microscopic reversibility) → FORCED/tightened. Exercises the Thm/Sym columns on the "scale-dependent effective coefficient" type for the first time; exact-rational with existing B1/B2 machinery.

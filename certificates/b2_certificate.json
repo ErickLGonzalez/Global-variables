@@ -2,7 +2,7 @@
   "certificate_version": "0.3",
   "certificate_class": "EXACT-RATIONAL (Gaussian-rational Hermitian; same class as B1)",
   "problem": "B2 qubit process completion via Choi positivity + trace preservation + rank conditions",
-  "timestamp_utc": "2026-07-11T14:07:13Z",
+  "timestamp_utc": "2026-07-11T14:30:53Z",
   "headline": "restraint stacking demonstrated: PSD -> PERMITTED; PSD+TP -> FORCED; rank-1 -> FORCED (flat-extension analogue)",
   "m_layer_stipulations": [
     "Device\u2194POVM / Choi-map association is an M-layer stipulation (R14 scope clause): completion is certified given that identification",

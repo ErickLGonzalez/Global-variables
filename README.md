@@ -138,7 +138,24 @@ b6_qnec/
 
 ## Research library
 
-[`docs/references.md`](docs/references.md) — the research-paper ledger (anchors, methods, targets). Latest addition: **R14, Maudlin arXiv:2512.22618** (measurement-interface analysis) — assessed in [`docs/notes/measurement-interface-maudlin.md`](docs/notes/measurement-interface-maudlin.md). Adopted: (a) mandatory `m_layer_stipulations` field in certificate format v0.3, (b) scope clause for B2-class device↔POVM associations, (c) queued arrival-time track as a high-U_prediction held-out domain (Pauli's theorem read as a Pos-column forcing fact).
+[`docs/references.md`](docs/references.md) — the research-paper ledger (anchors, methods, targets). Latest additions: **R15, Chen et al., Nat. Comput. Sci. 4, 66-85 (2024)** (S-OnsagerNet, constraint-native discovery) — assessed in [`docs/notes/onsager-sonsagernet-chen2024.md`](docs/notes/onsager-sonsagernet-chen2024.md); adopted constraint-native generators for decoding-chain step 5 (with the by-construction-is-not-certified firewall), closure-as-dynamical-d_identifiable, and **benchmark B7: Onsager transport-matrix completion** (implemented). Previously: **R14, Maudlin arXiv:2512.22618** (measurement-interface analysis) — assessed in [`docs/notes/measurement-interface-maudlin.md`](docs/notes/measurement-interface-maudlin.md). Adopted: (a) mandatory `m_layer_stipulations` field in certificate format v0.3, (b) scope clause for B2-class device↔POVM associations, (c) queued arrival-time track as a high-U_prediction held-out domain (Pauli's theorem read as a Pos-column forcing fact).
+
+## B7 — Onsager transport-matrix completion (implemented ✅)
+
+Benchmark B7 (seeded by R15) exercises restraint stacking on **effective coefficients**: near-equilibrium transport `J = L X` with `L ⪰ 0` (second law) and `L = Lᵀ` (Onsager reciprocity).
+
+```bash
+python3 tests/test_b7.py
+```
+
+Results (5/5): ground-truth PD+symmetric; PSD alone → PERMITTED off-diagonal interval; +reciprocity → FORCED exactly; second-law and reciprocity falsifiers rejected. Certificate: `certificates/b7_certificate.json`.
+
+```
+b7_onsager/
+  exact.py         Fraction helpers
+  pseudo_data.py   thermoelectric L, hide/corrupt
+  complete.py      PSD audit, reciprocity forcing, permitted intervals
+```
 
 ## Roadmap (proposed next steps)
 
@@ -150,7 +167,8 @@ b6_qnec/
 **Near-term:**
 4. Unification of GSL / area theorem (?₂ + ?₃ toward joint H).
 5. **Arrival-time track** (queued from R14) — catalogue rival predictions + falsifier before any experiment.
-6. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
+6. Empirical thermoelectric layer for B7 (Seebeck/Peltier / Kelvin relation).
+7. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
 
 ## Discipline
 
