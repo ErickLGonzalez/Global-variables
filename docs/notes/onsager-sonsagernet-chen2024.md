@@ -21,12 +21,7 @@ It is an operating instance of the program's core mechanism — *restraints shri
 
 **B. Closure = dynamical d_identifiable.** Their closure problem — given macroscopic variables of interest, learn the minimal supplementary coordinates that close the dynamics — is the evolution-law analogue of our static rank discovery (B3 Jacobian rank, B5 coupling collapse). Adopt the pattern: d_identifiable^dyn(sector) := minimal closure dimension, discovered not assumed, with the closure claim tested on held-out trajectories.
 
-**C. Benchmark B7 (queued): Onsager transport-matrix completion.** Near-equilibrium transport is governed by J_i = Σ_j L_ij X_j with two stacked restraints on the coefficient matrix L: second law ⇒ **L ⪰ 0** (entropy production σ = XᵀLX ≥ 0, Pos/Thm columns) and microscopic reversibility ⇒ **L = Lᵀ** (Onsager reciprocity, Sym column; L_ij(B) = L_ji(−B) with fields). Benchmark design, pure B2 pattern, exact-rational with existing machinery:
-1. Ground truth: a rational thermoelectric-style 2×2 or 3×3 L (e.g., heat/charge coupling) satisfying both restraints.
-2. Hide entries. PSD alone → PERMITTED intervals (bisection certificates). Add reciprocity → off-diagonals FORCED exactly; restraint stacking demonstrated on the **effective-coefficient type** — the atlas class ("scale-dependent effective coefficients") no benchmark currently exercises.
-3. Negative control: a fabricated L with σ < 0 for some force vector → exact witness; a reciprocity-violating L without magnetic field → REJECTED.
-4. Empirical layer (optional later): tabulated thermoelectric data (Seebeck/Peltier, Kelvin relation Π = TS is reciprocity in disguise) as a PDG-style real-data confrontation.
-Program significance: reciprocity is a *derived* restraint on a whole class of measured constants, forced by a deeper principle (time-reversal microreversibility) — the thesis of the program in miniature, in a sector (nonequilibrium thermodynamics) the atlas has not yet touched.
+**C. Benchmark B7 (implemented): Onsager transport-matrix completion.** Near-equilibrium transport is governed by J_i = Σ_j L_ij X_j with two stacked restraints on the coefficient matrix L: second law ⇒ **L ⪰ 0** (entropy production σ = XᵀLX ≥ 0, Pos/Thm columns) and microscopic reversibility ⇒ **L = Lᵀ** (Onsager reciprocity, Sym column). Delivered as `b7_onsager/` + `tests/test_b7.py` + `certificates/b7_certificate.json`: PSD alone → PERMITTED; +reciprocity → FORCED; second-law and reciprocity falsifiers rejected. Empirical thermoelectric layer (Seebeck/Peltier / Kelvin) remains optional later.
 
 ## What we do not adopt
 
