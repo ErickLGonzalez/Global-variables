@@ -158,7 +158,7 @@ python3 tests/test_atlas_engine.py
 
 **Atlas Engine v0.1** (5/5): restraint matrix as a constraint-satisfaction object. Eight theorem-anchored implication rules propagate to fixpoint → **7 candidate upgrades** (Cmp/Top/Λ-Pos), each with derivation chains; engine cannot mint H. Certificates: `certificates/b8_certificate.json`, `certificates/atlas_engine_certificate.json`.
 
-**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — **S1 done** (atlas v0.6); next S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ rank; S5 B7 Kelvin.
+**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1 done; **S2 partial** (vacuum GNS ray; lattice pair mismatch); next S3 PDG/B5 or S2 continuum follow-up.
 
 ## B9 — Circuit decompilation: 2025 Nobel methodology as gates (implemented ✅)
 
@@ -185,8 +185,17 @@ b9_circuit/
 - [edit-004](docs/atlas-edits/edit-004-cluster-cmp-extension.md) — gauge_qft Cmp → P (atlas v0.6)
 - [edit-005](docs/atlas-edits/edit-005-weak-conjecture6-top.md) — weak ?₆ Top → P (atlas v0.6)
 - [edit-006](docs/atlas-edits/edit-006-weak-conjecture7-and-findings.md) — weak ?₇ + Sym/Uni findings (atlas v0.6)
+- [edit-007](docs/atlas-edits/edit-007-gns-partial-draft.md) — **DRAFT** GNS partial for ?₂ (no atlas bump)
 
 Current atlas: [`docs/constant-atlas-v0.6.md`](docs/constant-atlas-v0.6.md).
+
+## S2 — GNS probe for ?₂ (partial ✅)
+
+Free-fermion route: continuum vacuum Gram ray exact; lattice geometric (modular weight, cut stress) pair fails ratio tracking at L≤120. Note: [`docs/notes/s2-gns-free-fermion.md`](docs/notes/s2-gns-free-fermion.md). Certificate: `certificates/s2_gns_certificate.json`.
+
+```bash
+python3 tests/test_s2_gns.py
+```
 
 ## Research library
 
@@ -195,8 +204,8 @@ Current atlas: [`docs/constant-atlas-v0.6.md`](docs/constant-atlas-v0.6.md).
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **S2 / ?₂ → H** — GNS realization (free-fermion route).
-2. **S3** — PDG empirical layer for B5.
+1. **S3** — PDG empirical layer for B5.
+2. **S2 follow-up** — continuum Wall integrand / larger-L null-cut for GNS pair (toward ?₂→H).
 3. **S4** — ?₇ rank form (toy-dS saturation).
 
 **Near-term:**

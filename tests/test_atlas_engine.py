@@ -93,8 +93,9 @@ def t6_idempotence_v06():
     assert not schur, "V06 should clear the Uni-NA tension on R-SCHUR-QNEC"
     assert MATRIX_V06["G"]["Uni"] == "P"
     assert "R-OS-UNI" in {r["name"] for r in RULES}
+    assert "R-REL-ENTROPY-POS" in {r["name"] for r in RULES}
     print("T6 V06 idempotence: PASS  0 new upgrades; matrix_after == MATRIX_V06; "
-          "Uni-NA Schur tension cleared; R-OS-UNI present")
+          "Uni-NA Schur tension cleared; R-OS-UNI + R-REL-ENTROPY-POS present")
     return res
 
 

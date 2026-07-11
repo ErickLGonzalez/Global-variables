@@ -36,7 +36,7 @@ A conjecture is *never* evidence for the synthesis that generated it. Promotion 
 
 **Falsifier.** A consistent QFT-coupled-to-gravity regime with certified QNEC violation and intact unitarity/causality.
 
-**Status.** **PROMOTED to P (H-track)** — atlas edit-003, `constant-atlas-v0.5.md` (2026-07-11). B6: 2D QNEC ≡ certified Schur-pivot positivity; vacuum/coherent/thermal instances + negative control. H requires GNS realization of M as a literal Gram matrix.
+**Status.** **PROMOTED to P (H-track)** — atlas edit-003, `constant-atlas-v0.5.md` (2026-07-11). B6: 2D QNEC ≡ certified Schur-pivot positivity; vacuum/coherent/thermal instances + negative control. H requires GNS realization of M as a literal Gram matrix. **S2 (2026-07-11):** continuum vacuum GNS ray exact; lattice operator-pair tracking not met — see `docs/atlas-edits/edit-007-gns-partial-draft.md`.
 
 **Anchors.** Wall (2011); Balakrishnan–Faulkner–Khandker–Wang (2017); `certificates/b6_certificate.json`.
 

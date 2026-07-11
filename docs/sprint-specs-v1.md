@@ -8,9 +8,11 @@ Deep-research specs so each sprint starts with a full work order: inputs, algori
 
 **Goal:** convert Atlas Engine propagations into edit records. **Work:** (1) edit-004: Cmp ?→P for λ_H, Yukawa, neutrino, θ_QCD [R-CLUSTER chains]; (2) edit-005: Top ?→P (weak ?₆) for Yukawa/neutrino [R-ANOMALY], explicitly leaving the index form of ?₆ open; (3) edit-006: Λ Pos ?→P (weak ?₇) [R-DS-ENTROPY], rank form open; (4) resolve the two engine findings — annotate the Sym column (internal vs spacetime), and adjudicate gravity's Uni="—" → **P** (semiclassical boundary/horizon unitarity). **Class:** structural-derivation → human ratification. **DoD:** atlas v0.6 with changelog; engine re-run reproduces v0.6 as its own fixpoint (idempotence check). **Status:** applied 2026-07-11 — `docs/constant-atlas-v0.6.md`; T6 idempotence green; standing rule R-OS-UNI added.
 
-## S2 — GNS realization for ?₂ → H (the decisive item)
+## S2 — GNS realization for ?₂ → H (the decisive item) — PARTIAL
 
 **Honest framing:** any PSD 2×2 matrix is trivially a Gram matrix (Cholesky); the deliverable is a *physical* realization: operators A₀, A₁ and state ω in an actual QFT with ω(A_i†A_j) = M_ij = [[c/6, S′],[S′, 2πT − S″]]. **Route (computable):** free-fermion chain (Gaussian states — everything is determinants). (1) Build reduced density matrices ρ_A for intervals from correlation matrices; (2) compute relative entropy S(ρ‖σ) and its first/second null-cut derivatives numerically with interval bounds (quarantined class); (3) test the candidate identification A₀ ~ 1-normalized modular charge, A₁ ~ null-momentum density smeared at the cut, against M's entries across states (vacuum, thermal, coherent); (4) success = one operator pair reproducing M for ALL tested states within certified intervals. **Falsifier:** no state-independent operator pair exists (would demote the Gram interpretation to accidental). **Compute:** O(hours) laptop-scale; chains L ≤ 400. **DoD:** edit-007 draft (?₂→H conditions partially met: GNS item), or a documented obstruction.
+
+**Status (2026-07-11):** PARTIAL — continuum vacuum GNS ray exact; lattice geometric (K, cut-T) pair does **not** track M ratios at L≤120 (`PARTIAL_CONTINUUM_EXACT_LATTICE_OPERATOR_MISMATCH`). Certificate `certificates/s2_gns_certificate.json`; note `docs/notes/s2-gns-free-fermion.md`; draft `docs/atlas-edits/edit-007-gns-partial-draft.md` (not applied; no atlas bump). Engine rule R-REL-ENTROPY-POS added.
 
 ## S3 — PDG empirical layer for B5
 

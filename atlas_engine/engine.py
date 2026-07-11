@@ -126,6 +126,15 @@ RULES: List[Dict] = [
      "anchor": "Osterwalder-Schrader reconstruction: reflection positivity "
                "+ Euclidean axioms reconstruct unitary Lorentzian dynamics "
                "(OS positivity => Uni)."},
+    # Standing growth (S2): relative-entropy positivity ties Thm → Pos.
+    {"name": "R-REL-ENTROPY-POS", "scope": {"quantum", "gravity"},
+     "pre": [("Thm", H)], "post": "Pos",
+     "anchor": "Araki relative entropy S(rho||sigma)>=0 is operator-algebra "
+               "positivity on state space; links thermodynamics/information "
+               "to the Pos column. S2 free-fermion GNS probe "
+               "(certificates/s2_gns_certificate.json) instantiates the "
+               "vacuum Gram ray of the QNEC matrix M; full state-independent "
+               "operator pair remains open."},
 ]
 
 
