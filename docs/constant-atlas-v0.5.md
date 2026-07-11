@@ -157,8 +157,10 @@ Promotion requires ALL of: (1) all hard constraints certified, (2) ≥ 2 domains
 | B5 | Multi-channel factorization / cluster decomposition (?₅) | Gauge Cmp column → H; one coupling across channels | **DONE** — `certificates/b5_certificate.json`; d_identifiable = 1; ?₅ → H |
 | B6 | 2D QNEC as certified Schur-pivot positivity (?₂) | G Pos column → P (H-track); verifier-standard reformulation | **DONE** — `certificates/b6_certificate.json`; ?₂ → P (H-track) |
 | B7 | Onsager transport-matrix completion (L ⪰ 0 + L = Lᵀ) | Restraint stacking on effective-coefficient type; Thm/Sym columns | **DONE** — `certificates/b7_certificate.json` (R15 seed) |
+| B8 | Blind grammar identification (Hamiltonian / Onsager / GENERIC / CPTP) | Structural-class epistemics; AMBIGUOUS first-class | **DONE** — `certificates/b8_certificate.json` |
+| Engine | Atlas Engine v0.1 — matrix as CSP / implication fixpoint | Machine-proposed P upgrades with theorem chains | **DONE** — `certificates/atlas_engine_certificate.json`; ratification → S1 / v0.6 |
 
-Then: GNS realization of the QNEC matrix M (P→H for ?₂); unification of GSL/?₃; ?₇ toy-dS rank saturation; PDG layer for B5; flavor/topology search (?₆).
+Then: S1 ratify engine → atlas v0.6; S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ dS rank; S5 B7 Kelvin data.
 
 ---
 
@@ -170,7 +172,7 @@ Then: GNS realization of the QNEC matrix M (P→H for ?₂); unification of GSL/
 - One-structure-for-everything — **conjecture**; the narrower compatibility claim is the working assertion.
 - Composition column — **G Cmp = P (H-track)**; **gauge Cmp = H** (α, α_s, EW); remaining Cmp blanks (Yukawa/Λ/…) still open.
 - Positivity column — **G Pos = P (H-track)** via 2D QNEC ≡ Schur pivot (B6); GNS identification of M remains open for H.
-- B1–B7 — **implemented** with certificates; next: ?₇ / GNS for ?₂ / PDG for B5.
+- B1–B8 + Atlas Engine v0.1 — **implemented** with certificates; next: S1 (atlas v0.6 ratification).
 
 ---
 
@@ -185,3 +187,4 @@ Then: GNS realization of the QNEC matrix M (P→H for ?₂); unification of GSL/
 | v0.5+R14 | 2026-07-11 | — (infra; no matrix cell) | Adopt Maudlin arXiv:2512.22618 as METHOD R14: mandatory `m_layer_stipulations` in certificate format v0.3; B2 device↔POVM scope clause; queued arrival-time track. See `docs/references.md`, `docs/notes/measurement-interface-maudlin.md`. |
 | v0.5+R15 | 2026-07-11 | — (infra + B7; no matrix cell) | Adopt Chen et al. Nat. Comput. Sci. 2024 as METHOD R15: constraint-native generators (firewall), closure-as-dynamical-d_identifiable; implement B7 Onsager transport-matrix completion. See `docs/notes/onsager-sonsagernet-chen2024.md`. |
 | v0.5+R15a | 2026-07-12 | — (infra; no matrix cell) | R15 cross-agent addendum: erratum (M+W GENERIC form); canonicalization + distill-before-score rules; queue B8 blind grammar identification; reject encoding-N endpoint. See `docs/notes/r15-addendum-cross-agent-review.md`. |
+| v0.5+B8 | 2026-07-11 | — (infra + B8 + engine; no matrix cell) | Implement B8 blind grammar identification + Atlas Engine v0.1 (7 candidate P upgrades pending S1 ratification). Sprint specs v1 filed. |

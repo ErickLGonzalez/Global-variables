@@ -147,6 +147,19 @@ b7_onsager/
   complete.py      PSD audit, reciprocity forcing, permitted intervals
 ```
 
+## B8 — Blind grammar identification (implemented ✅) & Atlas Engine v0.1 (implemented ✅)
+
+**B8** (6/6): identifies Hamiltonian / gradient-flow / GENERIC / quantum grammars from unlabeled data using similarity-invariant signatures only (R15 canonicalization). Exactly-zero damping is never claimed — conservative verdict is **HAMILTONIAN_WITHIN_BOUND** with a certified damping bound; drift test detects weak damping below the spectral floor. Quantum split is exact via Choi rank (B2).
+
+```bash
+python3 tests/test_b8.py
+python3 tests/test_atlas_engine.py
+```
+
+**Atlas Engine v0.1** (5/5): restraint matrix as a constraint-satisfaction object. Eight theorem-anchored implication rules propagate to fixpoint → **7 candidate upgrades** (Cmp/Top/Λ-Pos), each with derivation chains; engine cannot mint H. Certificates: `certificates/b8_certificate.json`, `certificates/atlas_engine_certificate.json`.
+
+**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1 ratify engine → atlas v0.6; S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ dS rank; S5 B7 Kelvin data.
+
 ## Atlas edits
 
 - [edit-001](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** (atlas v0.3)
@@ -155,21 +168,19 @@ b7_onsager/
 
 ## Research library
 
-[`docs/references.md`](docs/references.md) — research-paper ledger. **R15** Chen et al. 2024 + [addendum](docs/notes/r15-addendum-cross-agent-review.md): constraint-native generators, canonicalization / distill-before-score rules, **B7 done**, **B8 queued** (blind grammar identification). **R14** Maudlin: M-layer stipulations + arrival-time track. Notes: [`onsager-sonsagernet-chen2024.md`](docs/notes/onsager-sonsagernet-chen2024.md), [`measurement-interface-maudlin.md`](docs/notes/measurement-interface-maudlin.md).
+[`docs/references.md`](docs/references.md) — research-paper ledger. **R15** + [addendum](docs/notes/r15-addendum-cross-agent-review.md): **B7 done**, **B8 done**, engine v0.1. **R14** Maudlin: M-layer + arrival-time track.
 
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **B8** — blind grammar identification (Hamiltonian vs Onsager/GENERIC vs CPTP); AMBIGUOUS when underdetermined; cross-grammar falsifiers.
-2. **?₂ → H** — GNS realization: exhibit operators/state with ω(A_i†A_j) = M_ij.
-3. **?₇** — toy-dS rank-saturation study (B1 is the engine).
+1. **S1** — ratify Atlas Engine pass → atlas v0.6 (edit-004/005/006).
+2. **S2 / ?₂ → H** — GNS realization (free-fermion route).
+3. **S3** — PDG empirical layer for B5.
 
 **Near-term:**
-4. **PDG layer for B5** — replace toy channels with held-out empirical cross-section ratios.
-5. Unification of GSL / area theorem (?₂ + ?₃ toward joint H).
-6. **Arrival-time track** (queued from R14) — catalogue rival predictions + falsifier before any experiment.
-7. Empirical thermoelectric layer for B7 (Seebeck/Peltier / Kelvin relation).
-8. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
+4. **S4** — ?₇ toy-dS rank saturation (heavy compute).
+5. **S5** — B7 Kelvin-relation real data.
+6. Arrival-time track (R14); ?₁ / ?₄/?₈/?₉ / ?₆.
 
 ## Discipline
 

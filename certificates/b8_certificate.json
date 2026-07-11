@@ -1,0 +1,70 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY (dynamical grammars) + EXACT-RATIONAL (quantum grammars via B2)",
+  "problem": "B8 blind grammar identification",
+  "timestamp_utc": "2026-07-11T16:05:01Z",
+  "m_layer_stipulations": [
+    "linear dynamics with quadratic potentials (grammar signatures exact only there)",
+    "observation noise 1e-3; generator estimated via one-step propagator + matrix log (forward-difference estimation REJECTED: injects artificial damping ~dt*omega^2/2, a discretization artifact masquerading as dissipation)",
+    "noise floor on Re(lambda) set to 5e-3 for this design",
+    "classification uses only similarity-invariant data (spectra, conserved forms) per R15 canonicalization rule"
+  ],
+  "headline": "grammars identified blind via invariants only; AMBIGUOUS enforced where data cannot separate candidates; quantum grammar split is exact (Choi rank)",
+  "results": {
+    "T1": {
+      "spectrum": [
+        "-1.800632+0.000000j",
+        "-0.900431+0.000000j"
+      ],
+      "fit_residual": 0.00140553737749781,
+      "re_tolerance": 0.005,
+      "grammar": "GRADIENT_FLOW"
+    },
+    "T2": {
+      "spectrum": [
+        "-1.351111+1.671967j",
+        "-1.351111-1.671967j"
+      ],
+      "fit_residual": 0.001402466556323626,
+      "re_tolerance": 0.005,
+      "grammar": "GENERIC_MIXED",
+      "damping_margin": 270.222186378637
+    },
+    "T3": {
+      "spectrum": [
+        "-0.000159+1.732014j",
+        "-0.000159-1.732014j"
+      ],
+      "fit_residual": 0.0014141298671798421,
+      "re_tolerance": 0.005,
+      "grammar": "HAMILTONIAN_WITHIN_BOUND",
+      "reason": "|Re lambda| <= noise floor: conservative (HAMILTONIAN) vs weakly damped (GENERIC) not separable from these data",
+      "candidates": [
+        "HAMILTONIAN",
+        "GENERIC_MIXED"
+      ],
+      "conserved_form_coeffs": [
+        "0.9487",
+        "0.3162",
+        "-0.0000"
+      ],
+      "relative_slope": -2.5672801164771346e-05,
+      "slope_stderr": 5.119448638884449e-05,
+      "certified_damping_bound": 8.96281301656524e-05,
+      "note": "conservation certified as a BOUND: |Re lambda| <= 8.96e-05; exactly-zero damping is never certifiable from finite data"
+    },
+    "T4": {
+      "detected": "GENERIC_MIXED",
+      "bounded": "HAMILTONIAN_WITHIN_BOUND",
+      "bound": 3.947367974958478e-05
+    },
+    "T5": {
+      "unitary": "UNITARY_GRAMMAR",
+      "dissipative": "DISSIPATIVE_CPTP",
+      "fake": "NOT_A_CHANNEL"
+    },
+    "T6": {
+      "misclassifications": 0
+    }
+  }
+}

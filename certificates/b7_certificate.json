@@ -2,7 +2,7 @@
   "certificate_version": "0.3",
   "certificate_class": "EXACT-RATIONAL (same class as B1/B2); effective-coefficient / transport type",
   "problem": "B7: Onsager transport-matrix completion \u2014 L \u2ab0 0 (second law) + L = L\u1d40 (reciprocity)",
-  "timestamp_utc": "2026-07-11T14:40:57Z",
+  "timestamp_utc": "2026-07-11T16:05:00Z",
   "headline": "restraint stacking on effective coefficients: PSD alone \u2192 PERMITTED; +reciprocity \u2192 FORCED; second-law and reciprocity falsifiers rejected",
   "seed_paper": "R15 Chen et al., Nat. Comput. Sci. 4, 66-85 (2024)",
   "m_layer_stipulations": [

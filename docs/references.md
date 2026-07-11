@@ -19,7 +19,7 @@ Papers researched for the program, with role classification. Roles:
 | R12 | Schmidt & Lipson; AI Feynman; SINDy | METHOD | decoding-chain step 5 (candidate generators only) |
 | R13 | Chamseddine & Connes — spectral action | METHOD (hypothesis) | bridge formula; flagged conjectural |
 | R14 | **Maudlin, "Actual Physics, Observation, and Quantum Theory," arXiv:2512.22618 (physics.hist-ph, Dec 2025)** | **METHOD** | **𝓜-layer (decoding-chain step 1); certificate format; arrival-time track** |
-| R15 | **Chen, Soh, Ooi, Vissol-Gaudin, Yu, Novoselov, Hippalgaonkar, Li — "Constructing custom thermodynamics using deep learning," Nat. Comput. Sci. 4, 66–85 (2024); arXiv:2308.04119; code: Zenodo 10.5281/zenodo.10212239** | **METHOD** | **decoding-chain step 5 (constraint-native generators); closure-as-d_identifiable; seeds B7 (done) + B8 (queued)** |
+| R15 | **Chen, Soh, Ooi, Vissol-Gaudin, Yu, Novoselov, Hippalgaonkar, Li — "Constructing custom thermodynamics using deep learning," Nat. Comput. Sci. 4, 66–85 (2024); arXiv:2308.04119; code: Zenodo 10.5281/zenodo.10212239** | **METHOD** | **decoding-chain step 5 (constraint-native generators); closure-as-d_identifiable; B7 + B8 done; Atlas Engine seeded** |
 
 ## R14 annotation (added 2026-07-11)
 
@@ -35,4 +35,4 @@ Open-access research article (pointer received via its paywalled Research Briefi
 2. **Closure coordinates = dynamical d_identifiable** — algorithmic pattern for extending rank discovery (B3/B5) from static relations to evolution laws.
 3. **Benchmark B7 implemented: Onsager transport-matrix completion** — `b7_onsager/` + certificate; PSD alone → PERMITTED; +reciprocity → FORCED.
 
-**R15 addendum (2026-07-12):** cross-agent review filed (`docs/notes/r15-addendum-cross-agent-review.md`). Adopted: canonicalization rule (only reparametrization-invariant Morse/landscape data of learned dynamics count as discovered structure), distill-before-score rule for L(𝕽), **B8 queued: blind grammar identification** with cross-grammar falsifiers and AMBIGUOUS output, certified closure dimension (B3 rank machinery replacing R15's trial-and-error latent-dimension selection). Rejected: single-number "encoding N" endpoint (unfalsifiable; L(𝕽) already captures minimal-description content testably). Erratum: full S-OnsagerNet law is Ż = −[M(Z)+W(Z)]∇V(Z)+σ(Z)Ḃ with W antisymmetric.
+**R15 addendum (2026-07-12):** cross-agent review filed (`docs/notes/r15-addendum-cross-agent-review.md`). Adopted: canonicalization rule, distill-before-score rule for L(𝕽), **B8 implemented** (blind grammar identification), certified closure dimension research item. Rejected: single-number "encoding N" endpoint. Erratum: full S-OnsagerNet law is Ż = −[M(Z)+W(Z)]∇V(Z)+σ(Z)Ḃ with W antisymmetric.
