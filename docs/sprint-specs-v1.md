@@ -4,9 +4,9 @@ Deep-research specs so each sprint starts with a full work order: inputs, algori
 
 ---
 
-## S1 — Ratify the engine's first pass (atlas v0.6)
+## S1 — Ratify the engine's first pass (atlas v0.6) ✅ DONE
 
-**Goal:** convert Atlas Engine propagations into edit records. **Work:** (1) edit-004: Cmp ?→P for λ_H, Yukawa, neutrino, θ_QCD [R-CLUSTER chains]; (2) edit-005: Top ?→P (weak ?₆) for Yukawa/neutrino [R-ANOMALY], explicitly leaving the index form of ?₆ open; (3) edit-006: Λ Pos ?→P (weak ?₇) [R-DS-ENTROPY], rank form open; (4) resolve the two engine findings — split or annotate the Sym column (internal vs spacetime), and adjudicate gravity's Uni="—" under the R-SCHUR-QNEC tension (proposal: Uni→P with anchor "unitarity of boundary/horizon evolution in the semiclassical regime," or a documented reaffirmation of NA). **Class:** structural-derivation → human ratification. **DoD:** atlas v0.6 with changelog; engine re-run reproduces v0.6 as its own fixpoint (idempotence check).
+**Goal:** convert Atlas Engine propagations into edit records. **Work:** (1) edit-004: Cmp ?→P for λ_H, Yukawa, neutrino, θ_QCD [R-CLUSTER chains]; (2) edit-005: Top ?→P (weak ?₆) for Yukawa/neutrino [R-ANOMALY], explicitly leaving the index form of ?₆ open; (3) edit-006: Λ Pos ?→P (weak ?₇) [R-DS-ENTROPY], rank form open; (4) resolve the two engine findings — annotate the Sym column (internal vs spacetime), and adjudicate gravity's Uni="—" → **P** (semiclassical boundary/horizon unitarity). **Class:** structural-derivation → human ratification. **DoD:** atlas v0.6 with changelog; engine re-run reproduces v0.6 as its own fixpoint (idempotence check). **Status:** applied 2026-07-11 — `docs/constant-atlas-v0.6.md`; T6 idempotence green; standing rule R-OS-UNI added.
 
 ## S2 — GNS realization for ?₂ → H (the decisive item)
 

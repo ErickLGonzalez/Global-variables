@@ -33,6 +33,7 @@ COLS = ["Sym", "Pos", "Uni", "Cau", "Cmp", "RG", "Top", "Thm"]
 
 # Restraint Matrix v0.5, faithfully transcribed (levels only; annotations
 # live in the atlas document). Row "type" drives rule applicability.
+# Historical input for the first engine pass (pre-S1 ratification).
 MATRIX_V05: Dict[str, Dict] = {
     "c":        {"type": "kinematic", "Sym": "H", "Pos": "-", "Uni": "-", "Cau": "H", "Cmp": "P", "RG": "-", "Top": "-", "Thm": "?"},
     "hbar":     {"type": "quantum",   "Sym": "P", "Pos": "H", "Uni": "H", "Cau": "P", "Cmp": "H", "RG": "-", "Top": "P", "Thm": "P"},
@@ -46,6 +47,24 @@ MATRIX_V05: Dict[str, Dict] = {
     "neutrino": {"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "P", "Cmp": "?", "RG": "P", "Top": "?", "Thm": "P"},
     "theta_QCD":{"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "P", "Cmp": "?", "RG": "H", "Top": "H", "Thm": "P"},
     "Lambda":   {"type": "cosmo",     "Sym": "P", "Pos": "?", "Uni": "-", "Cau": "H", "Cmp": "?", "RG": "?", "Top": "?", "Thm": "H"},
+    "initial":  {"type": "cosmo",     "Sym": "P", "Pos": "H", "Uni": "P", "Cau": "P", "Cmp": "?", "RG": "P", "Top": "-", "Thm": "P"},
+}
+
+# Restraint Matrix v0.6 (S1 ratification): engine propagations + human
+# adjudications (G Uni —→P). propagate(MATRIX_V06) must be a fixpoint.
+MATRIX_V06: Dict[str, Dict] = {
+    "c":        {"type": "kinematic", "Sym": "H", "Pos": "-", "Uni": "-", "Cau": "H", "Cmp": "P", "RG": "-", "Top": "-", "Thm": "?"},
+    "hbar":     {"type": "quantum",   "Sym": "P", "Pos": "H", "Uni": "H", "Cau": "P", "Cmp": "H", "RG": "-", "Top": "P", "Thm": "P"},
+    "G":        {"type": "gravity",   "Sym": "H", "Pos": "P", "Uni": "P", "Cau": "H", "Cmp": "P", "RG": "?", "Top": "P", "Thm": "H"},
+    "k_B":      {"type": "thermal",   "Sym": "P", "Pos": "H", "Uni": "-", "Cau": "-", "Cmp": "H", "RG": "-", "Top": "-", "Thm": "H"},
+    "alpha":    {"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "H", "Cmp": "H", "RG": "H", "Top": "P", "Thm": "P"},
+    "alpha_s":  {"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "H", "Cmp": "H", "RG": "H", "Top": "H", "Thm": "P"},
+    "EW_block": {"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "H", "Cmp": "H", "RG": "H", "Top": "P", "Thm": "P"},
+    "lambda_H": {"type": "gauge_qft", "Sym": "P", "Pos": "H", "Uni": "H", "Cau": "H", "Cmp": "P", "RG": "H", "Top": "-", "Thm": "P"},
+    "Yukawa":   {"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "P", "Cmp": "P", "RG": "H", "Top": "P", "Thm": "P"},
+    "neutrino": {"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "P", "Cmp": "P", "RG": "P", "Top": "P", "Thm": "P"},
+    "theta_QCD":{"type": "gauge_qft", "Sym": "H", "Pos": "P", "Uni": "H", "Cau": "P", "Cmp": "P", "RG": "H", "Top": "H", "Thm": "P"},
+    "Lambda":   {"type": "cosmo",     "Sym": "P", "Pos": "P", "Uni": "-", "Cau": "H", "Cmp": "?", "RG": "?", "Top": "?", "Thm": "H"},
     "initial":  {"type": "cosmo",     "Sym": "P", "Pos": "H", "Uni": "P", "Cau": "P", "Cmp": "?", "RG": "P", "Top": "-", "Thm": "P"},
 }
 
@@ -65,9 +84,9 @@ RULES: List[Dict] = [
                "locality + Poincare covariance (encoded in the gauge_qft "
                "TYPE, not the internal-Sym cell) force composition "
                "restraints on all couplings. Internal certificate: B5 "
-               "(edit-002). ENGINE FINDING logged: the Sym column "
-               "conflates internal and spacetime symmetry; v0.6 should "
-               "split it or document the convention."},
+               "(edit-002); ratified edit-004. Sym-column convention "
+               "(v0.6): dominant restraint in cell; spacetime locality "
+               "via row TYPE (annotate, do not split)."},
     {"name": "R-DISPERSION", "scope": {"gauge_qft"},
      "pre": [("Cau", H), ("Uni", H)], "post": "Pos",
      "anchor": "Forward-limit dispersion relations: analyticity + "
@@ -91,15 +110,22 @@ RULES: List[Dict] = [
     {"name": "R-SCHUR-QNEC", "scope": {"gravity"},
      "pre": [("Thm", H), ("Uni", P)], "post": "Pos",
      "anchor": "QNEC as Schur-pivot positivity (B6, edit-003; Wall 2011; "
-               "BFKW 2017). NOTE: gravity row has Uni = '-', so this rule "
-               "is expected to emit a TENSION -- deliberately included as "
-               "a probe of the Uni cell's NA status."},
+               "BFKW 2017). On MATRIX_V05 (Uni='-') this rule emitted the "
+               "NA tension that motivated edit-006 (G Uni —→P semiclassical). "
+               "On MATRIX_V06 the precondition holds; Pos already P."},
     {"name": "R-DS-ENTROPY", "scope": {"cosmo"},
      "pre": [("Thm", H), ("Cau", H)], "post": "Pos",
      "anchor": "Finite horizon entropy (Gibbons-Hawking) bounds accessible "
                "state space => Gram positivity with effective rank bounds "
                "(conjecture ?7's weak direction: positivity applies, its "
-               "rank form remains ?)."},
+               "rank form remains ?). Ratified edit-006."},
+    # Standing growth (S1): theorem-anchored; currently dormant on the
+    # filled matrix (Uni already H wherever Pos≥H in scope).
+    {"name": "R-OS-UNI", "scope": {"quantum", "gauge_qft"},
+     "pre": [("Pos", H)], "post": "Uni",
+     "anchor": "Osterwalder-Schrader reconstruction: reflection positivity "
+               "+ Euclidean axioms reconstruct unitary Lorentzian dynamics "
+               "(OS positivity => Uni)."},
 ]
 
 

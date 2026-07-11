@@ -158,7 +158,7 @@ python3 tests/test_atlas_engine.py
 
 **Atlas Engine v0.1** (5/5): restraint matrix as a constraint-satisfaction object. Eight theorem-anchored implication rules propagate to fixpoint → **7 candidate upgrades** (Cmp/Top/Λ-Pos), each with derivation chains; engine cannot mint H. Certificates: `certificates/b8_certificate.json`, `certificates/atlas_engine_certificate.json`.
 
-**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1 ratify engine → atlas v0.6; S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ dS rank; S5 B7 Kelvin data.
+**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — **S1 done** (atlas v0.6); next S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ rank; S5 B7 Kelvin.
 
 ## B9 — Circuit decompilation: 2025 Nobel methodology as gates (implemented ✅)
 
@@ -182,6 +182,11 @@ b9_circuit/
 - [edit-001](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** (atlas v0.3)
 - [edit-002](docs/atlas-edits/edit-002-conjecture5-promotion.md) — **?₅ → H** (atlas v0.4)
 - [edit-003](docs/atlas-edits/edit-003-conjecture2-qnec.md) — **?₂ → P (H-track)** (atlas v0.5)
+- [edit-004](docs/atlas-edits/edit-004-cluster-cmp-extension.md) — gauge_qft Cmp → P (atlas v0.6)
+- [edit-005](docs/atlas-edits/edit-005-weak-conjecture6-top.md) — weak ?₆ Top → P (atlas v0.6)
+- [edit-006](docs/atlas-edits/edit-006-weak-conjecture7-and-findings.md) — weak ?₇ + Sym/Uni findings (atlas v0.6)
+
+Current atlas: [`docs/constant-atlas-v0.6.md`](docs/constant-atlas-v0.6.md).
 
 ## Research library
 
@@ -190,15 +195,14 @@ b9_circuit/
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **S1** — ratify Atlas Engine pass → atlas v0.6 (edit-004/005/006).
-2. **S2 / ?₂ → H** — GNS realization (free-fermion route).
-3. **S3** — PDG empirical layer for B5.
+1. **S2 / ?₂ → H** — GNS realization (free-fermion route).
+2. **S3** — PDG empirical layer for B5.
+3. **S4** — ?₇ rank form (toy-dS saturation).
 
 **Near-term:**
-4. **S4** — ?₇ toy-dS rank saturation (heavy compute).
-5. **S5** — B7 Kelvin-relation real data.
-6. B9-nonlinear / rare-event layer; ħ-row empirical memo from published junction tables (VERIFY-first).
-7. Arrival-time track (R14); ?₁ / ?₄/?₈/?₉ / ?₆.
+4. **S5** — B7 Kelvin-relation real data.
+5. B9-nonlinear / rare-event layer; ħ-row empirical memo from published junction tables (VERIFY-first).
+6. Arrival-time track (R14); ?₁ / ?₄/?₈/?₉ / strong ?₆.
 
 ## Discipline
 

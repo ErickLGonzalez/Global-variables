@@ -1,4 +1,4 @@
-# Observational Decompilation of Physics — Constant Atlas & Restraint Program v0.5
+# Observational Decompilation of Physics — Constant Atlas & Restraint Program v0.6
 
 **Central conjecture (speculative, clearly labeled):**
 > Fundamental constants are not primitive numbers. They are invariants — eigenvalue ratios, residues, indices, anomaly coefficients, fixed-point data — of a single positive, compositional, scale-consistent operator structure 𝕽. The composition rule, not any individual law, is the missing object.
@@ -6,7 +6,7 @@
 **Defensible claim (what we actually assert today):**
 > Many constants and laws can be represented as invariants of *compatible* algebraic, spectral, compositional, and RG structures. Whether one structure forces all of them is the research question, not an assumption.
 
-**Changelog:** see §9. **Superseded by [`constant-atlas-v0.6.md`](constant-atlas-v0.6.md)** (S1 ratification). v0.3: G Cmp ?₃→P. v0.4: gauge Cmp ?₅→H. v0.5: G Pos ?₂→P (2D CFT QNEC ≡ Schur-pivot positivity; H-track).
+**Changelog:** see §9. v0.3: G Cmp ?₃→P. v0.4: gauge Cmp ?₅→H. v0.5: G Pos ?₂→P. **v0.6:** ratify Atlas Engine pass — Cmp P on λ_H/Yukawa/neutrino/θ_QCD; weak ?₆ Top P; weak ?₇ Λ Pos P; Sym convention; G Uni → P.
 
 ---
 
@@ -27,7 +27,7 @@ Three non-negotiable disciplines:
 
 ---
 
-## 1. Constant Atlas v0.5 — dependency classes
+## 1. Constant Atlas v0.6 — dependency classes
 
 **Class U (unit conventions):** c, ħ, k_B, (G as unit-setter). Physical content: *which structures they mediate*, not their values.
 
@@ -47,24 +47,26 @@ Three non-negotiable disciplines:
 
 ---
 
-## 2. Restraint Matrix v0.5
+## 2. Restraint Matrix v0.6
 
 Columns: Sym = symmetry · Pos = positivity (Gram/moment/Choi/energy conditions) · Uni = unitarity · Cau = causality/analyticity · Cmp = composition (tensor/cluster/associativity) · RG = scale-flow consistency · Top = topology/quantization · Thm = thermodynamics/information.
+
+**Sym-column convention (v0.6 adjudication):** Sym cells encode the *dominant* symmetry restraint for the block (internal gauge/flavor for `gauge_qft` rows; Lorentz/diffeo for c/G). Spacetime locality for composition rules is carried by **row TYPE** (`gauge_qft` ⇒ Poincaré + microcausality), not by the Sym cell. Optional future `Sym_int` / `Sym_st` split is bookkeeping only.
 
 | Constant block | Sym | Pos | Uni | Cau | Cmp | RG | Top | Thm |
 |---|---|---|---|---|---|---|---|---|
 | c (causal structure) | **H** (Lorentz) | — | — | **H** | P (velocity comp.) | — | — | **?₁** |
 | ħ (quantum scale) | P | **H** (Gram/uncert.) | **H** | P | **H** (⊗, established) | — | P (quantized action) | P (Landauer, bounds) |
-| G (gravity) | **H** (diffeo) | **P** (2D CFT: QNEC ≡ Schur-pivot positivity; H-track) | — | **H** | **P** (H-track; area theorem = composition law) | **?₄** (asympt. safety?) | P (Euler/GHY terms) | **H** (S=A/4ℓ_P²) |
+| G (gravity) | **H** (diffeo) | **P** (2D CFT: QNEC ≡ Schur-pivot positivity; H-track) | **P** (semiclassical boundary/horizon evolution) | **H** | **P** (H-track; area theorem = composition law) | **?₄** (asympt. safety?) | P (Euler/GHY terms) | **H** (S=A/4ℓ_P²) |
 | k_B | P | **H** (entropy ≥ 0) | — | — | **H** (extensivity/subadd.) | — | — | **H** |
 | α (QED) | **H** (U(1)) | P (spectral fn ≥ 0) | **H** | **H** (Kramers–Kronig) | **H** (cluster / factorization) | **H** (running) | P (Dirac quantization) | P |
 | α_s (QCD) | **H** (SU(3)) | P | **H** | **H** | **H** (cluster / factorization) | **H** (asympt. freedom) | **H** (instantons, θ-sectors) | P (confinement/deconf.) |
 | Electroweak block (g, g′, v) | **H** | P | **H** | **H** | **H** (cluster / factorization) | **H** | P (sphalerons) | P |
-| λ_Higgs | P (custodial) | **H** (vacuum stability!) | **H** | **H** | ? | **H** (near-criticality) | — | P (metastability) |
-| Yukawa / CKM | **H** (flavor basis inv.) | P | **H** (unitarity triangles!) | P | ? | **H** | **?₆** (N_g as index?) | P |
-| Neutrino sector | **H** | P | **H** (PMNS unitarity — test!) | P | ? | P | **?₆** | P |
-| θ_QCD | **H** (CP) | P | **H** | P | ? | **H** (θ doesn't run pert.) | **H** (integer winding) | P |
-| Λ, cosmological | P (de Sitter?) | **?₇** (dS entropy bounds) | — | **H** | **?₈** | **?₉** (Λ as IR fixed pt?) | **?₁₀** | **H** (S_dS = A/4ℓ_P²) |
+| λ_Higgs | P (custodial) | **H** (vacuum stability!) | **H** | **H** | **P** (cluster; edit-004) | **H** (near-criticality) | — | P (metastability) |
+| Yukawa / CKM | **H** (flavor basis inv.) | P | **H** (unitarity triangles!) | P | **P** (cluster; edit-004) | **H** | **P** (anomaly/integrality; weak ?₆) | P |
+| Neutrino sector | **H** | P | **H** (PMNS unitarity — test!) | P | **P** (cluster; edit-004) | P | **P** (weak ?₆) | P |
+| θ_QCD | **H** (CP) | P | **H** | P | **P** (cluster; edit-004) | **H** (θ doesn't run pert.) | **H** (integer winding) | P |
+| Λ, cosmological | P (de Sitter?) | **P** (weak ?₇; dS entropy ⇒ Gram positivity) | — | **H** | **?₈** | **?₉** (Λ as IR fixed pt?) | **?₁₀** | **H** (S_dS = A/4ℓ_P²) |
 | Initial/state params (n_s, A_s, η_B) | P | **H** (spectra ≥ 0, ρ ⪰ 0) | P | P (horizon problem) | ? | P | — | P (2nd law arrow) |
 
 **Already-solved blanks (proof the method works):** anomaly cancellation (Top column of the fermion sector was a `?` in 1970; hypercharge assignments are now *forced*, H). CKM unitarity (Pos/Uni was a prediction; unitarity-triangle closure is now a precision test). Vacuum stability bound on λ_Higgs (Pos was unintuitive; m_H = 125 GeV sits eerily on the boundary).
@@ -79,14 +81,14 @@ Columns: Sym = symmetry · Pos = positivity (Gram/moment/Choi/energy conditions)
 | ?₂ → **P** | G positivity → H | Generalized Second Law + quantum focusing (QNEC) supply operator-level positivity (⟨T_kk⟩ bounded by entropy derivatives). | **PROMOTED (edit-003, 2026-07-11):** B6 certificate — 2D QNEC ≡ PSD([[c/6,S'],[S',2πT−S'']]); vacuum/coherent/thermal instances + negative control. Status **P (H-track)** — H requires GNS realization of M as ω(A_i†A_j). |
 | ?₃ → **P** | G composition rule | If S = A/4ℓ_P² is fundamental, merging subsystems must satisfy entropy subadditivity ↔ horizon-area theorems. Composition column of gravity = area theorem. | **PROMOTED (edit-001, 2026-07-11):** B4 REAL certificate on GW250114 (P_lower=0.99977) and GW150914 (P_lower=0.99862); external anchors Isi et al. PRL 2021, LVK PRL 135, 111403 (2025), GWTC-4 ≳5σ. Status **P (H-track)** — H requires population ringdown tests / structural unification with ?₂. |
 | ?₄ | G RG flow | A rule-object with universal 𝓡_μ cannot exempt gravity. Predicts G(μ) with a fixed point (asymptotic safety) or embedding scale. | Lattice/functional-RG fixed-point searches; falsifier: proof of no UV completion within the same 𝓡_μ that governs matter couplings. |
-| ?₅ → **H** | Composition column of all gauge couplings → H | Cluster decomposition + associativity of ⊗ are theorems in axiomatic QFT; the couplings inherit them. This is the *least* speculative blank: mostly bookkeeping. | **PROMOTED (edit-002, 2026-07-11):** B5 certificate — factorization R_24 = A_22²; d_identifiable = 1; channel-dependent couplings rejected. External anchors: Weinberg QFT Vol. 1; Haag LQP. |
-| ?₆ | Flavor ↔ Topology | If constants are invariants, the *integer* N_g = 3 is the most index-like object in the table. Predicts generation number = index of some operator D (à la index theorems / family index). | Search: does any candidate D in the bridge produce ind(D) = 3 *and* correlate hierarchy patterns with spectral gaps? Falsifier: candidate structures reproduce couplings but leave N_g arbitrary. |
-| ?₇ | Λ ↔ Positivity | dS entropy finite ⇒ dimension of accessible Hilbert space bounded ⇒ Gram matrices of cosmological correlators have *finite rank*. Flat-extension theorems then become physical: Λ as a rank condition. | Look for finite-rank / flat-extension signatures in cosmological correlation data (CMB moment matrices). This is the wildest and most original prediction of the program. |
+| ?₅ → **H** | Composition column of all gauge couplings → H | Cluster decomposition + associativity of ⊗ are theorems in axiomatic QFT; the couplings inherit them. This is the *least* speculative blank: mostly bookkeeping. | **PROMOTED (edit-002, 2026-07-11):** B5 certificate — factorization R_24 = A_22²; d_identifiable = 1; channel-dependent couplings rejected. External anchors: Weinberg QFT Vol. 1; Haag LQP. **edit-004:** remaining gauge_qft Cmp cells (λ_H, Yukawa, neutrino, θ_QCD) → **P** via R-CLUSTER (structural extension; H still requires dedicated channel certificates). |
+| ?₆ → **P** (weak) | Flavor ↔ Topology | If constants are invariants, the *integer* N_g = 3 is the most index-like object in the table. Predicts generation number = index of some operator D (à la index theorems / family index). | **WEAK PROMOTED (edit-005):** Top → P for Yukawa/neutrino via R-ANOMALY (anomaly/integrality). **Index form remains ?** — falsifier unchanged: candidate structures reproduce couplings but leave N_g arbitrary. |
+| ?₇ → **P** (weak) | Λ ↔ Positivity | dS entropy finite ⇒ dimension of accessible Hilbert space bounded ⇒ Gram matrices of cosmological correlators have *finite rank*. Flat-extension theorems then become physical: Λ as a rank condition. | **WEAK PROMOTED (edit-006):** Λ Pos → P via R-DS-ENTROPY (Gibbons–Hawking). **Rank / flat-extension form remains ?** — S4 work package; falsifier: unbounded rank growth at fixed ℓ. |
 | ?₈ | Λ composition | Vacuum energy must compose consistently under subsystem union (extensivity violation is exactly its weirdness). Predicts Λ is *not* a local coupling but a global state invariant — type "cosmological state," not "coupling." | If Λ reclassifies as state data, it should drop out of the local dependency graph; check that no local RG-invariant reproduces 10⁻¹²². |
 | ?₉ | Λ RG | If ?₈ holds: Λℓ_P² is an IR fixed-point datum of 𝓡_μ, not a bare input. | Functional RG toy models: does any positive, compositional flow generically produce hierarchically small IR invariants? |
 | ?₁₀ | Λ topology | dS entropy A/4ℓ_P² being (near-)integer-quantized in fundamental units would be the smoking gun. | Almost untestable directly; keep as marker. |
 
-**Reading of the matrix as data:** the Composition column was systematically empty across established physics. That is the program's core empirical observation — *we possess dynamical rules in every sector but a composition rule in almost none outside quantum mechanics proper.* The blank column IS the conjectured missing grammar. **v0.3** filled gravity Cmp (?₃ → P, H-track). **v0.4** fills gauge Cmp (?₅ → H). **v0.5** fills gravity Pos (?₂ → P, H-track) via QNEC ≡ Schur-pivot positivity in 2D CFT.
+**Reading of the matrix as data:** the Composition column was systematically empty across established physics. That is the program's core empirical observation — *we possess dynamical rules in every sector but a composition rule in almost none outside quantum mechanics proper.* The blank column IS the conjectured missing grammar. **v0.3** filled gravity Cmp (?₃ → P, H-track). **v0.4** fills gauge Cmp (?₅ → H). **v0.5** fills gravity Pos (?₂ → P, H-track) via QNEC ≡ Schur-pivot positivity in 2D CFT. **v0.6** ratifies the Atlas Engine first pass: remaining gauge_qft Cmp → P; weak ?₆ Top → P; weak ?₇ Λ Pos → P; Sym convention; G Uni → P (semiclassical).
 
 ---
 
@@ -159,9 +161,9 @@ Promotion requires ALL of: (1) all hard constraints certified, (2) ≥ 2 domains
 | B7 | Onsager transport-matrix completion (L ⪰ 0 + L = Lᵀ) | Restraint stacking on effective-coefficient type; Thm/Sym columns | **DONE** — `certificates/b7_certificate.json` (R15 seed) |
 | B8 | Blind grammar identification (Hamiltonian / Onsager / GENERIC / CPTP) | Structural-class epistemics; AMBIGUOUS first-class | **DONE** — `certificates/b8_certificate.json` |
 | B9 | Circuit decompilation (2025 Nobel / Berkeley recipe as gates) | FDT audit; calibration-route discipline; held-out spectroscopy | **DONE** — `certificates/b9_certificate.json` (R16–R22) |
-| Engine | Atlas Engine v0.1 — matrix as CSP / implication fixpoint | Machine-proposed P upgrades with theorem chains | **DONE** — `certificates/atlas_engine_certificate.json`; ratification → S1 / v0.6 |
+| Engine | Atlas Engine v0.1 — matrix as CSP / implication fixpoint | Machine-proposed P upgrades with theorem chains | **DONE** — ratified as atlas v0.6 (edit-004/005/006); idempotence on MATRIX_V06 |
 
-Then: S1 ratify engine → atlas v0.6; S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ dS rank; S5 B7 Kelvin data; B9-nonlinear.
+Then: S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ rank form; S5 B7 Kelvin data; B9-nonlinear.
 
 ---
 
@@ -171,9 +173,11 @@ Then: S1 ratify engine → atlas v0.6; S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ d
 - Unaudited normalizations/signs — **quarantined**.
 - Spectral action — **model hypothesis**.
 - One-structure-for-everything — **conjecture**; the narrower compatibility claim is the working assertion.
-- Composition column — **G Cmp = P (H-track)**; **gauge Cmp = H** (α, α_s, EW); remaining Cmp blanks (Yukawa/Λ/…) still open.
-- Positivity column — **G Pos = P (H-track)** via 2D QNEC ≡ Schur pivot (B6); GNS identification of M remains open for H.
-- B1–B9 + Atlas Engine v0.1 — **implemented** with certificates; next: S1 (atlas v0.6 ratification).
+- Composition column — **G Cmp = P (H-track)**; **gauge Cmp = H** (α, α_s, EW); **remaining gauge_qft Cmp = P** (edit-004).
+- Positivity column — **G Pos = P (H-track)** via 2D QNEC ≡ Schur pivot (B6); **Λ Pos = P** (weak ?₇); GNS identification of M remains open for ?₂→H.
+- Topology — **flavor Top = P** (weak ?₆); index form of ?₆ open.
+- Gravity Uni — **P** (semiclassical boundary/horizon; edit-006 adjudication of R-SCHUR-QNEC tension).
+- B1–B9 + Atlas Engine — **implemented**; S1 **done** (atlas v0.6); next: S2.
 
 ---
 
@@ -190,3 +194,4 @@ Then: S1 ratify engine → atlas v0.6; S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ d
 | v0.5+R15a | 2026-07-12 | — (infra; no matrix cell) | R15 cross-agent addendum: erratum (M+W GENERIC form); canonicalization + distill-before-score rules; queue B8 blind grammar identification; reject encoding-N endpoint. See `docs/notes/r15-addendum-cross-agent-review.md`. |
 | v0.5+B8 | 2026-07-11 | — (infra + B8 + engine; no matrix cell) | Implement B8 blind grammar identification + Atlas Engine v0.1 (7 candidate P upgrades pending S1 ratification). Sprint specs v1 filed. |
 | v0.5+B9 | 2026-07-13 | — (infra + B9; no matrix cell) | Implement B9 circuit decompilation from 2025 Nobel / Berkeley sequence (R16–R22): FDT gate, calibration-route discipline, Gibbs-circularity finding, held-out spectroscopy. See `docs/notes/nobel2025-circuit-decompilation.md`. |
+| v0.6 | 2026-07-11 | [edit-004](atlas-edits/edit-004-cluster-cmp-extension.md) `b197c55489851e7848010edd92c4ebf03618d1da`; [edit-005](atlas-edits/edit-005-weak-conjecture6-top.md) `2ea395032f6d0c2fbea28d3b2705f4b4d4b5721d`; [edit-006](atlas-edits/edit-006-weak-conjecture7-and-findings.md) `1f916239e727bb7bb2f67b62dae718db9426a1f5` | Ratify Atlas Engine first pass: Cmp→P (λ_H/Yukawa/neutrino/θ_QCD); weak ?₆ Top→P; weak ?₇ Λ Pos→P; Sym convention annotated; G Uni —→P (semiclassical). Idempotence on MATRIX_V06. Standing rule R-OS-UNI added. |

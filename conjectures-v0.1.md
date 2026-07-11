@@ -108,9 +108,9 @@ A conjecture is *never* evidence for the synthesis that generated it. Promotion 
 
 **Falsifier.** Demonstration that candidate structures reproducing the coupling sectors leave N_g strictly arbitrary (a modulus with no index interpretation) across the whole feasible set 𝔉.
 
-**Status.** ? — the deepest and hardest; high payoff.
+**Status.** **WEAK PROMOTED to P** (anomaly/integrality on flavor Top) — atlas edit-005, `constant-atlas-v0.6.md` (2026-07-11). **Index form (N_g = ind(D)) remains ?** — falsifier unchanged.
 
-**Anchors.** Atiyah–Singer index theorem; Candelas–Horowitz–Strominger–Witten (χ/2 counting); Chamseddine–Connes spectral Standard Model.
+**Anchors.** Atiyah–Singer index theorem; Candelas–Horowitz–Strominger–Witten (χ/2 counting); Chamseddine–Connes spectral Standard Model; Atlas Engine R-ANOMALY.
 
 ---
 
@@ -126,9 +126,9 @@ A conjecture is *never* evidence for the synthesis that generated it. Promotion 
 
 **Falsifier.** Toy-model result showing rank grows without bound in dS at fixed entropy, or scaling with the wrong entropy power.
 
-**Status.** ? — wildest conjecture in the program; also the one B1 was built to serve.
+**Status.** **WEAK PROMOTED to P** (Λ Pos via finite-horizon entropy) — atlas edit-006, `constant-atlas-v0.6.md` (2026-07-11). **Rank / flat-extension form remains ?** — S4 work package; B1 is the engine.
 
-**Anchors.** Gibbons–Hawking dS entropy; Banks/Fischler finite-N dS proposals; Curto–Fialkow flat extension.
+**Anchors.** Gibbons–Hawking dS entropy; Banks/Fischler finite-N dS proposals; Curto–Fialkow flat extension; Atlas Engine R-DS-ENTROPY.
 
 ---
 
@@ -192,8 +192,8 @@ Dependencies: ?₇ ⇒ ?₈ ⇒ ?₉; ?₇ + ?₉ ⇒ ?₁₀. ?₂ + ?₃ share
 
 Priority ordering by (testability × payoff):
 1. **?₃** — **done (P, H-track)** via B4 REAL + edit-001 / atlas v0.3.
-2. **?₅** — **done (H)** via B5 factorization + edit-002 / atlas v0.4.
-3. **?₂** — **done (P, H-track)** via B6 QNEC/Schur + edit-003 / atlas v0.5; GNS remains for H.
-4. **?₇** — toy dS rank-saturation study; B1 is the engine.
+2. **?₅** — **done (H)** via B5 factorization + edit-002 / atlas v0.4; edit-004 extends remaining gauge_qft Cmp → P.
+3. **?₂** — **done (P, H-track)** via B6 QNEC/Schur + edit-003 / atlas v0.5; GNS remains for H (**S2**).
+4. **?₆ / ?₇** — weak directions **done (P)** via edit-005/006 / atlas v0.6; index form (?₆) and rank form (?₇ / **S4**) remain open.
 5. **?₁** — toy causal-thermal model.
-6. **?₄, ?₈, ?₉** — modeling programs; **?₆** — long-horizon; **?₁₀** — marker.
+6. **?₄, ?₈, ?₉** — modeling programs; **?₁₀** — marker.

@@ -1,15 +1,16 @@
 {
   "certificate_version": "0.3",
-  "certificate_class": "STRUCTURAL-DERIVATION (theorem-anchored implication propagation over the restraint matrix; candidates pending human edit records)",
-  "problem": "Atlas Engine v0.1: first machine pass at solving the restraint matrix",
-  "timestamp_utc": "2026-07-11T16:05:02Z",
+  "certificate_class": "STRUCTURAL-DERIVATION (theorem-anchored implication propagation over the restraint matrix; S1-ratified into atlas v0.6)",
+  "problem": "Atlas Engine v0.1 + S1 ratification: first machine pass and idempotent fixpoint on MATRIX_V06",
+  "timestamp_utc": "2026-07-11T19:14:42Z",
   "m_layer_stipulations": [
-    "matrix v0.5 transcription is the input datum",
-    "rule set restricted to established theorems + this repo's certified benchmarks (B4 REAL, B5, B6)",
-    "P(propagated) is a candidate status: requires human-ratified atlas edit record before entering an atlas version"
+    "MATRIX_V05 is the historical first-pass input",
+    "MATRIX_V06 is the ratified atlas transcription (edit-004/005/006)",
+    "rule set restricted to established theorems + this repo's certified benchmarks (B4 REAL, B5, B6) + R-OS-UNI (S1 growth)",
+    "P(propagated) on V05 required human edit records; V06 is the fixpoint (idempotence check T6)"
   ],
   "results": {
-    "propagations": [
+    "propagations_v05": [
       {
         "row": "lambda_H",
         "cell": "Cmp",
@@ -19,7 +20,7 @@
           "Uni>=H",
           "Cau>=P"
         ],
-        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002). ENGINE FINDING logged: the Sym column conflates internal and spacetime symmetry; v0.6 should split it or document the convention."
+        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002); ratified edit-004. Sym-column convention (v0.6): dominant restraint in cell; spacetime locality via row TYPE (annotate, do not split)."
       },
       {
         "row": "Yukawa",
@@ -30,7 +31,7 @@
           "Uni>=H",
           "Cau>=P"
         ],
-        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002). ENGINE FINDING logged: the Sym column conflates internal and spacetime symmetry; v0.6 should split it or document the convention."
+        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002); ratified edit-004. Sym-column convention (v0.6): dominant restraint in cell; spacetime locality via row TYPE (annotate, do not split)."
       },
       {
         "row": "neutrino",
@@ -41,7 +42,7 @@
           "Uni>=H",
           "Cau>=P"
         ],
-        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002). ENGINE FINDING logged: the Sym column conflates internal and spacetime symmetry; v0.6 should split it or document the convention."
+        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002); ratified edit-004. Sym-column convention (v0.6): dominant restraint in cell; spacetime locality via row TYPE (annotate, do not split)."
       },
       {
         "row": "theta_QCD",
@@ -52,7 +53,7 @@
           "Uni>=H",
           "Cau>=P"
         ],
-        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002). ENGINE FINDING logged: the Sym column conflates internal and spacetime symmetry; v0.6 should split it or document the convention."
+        "anchor": "Cluster decomposition theorem (Weinberg QTF I; Haag): locality + Poincare covariance (encoded in the gauge_qft TYPE, not the internal-Sym cell) force composition restraints on all couplings. Internal certificate: B5 (edit-002); ratified edit-004. Sym-column convention (v0.6): dominant restraint in cell; spacetime locality via row TYPE (annotate, do not split)."
       },
       {
         "row": "Yukawa",
@@ -85,10 +86,10 @@
           "Thm>=H",
           "Cau>=H"
         ],
-        "anchor": "Finite horizon entropy (Gibbons-Hawking) bounds accessible state space => Gram positivity with effective rank bounds (conjecture ?7's weak direction: positivity applies, its rank form remains ?)."
+        "anchor": "Finite horizon entropy (Gibbons-Hawking) bounds accessible state space => Gram positivity with effective rank bounds (conjecture ?7's weak direction: positivity applies, its rank form remains ?). Ratified edit-006."
       }
     ],
-    "tensions": [
+    "tensions_v05": [
       {
         "rule": "R-KMS",
         "row": "G",
@@ -109,10 +110,10 @@
           "Uni"
         ],
         "finding": "rule blocked SOLELY by NA precondition cell(s): the NA status is under pressure -- human review",
-        "anchor": "QNEC as Schur-pivot positivity (B6, edit-003; Wall 2011; BFKW 2017). NOTE: gravity row has Uni = '-', so this rule is expected to emit a TENSION -- deliberately included as a probe of the Uni cell's NA status."
+        "anchor": "QNEC as Schur-pivot positivity (B6, edit-003; Wall 2011; BFKW 2017). On MATRIX_V05 (Uni='-') this rule emitted the NA tension that motivated edit-006 (G Uni \u2014\u2192P semiclassical). On MATRIX_V06 the precondition holds; Pos already P."
       }
     ],
-    "matrix_after": {
+    "matrix_after_v05": {
       "c": {
         "Sym": "H",
         "Pos": "-",
@@ -242,6 +243,142 @@
         "RG": "P",
         "Top": "-",
         "Thm": "P"
+      }
+    },
+    "idempotence_v06": {
+      "propagations": [],
+      "tensions": [],
+      "matrix_after": {
+        "c": {
+          "Sym": "H",
+          "Pos": "-",
+          "Uni": "-",
+          "Cau": "H",
+          "Cmp": "P",
+          "RG": "-",
+          "Top": "-",
+          "Thm": "?"
+        },
+        "hbar": {
+          "Sym": "P",
+          "Pos": "H",
+          "Uni": "H",
+          "Cau": "P",
+          "Cmp": "H",
+          "RG": "-",
+          "Top": "P",
+          "Thm": "P"
+        },
+        "G": {
+          "Sym": "H",
+          "Pos": "P",
+          "Uni": "P",
+          "Cau": "H",
+          "Cmp": "P",
+          "RG": "?",
+          "Top": "P",
+          "Thm": "H"
+        },
+        "k_B": {
+          "Sym": "P",
+          "Pos": "H",
+          "Uni": "-",
+          "Cau": "-",
+          "Cmp": "H",
+          "RG": "-",
+          "Top": "-",
+          "Thm": "H"
+        },
+        "alpha": {
+          "Sym": "H",
+          "Pos": "P",
+          "Uni": "H",
+          "Cau": "H",
+          "Cmp": "H",
+          "RG": "H",
+          "Top": "P",
+          "Thm": "P"
+        },
+        "alpha_s": {
+          "Sym": "H",
+          "Pos": "P",
+          "Uni": "H",
+          "Cau": "H",
+          "Cmp": "H",
+          "RG": "H",
+          "Top": "H",
+          "Thm": "P"
+        },
+        "EW_block": {
+          "Sym": "H",
+          "Pos": "P",
+          "Uni": "H",
+          "Cau": "H",
+          "Cmp": "H",
+          "RG": "H",
+          "Top": "P",
+          "Thm": "P"
+        },
+        "lambda_H": {
+          "Sym": "P",
+          "Pos": "H",
+          "Uni": "H",
+          "Cau": "H",
+          "Cmp": "P",
+          "RG": "H",
+          "Top": "-",
+          "Thm": "P"
+        },
+        "Yukawa": {
+          "Sym": "H",
+          "Pos": "P",
+          "Uni": "H",
+          "Cau": "P",
+          "Cmp": "P",
+          "RG": "H",
+          "Top": "P",
+          "Thm": "P"
+        },
+        "neutrino": {
+          "Sym": "H",
+          "Pos": "P",
+          "Uni": "H",
+          "Cau": "P",
+          "Cmp": "P",
+          "RG": "P",
+          "Top": "P",
+          "Thm": "P"
+        },
+        "theta_QCD": {
+          "Sym": "H",
+          "Pos": "P",
+          "Uni": "H",
+          "Cau": "P",
+          "Cmp": "P",
+          "RG": "H",
+          "Top": "H",
+          "Thm": "P"
+        },
+        "Lambda": {
+          "Sym": "P",
+          "Pos": "P",
+          "Uni": "-",
+          "Cau": "H",
+          "Cmp": "?",
+          "RG": "?",
+          "Top": "?",
+          "Thm": "H"
+        },
+        "initial": {
+          "Sym": "P",
+          "Pos": "H",
+          "Uni": "P",
+          "Cau": "P",
+          "Cmp": "?",
+          "RG": "P",
+          "Top": "-",
+          "Thm": "P"
+        }
       }
     },
     "guards": {
