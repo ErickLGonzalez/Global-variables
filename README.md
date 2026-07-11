@@ -37,10 +37,32 @@ b1_moment_solver/
 tests/test_b1.py  T1 forced · T2 permitted · T3 rejected (negative control) · T4 atom audit
 ```
 
+## B4 — Area theorem as gravity's composition law (implemented ✅, DEMO mode)
+
+Benchmark B4 tests conjecture **?₃**: A_f ≥ A₁ + A₂ under merger, via the dimensionless invariant η_A = (A_f − A₁ − A₂)/A_f. Certificate class: **STATISTICAL** (Monte Carlo + exact Clopper–Pearson binomial lower bound) — deliberately distinct from B1's exact-rational class.
+
+```bash
+python3 tests/test_b4.py
+```
+
+Demo results (reconstructed summary-statistic posteriors, spins-zero conservative choice):
+GW150914 → SUPPORTED (P_lower 0.994, η_A ≈ 0.35) · GW250114 → SUPPORTED (P_lower 1.000, η_A ≈ 0.37) · GW190521 / GW190814 → INCONCLUSIVE **by design**: the demo's independence approximation destroys the chirp-mass/M_f correlations those events need, and the pipeline refuses to over-claim from degraded inputs. Falsifier injection (fabricated area-decreasing event) is correctly flagged VIOLATION_CANDIDATE.
+
+**REAL mode:** download official posterior samples from GWOSC/zenodo, then `loader.load_pesummary()` — ringdown-only final states are auto-preferred when present, removing the remnant-fit circularity (the Isi et al. 2021 / LVK PRL 135, 111403 methodology). External anchors: GW250114 area-law test (PRL 135, 111403, 2025); GW230814/GW231226 at ≳5σ (arXiv:2509.03480); GWTC-5 brings the pool to 390 events.
+
+```
+b4_area_pipeline/
+  kerr.py       Kerr horizon area, η_A invariant
+  remnant.py    validated nonspinning NR fits (cross-check layer only)
+  demo_data.py  published summary stats, provenance-flagged
+  pipeline.py   MC test, exact binomial bounds, statistical certificate
+  loader.py     GWOSC/PESummary HDF5 loader (REAL mode, ringdown-preferred)
+```
+
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **B4 / promote ?₃** — the area-theorem-as-composition-law pipeline on public LIGO–Virgo (GWTC) posterior samples: compute η_A = (A_f − A₁ − A₂)/A_f per event, certify positivity at stated credibility, emit the program's *first cross-domain composition-law certificate*. Highest testability-to-effort ratio in the whole atlas.
+1. **B4 REAL mode** — run official GWTC posterior samples through the pipeline (GW250114 + the ≥5σ GWTC-4 events first); emit the program's first citable cross-domain composition-law certificate and formally promote ?₃ → P in the atlas.
 2. **B2** — qubit process completion via Choi positivity J(Φ) ⪰ 0 (extends `exact.py` to complex Hermitian matrices — the one structural upgrade B1 needs anyway).
 
 **Near-term:**
