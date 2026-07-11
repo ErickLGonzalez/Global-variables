@@ -160,6 +160,23 @@ python3 tests/test_atlas_engine.py
 
 **Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1 ratify engine → atlas v0.6; S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ dS rank; S5 B7 Kelvin data.
 
+## B9 — Circuit decompilation: 2025 Nobel methodology as gates (implemented ✅)
+
+Benchmark from the Clarke–Devoret–Martinis paper chain (ledger **R16–R22**). Linearized RCSJ in flux–charge coordinates = GENERIC grammar; B9 (6/6) runs the Nobel recipe as certified gates: M/W recovery + FDT; hidden-bath REJECT; **Gibbs circularity** (independent calibration required); model-order inversion; effective-T prohibition; quantum held-out spectroscopy.
+
+```bash
+python3 tests/test_b9.py
+```
+
+Note: [`docs/notes/nobel2025-circuit-decompilation.md`](docs/notes/nobel2025-circuit-decompilation.md). Certificate: `certificates/b9_certificate.json`.
+
+```
+b9_circuit/
+  model.py      RCSJ ground truth + simulation
+  estimate.py   equilibrium decompilation (K = −J_b H_V⁻¹)
+  quantum.py    charge-basis H + held-out spectroscopy
+```
+
 ## Atlas edits
 
 - [edit-001](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** (atlas v0.3)
@@ -168,7 +185,7 @@ python3 tests/test_atlas_engine.py
 
 ## Research library
 
-[`docs/references.md`](docs/references.md) — research-paper ledger. **R15** + [addendum](docs/notes/r15-addendum-cross-agent-review.md): **B7 done**, **B8 done**, engine v0.1. **R14** Maudlin: M-layer + arrival-time track.
+[`docs/references.md`](docs/references.md) — ledger through **R22**. **R16–R22** = 2025 Nobel / Berkeley sequence (methodological anchor for B9). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
 
 ## Roadmap (proposed next steps)
 
@@ -180,7 +197,8 @@ python3 tests/test_atlas_engine.py
 **Near-term:**
 4. **S4** — ?₇ toy-dS rank saturation (heavy compute).
 5. **S5** — B7 Kelvin-relation real data.
-6. Arrival-time track (R14); ?₁ / ?₄/?₈/?₉ / ?₆.
+6. B9-nonlinear / rare-event layer; ħ-row empirical memo from published junction tables (VERIFY-first).
+7. Arrival-time track (R14); ?₁ / ?₄/?₈/?₉ / ?₆.
 
 ## Discipline
 

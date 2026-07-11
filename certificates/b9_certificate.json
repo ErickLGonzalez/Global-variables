@@ -1,0 +1,47 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY (OU estimation + FDT audit) + EXACT-RATIONAL (charge-basis H)",
+  "problem": "B9 circuit decompilation (2025 Nobel methodology as gates)",
+  "timestamp_utc": "2026-07-11T19:07:45Z",
+  "m_layer_stipulations": [
+    "linearized well (equilibrium-point estimator: K = -J_b H_V^{-1})",
+    "calibration ROUTE recorded per run; Gibbs-route FDT consistency is never promotable evidence (T3 demonstrates its blind spot)",
+    "state representation fixed to canonical flux-charge; 1D reductions invert the dissipative coefficient (T4)",
+    "hard-wall truncation: quantum level positions only, no escape widths"
+  ],
+  "headline": "M, W, sigma recovered from trajectories with certified PSD and FDT gates; hidden bath and effective-temperature shortcuts REJECTED; independent calibration shown to be the degeneracy-breaking ingredient (the Nobel lesson, executable)",
+  "results": {
+    "T1": {
+      "errM": 0.018380444415129413,
+      "errW": 0.002833519025267517,
+      "fdt_residual": 0.02141541739187727
+    },
+    "T2": {
+      "fdt_residual": 0.49732087197226704
+    },
+    "T3": {
+      "spec_residual": 0.48895120524273195,
+      "gibbs_residual": 0.016015253884257546
+    },
+    "T4": {
+      "mobility_1d": 0.12452670715038718,
+      "G_2d": 8.0
+    },
+    "T5": {
+      "fdt_residual": 0.8853448291982184
+    },
+    "T6": {
+      "E01": 4.735469823504477,
+      "E12": 4.448489541011116,
+      "E01_asymptotic_prediction": 4.75,
+      "E01_rel_dev_from_asymptotic": 0.00305898452537322,
+      "anharmonicity": -0.28698028249336094,
+      "anharmonicity_prediction": -0.25,
+      "truncation_convergence": 8.270717444247566e-12,
+      "stipulations": [
+        "hard-wall truncation: level POSITIONS only; escape widths require outgoing-wave/CAP boundary conditions (out of scope)",
+        "EJ/EC = 50: transmon asymptotic regime"
+      ]
+    }
+  }
+}
