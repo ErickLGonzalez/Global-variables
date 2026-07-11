@@ -1,0 +1,6 @@
+# Large official posterior HDF5s (see data/README.md)
+data/*.h5
+data/*.hdf5
+__pycache__/
+*.pyc
+.pytest_cache/

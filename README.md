@@ -37,18 +37,19 @@ b1_moment_solver/
 tests/test_b1.py  T1 forced · T2 permitted · T3 rejected (negative control) · T4 atom audit
 ```
 
-## B4 — Area theorem as gravity's composition law (implemented ✅, DEMO mode)
+## B4 — Area theorem as gravity's composition law (implemented ✅, REAL mode)
 
 Benchmark B4 tests conjecture **?₃**: A_f ≥ A₁ + A₂ under merger, via the dimensionless invariant η_A = (A_f − A₁ − A₂)/A_f. Certificate class: **STATISTICAL** (Monte Carlo + exact Clopper–Pearson binomial lower bound) — deliberately distinct from B1's exact-rational class.
 
 ```bash
-python3 tests/test_b4.py
+python3 tests/test_b4.py          # DEMO regression
+python3 scripts/run_b4_real.py    # REAL mode (see data/README.md)
 ```
 
-Demo results (reconstructed summary-statistic posteriors, spins-zero conservative choice):
-GW150914 → SUPPORTED (P_lower 0.994, η_A ≈ 0.35) · GW250114 → SUPPORTED (P_lower 1.000, η_A ≈ 0.37) · GW190521 / GW190814 → INCONCLUSIVE **by design**: the demo's independence approximation destroys the chirp-mass/M_f correlations those events need, and the pipeline refuses to over-claim from degraded inputs. Falsifier injection (fabricated area-decreasing event) is correctly flagged VIOLATION_CANDIDATE.
+**REAL results** (official posteriors; certificate `certificates/b4_certificate.json`, mode REAL):
+GW250114 → SUPPORTED (P_lower 0.99977, η_A ≈ 0.366) · GW150914 → SUPPORTED (P_lower 0.99862, η_A ≈ 0.363). Final-state provenance in these PE releases is NR-fit (ringdown columns absent); loader still auto-prefers ringdown keys when present. Edit-001 apply conditions are checked; atlas bump to v0.3 remains for the promotion pass.
 
-**REAL mode:** download official posterior samples from GWOSC/zenodo, then `loader.load_pesummary()` — ringdown-only final states are auto-preferred when present, removing the remnant-fit circularity (the Isi et al. 2021 / LVK PRL 135, 111403 methodology). External anchors: GW250114 area-law test (PRL 135, 111403, 2025); GW230814/GW231226 at ≳5σ (arXiv:2509.03480); GWTC-5 brings the pool to 390 events.
+Demo regression (reconstructed summary-statistic posteriors): GW150914 / GW250114 SUPPORTED; GW190521 / GW190814 INCONCLUSIVE **by design**; falsifier injection → VIOLATION_CANDIDATE.
 
 ```
 b4_area_pipeline/
@@ -59,16 +60,31 @@ b4_area_pipeline/
   loader.py     GWOSC/PESummary HDF5 loader (REAL mode, ringdown-preferred)
 ```
 
+## B2 — Qubit process completion via Choi positivity (implemented ✅)
+
+Extends the exact-rational certificate class to **Gaussian-rational Hermitian matrices** (`cexact.py`) and demonstrates **restraint stacking** — the atlas mechanism — on a finite quantum process:
+
+| Restraints active | Hidden Choi entry | Outcome |
+|---|---|---|
+| PSD alone | diagonal of rank-2 mixed channel | PERMITTED — certified interval [1/9, ∞) |
+| PSD + trace preservation | same entry | **FORCED** to exact truth (1) |
+| PSD + rank-1 (pure process) | complex off-diagonal | **FORCED** to −12i/25 exactly (flat-extension analogue) |
+
+Plus exact CPTP audit (Choi's theorem as the gate) and a negative control (corrupted Choi rejected with exact witness pivot). Run: `python3 tests/test_b2.py` — 5/5 pass, certificate in `certificates/b2_certificate.json`.
+
+## Atlas edit 001 (conditions met — atlas apply pending)
+
+[`docs/atlas-edits/edit-001-conjecture3-promotion.md`](docs/atlas-edits/edit-001-conjecture3-promotion.md) — formal promotion record for **?₃ → P (H-track)**. Both apply conditions are checked (REAL certificate committed). Remaining step: apply the matrix cell change and bump the atlas to v0.3.
+
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **B4 REAL mode** — run official GWTC posterior samples through the pipeline (GW250114 + the ≥5σ GWTC-4 events first); emit the program's first citable cross-domain composition-law certificate and formally promote ?₃ → P in the atlas.
-2. **B2** — qubit process completion via Choi positivity J(Φ) ⪰ 0 (extends `exact.py` to complex Hermitian matrices — the one structural upgrade B1 needs anyway).
+1. **Apply edit-001** — promote ?₃ → P in the atlas and bump to v0.3.
+2. **B3** — electroweak closed-system test: the chain must *discover* e = g sinθ_W, M_W = gv/2, M_Z = (v/2)√(g²+g′²), G_F = 1/(√2v²) from pseudo-data and report d_identifiable = 3. B2's exact machinery now covers the linear-forcing patterns B3 needs.
 
 **Near-term:**
-3. **B3** — electroweak closed-system test: the chain must *discover* e = g sinθ_W, M_W = gv/2, M_Z = (v/2)√(g²+g′²), G_F = 1/(√2v²) from pseudo-data and report d_identifiable = 3.
-4. **?₅ formalization** — cluster-decomposition entries promoted to H; B3 extension with multi-channel factorization.
-5. **?₂** — reformulate the 2D-CFT QNEC proof as certified Schur-pivot positivity inside the verifier.
+3. **?₅ formalization** — cluster-decomposition entries promoted to H; B3 extension with multi-channel factorization.
+4. **?₂** — reformulate the 2D-CFT QNEC proof as certified Schur-pivot positivity inside the verifier (B2's Hermitian certificates are the needed machinery).
 
 **Research tracks:** ?₇ toy-dS rank-saturation study (B1 is the engine); ?₁ causal-thermal toy model; ?₄/?₈/?₉ functional-RG modeling; ?₆ index-theoretic flavor search (long horizon).
 

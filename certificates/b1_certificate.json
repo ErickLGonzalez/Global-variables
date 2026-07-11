@@ -1,7 +1,7 @@
 {
   "certificate_version": "0.2",
   "problem": "B1 truncated Hankel moment problem (3-atom ground truth)",
-  "timestamp_utc": "2026-07-11T05:33:04Z",
+  "timestamp_utc": "2026-07-11T06:27:04Z",
   "arithmetic": "exact rational (Fraction); numerics quarantined to atom layer with audited residuals",
   "hard_constraints_certified": false,
   "score": "infinity (violated or uncertified)",

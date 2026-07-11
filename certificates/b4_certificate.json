@@ -1,74 +1,53 @@
 {
-  "certificate_version": "0.2",
+  "certificate_version": "0.3",
   "certificate_class": "STATISTICAL (Monte Carlo + exact Clopper-Pearson bound); NOT the exact-rational class of B1",
   "problem": "B4: area theorem as gravity's composition law (conjecture ?3)",
-  "mode": "DEMO -- reconstructed summary-statistic posteriors; run REAL mode with official GWOSC samples before any promotion decision",
-  "timestamp_utc": "2026-07-11T05:47:56Z",
-  "seed": 20260711,
+  "mode": "REAL -- official GWOSC/zenodo posterior samples",
+  "timestamp_utc": "2026-07-11T06:27:11Z",
+  "data_files": {
+    "GW250114": "data/GW250114_posterior.h5 (zenodo.org/records/16877102 posterior_samples_NRSur7dq4.h5)",
+    "GW150914": "data/GW150914_posterior.h5 (zenodo.org/records/6513631 IGWN-GWTC2p1-v2-GW150914_095045_PEDataRelease_mixed_cosmo.h5, analysis=C01:Mixed)"
+  },
   "conservative_choices": [
-    "component spins set to 0 (maximizes initial area, hardest test direction)",
-    "exact binomial lower bound instead of MC point estimate"
+    "exact binomial lower bound instead of MC point estimate",
+    "component spins from posterior spin_1z/spin_2z (absolute value)"
   ],
   "known_caveats": [
-    "catalog-fit final states are partially circular (NR remnant fits assume GR); rigorous version uses ringdown-only final state (Isi et al. 2021; LVK PRL 135, 111403 (2025) for GW250114)",
-    "demo posteriors are independent Gaussians; real posteriors are correlated -- for large-uncertainty events (GW190521) and small-margin extreme-mass-ratio events (GW190814, true eta_A ~ 0.15) dropping the chirp-mass and Mf correlations degrades the inference and the pipeline correctly returns INCONCLUSIVE rather than over-claiming"
+    "These PE releases expose NR-fit final states (final_mass_source/final_spin), not ringdown-only columns; provenance labeled accordingly. Ringdown-preferred path remains available when those keys are present.",
+    "Large posterior HDF5s are not committed; download URLs recorded in data/README.md and this certificate."
   ],
   "results": {
-    "GW150914": {
-      "status": "SUPPORTED_AT_CREDIBILITY",
-      "n_samples": 200000,
-      "P_area_increase_MC": 0.99395,
-      "P_lower_exact_binomial": 0.993534,
-      "binomial_confidence": 0.99,
-      "eta_A_median": 0.3532,
-      "eta_A_90CI": [
-        0.1382,
-        0.5204
-      ],
-      "source": "GWTC-1 (approx.); first area-law test: Isi et al., PRL 127, 011103 (2021)"
-    },
-    "GW190521": {
-      "status": "INCONCLUSIVE",
-      "n_samples": 200000,
-      "P_area_increase_MC": 0.824605,
-      "P_lower_exact_binomial": 0.822618,
-      "binomial_confidence": 0.99,
-      "eta_A_median": 0.2988,
-      "eta_A_90CI": [
-        -0.3058,
-        0.6455
-      ],
-      "source": "LVK PRL 125, 101102 (2020) (approx.)"
-    },
-    "GW190814": {
-      "status": "INCONCLUSIVE",
-      "n_samples": 200000,
-      "P_area_increase_MC": 0.91155,
-      "P_lower_exact_binomial": 0.910062,
-      "binomial_confidence": 0.99,
-      "eta_A_median": 0.1515,
-      "eta_A_90CI": [
-        -0.0366,
-        0.3068
-      ],
-      "source": "LVK ApJL 896, L44 (2020) (approx.)"
-    },
     "GW250114": {
       "status": "SUPPORTED_AT_CREDIBILITY",
-      "n_samples": 200000,
+      "n_samples": 19990,
       "P_area_increase_MC": 1.0,
-      "P_lower_exact_binomial": 0.999977,
+      "P_lower_exact_binomial": 0.99977,
       "binomial_confidence": 0.99,
-      "eta_A_median": 0.3654,
+      "eta_A_median": 0.3656,
       "eta_A_90CI": [
-        0.2762,
-        0.4451
+        0.3604,
+        0.3728
       ],
-      "source": "LVK PRL 135, 111403 (2025) (approx. -- VERIFY; ringdown-based final state available in official data release)"
+      "source": "Zenodo 16877102 posterior_samples_NRSur7dq4.h5 (LVK PRL 135, 111403)",
+      "final_state_provenance": "NR-fit final state (partially circular; see remnant.py note)"
+    },
+    "GW150914": {
+      "status": "SUPPORTED_AT_CREDIBILITY",
+      "n_samples": 3337,
+      "P_area_increase_MC": 1.0,
+      "P_lower_exact_binomial": 0.998621,
+      "binomial_confidence": 0.99,
+      "eta_A_median": 0.3631,
+      "eta_A_90CI": [
+        0.3379,
+        0.4034
+      ],
+      "source": "GWTC-2.1 PEDataRelease mixed_cosmo (Zenodo 6513631)",
+      "final_state_provenance": "NR-fit final state (partially circular; see remnant.py note)"
     }
   },
   "composition_law_statement": "A_f >= A_1 + A_2 realized as entropy subadditivity under merger; dimensionless invariant eta_A",
-  "aggregate": "MIXED (see known_caveats)",
+  "aggregate": "ALL_EVENTS_SUPPORTED",
   "external_anchors": [
     "Isi et al., PRL 127, 011103 (2021): GW150914 area law ~97%",
     "LVK, PRL 135, 111403 (2025): GW250114 area law, highest-precision test",

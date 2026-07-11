@@ -129,6 +129,6 @@ def run_demo(n=200_000, seed=20260711, outdir=None):
     }
     if outdir:
         os.makedirs(outdir, exist_ok=True)
-        with open(os.path.join(outdir, "b4_certificate.json"), "w") as f:
+        with open(os.path.join(outdir, "b4_certificate_demo.json"), "w") as f:
             json.dump(cert, f, indent=2)
     return cert

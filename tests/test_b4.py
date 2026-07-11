@@ -84,5 +84,5 @@ if __name__ == "__main__":
     cert = t2_demo_run()
     t3_falsifier_injection()
     t4_deterministic_eta()
-    print("\nCertificate written: certificates/b4_certificate.json")
+    print("\nCertificate written: certificates/b4_certificate_demo.json")
     print("ALL B4 TESTS PASS")
