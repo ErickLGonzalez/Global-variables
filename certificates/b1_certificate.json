@@ -1,0 +1,84 @@
+{
+  "certificate_version": "0.2",
+  "problem": "B1 truncated Hankel moment problem (3-atom ground truth)",
+  "timestamp_utc": "2026-07-11T05:33:04Z",
+  "arithmetic": "exact rational (Fraction); numerics quarantined to atom layer with audited residuals",
+  "hard_constraints_certified": false,
+  "score": "infinity (violated or uncertified)",
+  "inputs": {
+    "known_moments": "m_0..m_6",
+    "hidden": "m_7..m_12 (T1), m_4 (T2)"
+  },
+  "results": {
+    "T1_forced_tail": {
+      "status": "FORCED",
+      "rank": 3,
+      "recurrence_monic": [
+        "1/4",
+        "-5/8",
+        "-7/4",
+        "1"
+      ],
+      "recovered": {
+        "7": "2097067/32768",
+        "8": "16777387/131072",
+        "9": "134217387/524288",
+        "10": "1073742507/2097152",
+        "11": "8589933227/8388608",
+        "12": "68719479467/33554432"
+      },
+      "schur_pivots_prefix": [
+        "1",
+        "85/64",
+        "245/1088",
+        "0"
+      ],
+      "schur_pivots_extended": [
+        "1",
+        "85/64",
+        "245/1088",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "extended_rank": 3
+    },
+    "T2_permitted_hole": {
+      "status": "PERMITTED",
+      "certified_inner_interval": [
+        "548615879038615/70368744177664",
+        "+infinity"
+      ],
+      "outer_bracket": [
+        "1097231758077229/140737488355328",
+        "unbounded"
+      ],
+      "inner_width": "infinite",
+      "witness_value": "10",
+      "note": "top-degree moments are only bounded below by positivity; an infinite permitted direction is correct, not an error"
+    },
+    "T3_negative_control": {
+      "status": "REJECTED_AS_EXPECTED",
+      "witness_pivot": "-1931/1088"
+    },
+    "T4_atom_audit": {
+      "atoms": [
+        {
+          "x": "-0.5",
+          "weight": "0.333333333333333333333333333333"
+        },
+        {
+          "x": "0.25",
+          "weight": "0.166666666666666666666666666667"
+        },
+        {
+          "x": "2.0",
+          "weight": "0.5"
+        }
+      ],
+      "max_moment_residual": "0.0",
+      "note": "atoms are numerical-with-audit; positivity/forcing claims are exact and independent of this step"
+    }
+  }
+}
