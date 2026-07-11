@@ -72,6 +72,30 @@ Extends the exact-rational certificate class to **Gaussian-rational Hermitian ma
 
 Plus exact CPTP audit (Choi's theorem as the gate) and a negative control (corrupted Choi rejected with exact witness pivot). Run: `python3 tests/test_b2.py` — 5/5 pass, certificate in `certificates/b2_certificate.json`.
 
+## B3 — Electroweak closed system (implemented ✅)
+
+Benchmark B3 runs the decoding chain on tree-level electroweak structure. Pseudo-data for `(e, g, g′, θ_W, M_W, M_Z, v, G_F)` is presented as an unlabeled exact-Fraction table; the engine must *discover* the relations by template forcing (same epistemic class as B1/B2) and report **d_identifiable = 3**.
+
+```bash
+python3 tests/test_b3.py
+```
+
+Results (5/5):
+- Headline relations found: `e = g sinθ_W`, `M_W = gv/2`, `M_Z = (v/2)√(g²+g′²)`, `G_F = 1/(√2 v²)` (√2 certified via `1/G_F² = 2 v⁴`)
+- Exact Jacobian rank over ℚ: n=9, rank=6 → **d_identifiable = 3**
+- FREE basis recovered: `{g, g′, v}`; forced: `{e, sinθ_W, cosθ_W, M_W, M_Z, G_F_inv_sq}`
+- Held-out `M_Z` predicted exactly from the free basis; corrupted `e` breaks R1/R2/R9 (negative control)
+
+```
+b3_electroweak/
+  exact.py        Fraction helpers, Pythagorean Weinberg angle
+  pseudo_data.py  closed-system generator from free basis (g, g′, v)
+  relations.py    exact template discovery (R1–R9)
+  rank.py         Jacobian rank → d_identifiable
+  graph.py        FREE/FORCED dependency labels
+  discover.py     end-to-end pipeline
+```
+
 ## Atlas edit 001 (applied — atlas v0.3)
 
 [`docs/atlas-edits/edit-001-conjecture3-promotion.md`](docs/atlas-edits/edit-001-conjecture3-promotion.md) — **?₃ → P (H-track)** in [`docs/constant-atlas-v0.3.md`](docs/constant-atlas-v0.3.md). Gravity Composition column is the first blank filled.
@@ -79,13 +103,12 @@ Plus exact CPTP audit (Choi's theorem as the gate) and a negative control (corru
 ## Roadmap (proposed next steps)
 
 **Immediate (next session):**
-1. **B3** — electroweak closed-system test: the chain must *discover* e = g sinθ_W, M_W = gv/2, M_Z = (v/2)√(g²+g′²), G_F = 1/(√2v²) from pseudo-data and report d_identifiable = 3. B2's exact machinery now covers the linear-forcing patterns B3 needs.
+1. **?₅ formalization** — cluster-decomposition entries promoted to H; B3 extension with multi-channel factorization.
+2. **?₂** — reformulate the 2D-CFT QNEC proof as certified Schur-pivot positivity inside the verifier (B2's Hermitian certificates are the needed machinery).
 
 **Near-term:**
-3. **?₅ formalization** — cluster-decomposition entries promoted to H; B3 extension with multi-channel factorization.
-4. **?₂** — reformulate the 2D-CFT QNEC proof as certified Schur-pivot positivity inside the verifier (B2's Hermitian certificates are the needed machinery).
-
-**Research tracks:** ?₇ toy-dS rank-saturation study (B1 is the engine); ?₁ causal-thermal toy model; ?₄/?₈/?₉ functional-RG modeling; ?₆ index-theoretic flavor search (long horizon).
+3. **?₇** — toy-dS rank-saturation study (B1 is the engine).
+4. **?₁** — causal-thermal toy model; **?₄/?₈/?₉** functional-RG modeling; **?₆** index-theoretic flavor search (long horizon).
 
 ## Discipline
 

@@ -152,10 +152,10 @@ Promotion requires ALL of: (1) all hard constraints certified, (2) ≥ 2 domains
 |---|---|---|---|
 | B1 | Truncated moment problem: hide moments of a known finite measure; recover via M ⪰ 0 + flat extension (Curto–Fialkow) | Spectral-completion module; interval-certified positivity gates | Solver + certificate format |
 | B2 | Qubit process tomography with hidden entries; recover via Choi J(Φ) ⪰ 0 + trace condition | Process/composition constraints | CP-map completion module |
-| B3 | Electroweak closed system: pseudo-data for (e, g, g′, θ_W, M_W, M_Z, v, G_F); algorithm must *discover* the relations and report d_identifiable = 3 | Full chain end-to-end on real structure | First "constants forced vs free" certificate |
+| B3 | Electroweak closed system: pseudo-data for (e, g, g′, θ_W, M_W, M_Z, v, G_F); algorithm must *discover* the relations and report d_identifiable = 3 | Full chain end-to-end on real structure | **DONE** — `certificates/b3_certificate.json`; d_identifiable = 3, FREE `{g, g′, v}` |
 | B4 | BH thermodynamics: LIGO merger catalog → verify area theorem as composition law (?₃) | First cross-domain blank-fill promoted from ? to P | **DONE** — `certificates/b4_certificate.json` (REAL); ?₃ → P (H-track) |
 
-Then: B3 electroweak closed-system (d_identifiable = 3); reflection-positivity module on Euclidean lattice data; EFT positivity bounds (Adams et al.) as gate #6 test; then flavor/topology search (?₆).
+Then: ?₅ formalization / B3 multi-channel extension; reflection-positivity module on Euclidean lattice data; EFT positivity bounds (Adams et al.) as gate #6 test; then flavor/topology search (?₆).
 
 ---
 
@@ -166,7 +166,7 @@ Then: B3 electroweak closed-system (d_identifiable = 3); reflection-positivity m
 - Spectral action — **model hypothesis**.
 - One-structure-for-everything — **conjecture**; the narrower compatibility claim is the working assertion.
 - Composition column — **first cell filled** (G Cmp = P, H-track); remaining Cmp blanks still the target.
-- B1 / B2 / B4 — **implemented** with certificates; B3 — **next**.
+- B1 / B2 / B3 / B4 — **implemented** with certificates; next: ?₅ / ?₂.
 
 ---
 
@@ -175,4 +175,4 @@ Then: B3 electroweak closed-system (d_identifiable = 3); reflection-positivity m
 | Version | Date | Edit | Summary |
 |---|---|---|---|
 | v0.2 | — | — | Initial restraint matrix and blank-filling table (?₁–?₁₀). |
-| v0.3 | 2026-07-11 | [edit-001](atlas-edits/edit-001-conjecture3-promotion.md) `1ff977d4bcf2ae2b3525a7b6ea29e0b84fffb192` | Promote G Cmp ?₃ → **P (H-track)** (area theorem = composition law). Evidence: B4 REAL certificate + external LVK/Isi anchors. Does not promote any other `?`; H-track requirements recorded in edit-001. |
+| v0.3 | 2026-07-11 | [edit-001](atlas-edits/edit-001-conjecture3-promotion.md) `1ff977d4bcf2ae2b3525a7b6ea29e0b84fffb192` | Promote G Cmp ?₃ → **P (H-track)** (area theorem = composition law). Evidence: B4 REAL certificate + external LVK/Isi anchors. Does not promote any other `?`; H-track requirements recorded in edit-001. B3 electroweak closed-system certificate added (d_identifiable = 3). |

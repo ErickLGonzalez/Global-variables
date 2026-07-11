@@ -3,7 +3,7 @@
   "certificate_class": "STATISTICAL (Monte Carlo + exact Clopper-Pearson bound); NOT the exact-rational class of B1",
   "problem": "B4: area theorem as gravity's composition law (conjecture ?3)",
   "mode": "DEMO -- reconstructed summary-statistic posteriors; run REAL mode with official GWOSC samples before any promotion decision",
-  "timestamp_utc": "2026-07-11T06:27:13Z",
+  "timestamp_utc": "2026-07-11T06:44:19Z",
   "seed": 20260711,
   "conservative_choices": [
     "component spins set to 0 (maximizes initial area, hardest test direction)",

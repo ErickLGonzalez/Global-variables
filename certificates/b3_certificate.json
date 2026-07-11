@@ -1,0 +1,222 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "EXACT-RATIONAL (Fraction; Jacobian rank over Q); same epistemic class as B1/B2",
+  "problem": "B3 electroweak closed system: discover tree-level relations and report d_identifiable = 3",
+  "timestamp_utc": "2026-07-11T06:44:17Z",
+  "headline": "discovered e=g sin\u03b8_W, M_W=gv/2, M_Z=(v/2)\u221a(g\u00b2+g\u2032\u00b2), G_F=1/(\u221a2 v\u00b2); d_identifiable = 3 with FREE basis {g, g\u2032, v}",
+  "d_identifiable": 3,
+  "free_sources": [
+    "g",
+    "g_prime",
+    "v"
+  ],
+  "forced_quantities": [
+    "G_F_inv_sq",
+    "M_W",
+    "M_Z",
+    "cos_theta_W",
+    "e",
+    "sin_theta_W"
+  ],
+  "relations": [
+    {
+      "name": "R1",
+      "formula": "e = g \u00b7 sin \u03b8_W",
+      "inputs": [
+        "g",
+        "sin_theta_W"
+      ],
+      "output": "e",
+      "mechanism": "exact multiplicative forcing",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "R2",
+      "formula": "e = g\u2032 \u00b7 cos \u03b8_W",
+      "inputs": [
+        "g_prime",
+        "cos_theta_W"
+      ],
+      "output": "e",
+      "mechanism": "exact multiplicative forcing",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "R3",
+      "formula": "M_W = g v / 2",
+      "inputs": [
+        "g",
+        "v"
+      ],
+      "output": "M_W",
+      "mechanism": "exact linear-multiplicative forcing",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "R4",
+      "formula": "M_Z = (v/2) \u221a(g\u00b2+g\u2032\u00b2)",
+      "inputs": [
+        "v",
+        "g",
+        "g_prime"
+      ],
+      "output": "M_Z",
+      "mechanism": "exact Pythagorean / quadratic forcing",
+      "status": "FORCED",
+      "witness": "4 M_Z\u00b2 = v\u00b2(g\u00b2+g\u2032\u00b2) = 4"
+    },
+    {
+      "name": "R5",
+      "formula": "G_F = 1/(\u221a2 v\u00b2)",
+      "inputs": [
+        "v"
+      ],
+      "output": "G_F_inv_sq",
+      "mechanism": "exact squared-\u221a2 forcing (1/G_F\u00b2 = 2 v\u2074)",
+      "status": "FORCED",
+      "witness": "G_F_inv_sq = 2 v\u2074 = 32"
+    },
+    {
+      "name": "R6",
+      "formula": "cos \u03b8_W = M_W / M_Z",
+      "inputs": [
+        "M_W",
+        "M_Z"
+      ],
+      "output": "cos_theta_W",
+      "mechanism": "exact ratio forcing",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "R7",
+      "formula": "sin\u00b2\u03b8_W + cos\u00b2\u03b8_W = 1",
+      "inputs": [
+        "sin_theta_W",
+        "cos_theta_W"
+      ],
+      "output": "sin_theta_W",
+      "mechanism": "exact Pythagorean identity on Weinberg angle",
+      "status": "FORCED",
+      "witness": "unit-circle constraint (either angle component free)"
+    },
+    {
+      "name": "R8",
+      "formula": "g/g\u2032 = cos\u03b8_W/sin\u03b8_W",
+      "inputs": [
+        "g_prime",
+        "cos_theta_W",
+        "sin_theta_W"
+      ],
+      "output": "g",
+      "mechanism": "exact cross-ratio forcing",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    },
+    {
+      "name": "R9",
+      "formula": "e\u00b2(g\u00b2+g\u2032\u00b2) = g\u00b2 g\u2032\u00b2",
+      "inputs": [
+        "g",
+        "g_prime"
+      ],
+      "output": "e",
+      "mechanism": "exact quadratic elimination of \u03b8_W",
+      "status": "FORCED",
+      "witness": "exact Fraction identity"
+    }
+  ],
+  "rank_analysis": {
+    "n_quantities": 9,
+    "holding_constraints": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9"
+    ],
+    "n_holding": 9,
+    "constraint_rank": 6,
+    "d_identifiable": 3,
+    "formula": "d = n_quantities - rank(Jacobian of holding residuals)"
+  },
+  "results": {
+    "T1_closed_system": {
+      "n_residuals": 9,
+      "all_zero": true,
+      "quantities": {
+        "g": "3/5",
+        "g_prime": "4/5",
+        "v": "2",
+        "sin_theta_W": "4/5",
+        "cos_theta_W": "3/5",
+        "e": "12/25",
+        "M_W": "3/5",
+        "M_Z": "1",
+        "G_F_inv_sq": "32"
+      }
+    },
+    "T2_headline_discovery": {
+      "relations": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ],
+      "formulas": {
+        "R1": "e = g \u00b7 sin \u03b8_W",
+        "R2": "e = g\u2032 \u00b7 cos \u03b8_W",
+        "R3": "M_W = g v / 2",
+        "R4": "M_Z = (v/2) \u221a(g\u00b2+g\u2032\u00b2)",
+        "R5": "G_F = 1/(\u221a2 v\u00b2)",
+        "R6": "cos \u03b8_W = M_W / M_Z",
+        "R7": "sin\u00b2\u03b8_W + cos\u00b2\u03b8_W = 1",
+        "R8": "g/g\u2032 = cos\u03b8_W/sin\u03b8_W",
+        "R9": "e\u00b2(g\u00b2+g\u2032\u00b2) = g\u00b2 g\u2032\u00b2"
+      }
+    },
+    "T3_d_identifiable": {
+      "n_quantities": 9,
+      "holding_constraints": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ],
+      "n_holding": 9,
+      "constraint_rank": 6,
+      "d_identifiable": 3,
+      "formula": "d = n_quantities - rank(Jacobian of holding residuals)"
+    },
+    "T4_held_out_M_Z": {
+      "predicted_M_Z": "1",
+      "observed_M_Z": "1",
+      "status": "FORCED"
+    },
+    "T5_negative_control": {
+      "status": "REJECTED_AS_EXPECTED",
+      "broken_residuals": [
+        "R1",
+        "R2",
+        "R9"
+      ]
+    }
+  }
+}
