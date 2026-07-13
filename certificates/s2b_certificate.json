@@ -1,0 +1,40 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY (exact Gaussian kernels; quarantined)",
+  "problem": "S2-b: exact-kernel GNS probe on the coherent orbit (?2 -> H program)",
+  "timestamp_utc": "2026-07-13T03:00:31Z",
+  "erratum": "single-interval continuum modular Hamiltonian is LOCAL (conformal Bisognano-Wichmann); Casini-Huerta bilocal terms belong to multi-interval geometry; lattice mismatch attributed to Eisler-Peschel long-range corrections (T1 quantifies them)",
+  "m_layer_stipulations": [
+    "single interval, half filling, open-boundary restriction of infinite-chain kernels",
+    "boosted orbit as the lattice coherent family (bosonization)",
+    "fixed operator = exact VACUUM kernel; state-independence tested on the vacuum orbit only; thermal states out of scope this sprint"
+  ],
+  "headline": "fixed exact kernel passes the coherent-orbit GNS first-moment test to <0.5% with quadratic scaling; local ansatz fails >=10x worse on identical data (mismatch attributed); capacity=entropy verified as the first second-moment Gram entry. ?2 stays P; edit-007 GNS checklist advances one box.",
+  "results": {
+    "T1": {
+      "edge_max_dev": 0.06625856989105532,
+      "bulk_NN_over_prediction": 0.4567147578025726,
+      "third_neighbor_bulk": 4.757529273507166,
+      "long_range_frobenius_fraction": 0.23541402279513374
+    },
+    "T2": {
+      "max_abs_dS": 4.1300296516055823e-14
+    },
+    "T3": {
+      "max_dev_exact": 7.334679437796431e-10,
+      "q_scaling_ratio": 3.9981385112075865
+    },
+    "T4": {
+      "dev_local": 0.001570618734699023,
+      "dev_exact": 7.334679437796431e-10
+    },
+    "T5": {
+      "slope_capacity": 0.33354898937695376,
+      "slope_entropy": 0.33337783080185907,
+      "rel_dev": 0.0005134071893233526
+    },
+    "T6": {
+      "dev_scrambled": 2.0550323720156096
+    }
+  }
+}

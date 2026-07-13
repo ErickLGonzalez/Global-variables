@@ -22,6 +22,7 @@ from .gaussian import (
     validity_gate,
 )
 from .qnec_lattice import thermal_identity_report, vacuum_saturation_report
+from . import s2b_probe
 
 __all__ = [
     "vacuum_correlation",
@@ -39,4 +40,5 @@ __all__ = [
     "validity_gate",
     "vacuum_saturation_report",
     "thermal_identity_report",
+    "s2b_probe",
 ]
