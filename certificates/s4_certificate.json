@@ -1,0 +1,90 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY (exact thermal kernels, dense spectra; grid-doubling audited)",
+  "problem": "S4: ?7 toy -- dS2 static-patch Gram rank saturation",
+  "timestamp_utc": "2026-07-13T05:51:18Z",
+  "m_layer_stipulations": [
+    "free-field tier: the entropy is the FIELD's, not gravitational",
+    "lattice Dirac chain at beta = 2 pi l as the static patch (conformal map); redshift weight = 1/cosh((x-x0)/l)",
+    "eps-rank relative to largest eigenvalue; eps = 1e-6 headline"
+  ],
+  "headline": "?7-weak CONFIRMED (horizon-induced rank saturation; unweighted control grows). Naive ?7-strong FAILS (kinematic rank counts modes ~ l). REFINEMENT DISCOVERED: the INFORMATION Gram D C(1-C) D has l-independent saturated rank (18,18,18,18) tracking entropy -- ?7 must specify the information Gram.",
+  "results": {
+    "T1": {
+      "4": {
+        "weighted": [
+          23,
+          37,
+          37,
+          37
+        ],
+        "unweighted_control": [
+          25,
+          47,
+          91,
+          134
+        ]
+      },
+      "8": {
+        "weighted": [
+          39,
+          67,
+          67,
+          67
+        ],
+        "unweighted_control": [
+          42,
+          79,
+          155,
+          230
+        ]
+      },
+      "16": {
+        "weighted": [
+          72,
+          128,
+          128,
+          128
+        ],
+        "unweighted_control": [
+          75,
+          144,
+          284,
+          423
+        ]
+      }
+    },
+    "T2": {
+      "ranks": {
+        "4": 37,
+        "8": 67,
+        "16": 128
+      },
+      "growth": [
+        1.8108108108108107,
+        1.9104477611940298
+      ]
+    },
+    "T3": {
+      "ranks_vs_ell": {
+        "4": 18,
+        "8": 18,
+        "16": 18,
+        "32": 18
+      },
+      "ranks_vs_eps": {
+        "0.001": 6,
+        "1e-05": 14,
+        "1e-07": 22,
+        "1e-09": 34
+      }
+    },
+    "T4": {
+      "rank": 67,
+      "entrywise_error": 6.399517949476461e-07
+    },
+    "T5": {
+      "r": 67
+    }
+  }
+}
