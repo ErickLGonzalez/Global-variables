@@ -158,7 +158,7 @@ python3 tests/test_atlas_engine.py
 
 **Atlas Engine v0.1** (5/5): restraint matrix as a constraint-satisfaction object. Eight theorem-anchored implication rules propagate to fixpoint → **7 candidate upgrades** (Cmp/Top/Λ-Pos), each with derivation chains; engine cannot mint H. Certificates: `certificates/b8_certificate.json`, `certificates/atlas_engine_certificate.json`.
 
-**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1 done; **S2 partial** (operator probe + state layer 5/5); next S2-b or S3 PDG/B5.
+**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1–S4 DONE; S2 remains PARTIAL on the GNS holdout checklist. Successor roadmap: [`docs/roadmap-v2.md`](docs/roadmap-v2.md).
 
 ## B9 — Circuit decompilation: 2025 Nobel methodology as gates (implemented ✅)
 
@@ -186,6 +186,7 @@ b9_circuit/
 - [edit-005](docs/atlas-edits/edit-005-weak-conjecture6-top.md) — weak ?₆ Top → P (atlas v0.6)
 - [edit-006](docs/atlas-edits/edit-006-weak-conjecture7-and-findings.md) — weak ?₇ + Sym/Uni findings (atlas v0.6)
 - [edit-007](docs/atlas-edits/edit-007-gns-partial-draft.md) — **DRAFT** GNS partial for ?₂ (no atlas bump)
+- [edit-008](docs/atlas-edits/edit-008-s3-empirical-note.md) — S3 empirical memo (no cell change)
 
 Current atlas: [`docs/constant-atlas-v0.6.md`](docs/constant-atlas-v0.6.md).
 
@@ -202,23 +203,40 @@ Notes: [`docs/notes/s2-gns-free-fermion.md`](docs/notes/s2-gns-free-fermion.md),
 ```bash
 python3 tests/test_s2_gns.py
 python3 tests/test_s2_state_layer.py
+python3 tests/test_s2b.py
 ```
+
+## S3 — one α_s across channels and scales (implemented ✅, 5/5)
+
+`s3_pdg/` + `tests/test_s3.py`: four measurement classes spanning 51× in scale combine to α_s(M_Z) = 0.1186 ± 0.0009; no-running null rejected ~13σ. Certificate: `certificates/s3_certificate.json`. Memo: edit-008.
+
+## S4 — ?₇ rank saturation + information-Gram refinement (implemented ✅, 5/5)
+
+`s4_ds/` + `tests/test_s4.py`: horizon-weighted rank saturates; unweighted control grows; information Gram `D C(1−C) D` has ℓ-independent saturated rank. Certificate: `certificates/s4_certificate.json`. BEC bridge: [`docs/notes/experimental-program-bec.md`](docs/notes/experimental-program-bec.md).
+
+## B10 — CV Gaussian-channel completion (implemented ✅, 6/6) + program v2
+
+**B10** (`b10_cv_channel/`, EXACT + tomography): CP gate `M = N + (i/2)(Ω − TΩTᵀ) ⪰ 0`; Caves amplifier bound as a certified PERMITTED boundary; symplectic forcing; quantum-limited attenuator semigroup exact; tomography + held-out squeezed prediction. ħ Pos/Uni/Cmp at BENCHMARK tier — EXP-A software back-end. Schema: [`schemas/bec_experiment_record.schema.json`](schemas/bec_experiment_record.schema.json).
+
+```bash
+python3 tests/test_b10.py
+```
+
+**Program v2:** [`docs/SPECIFICATION.md`](docs/SPECIFICATION.md) — formal 𝕽, three-layer separation, evidence levels E0–E4, extended outcomes. [`docs/notes/related-programs-review.md`](docs/notes/related-programs-review.md) — bootstrap/EFT-hedron, GPT, categorical QM, equation discovery (R25–R30). [`docs/roadmap-v2.md`](docs/roadmap-v2.md) — machines M1–M7, B12-RGRC, experiment puzzle-chain EXP-D→B→A→E→C→F.
 
 ## Research library
 
-[`docs/references.md`](docs/references.md) — ledger through **R22**. **R16–R22** = 2025 Nobel / Berkeley sequence (methodological anchor for B9). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
+[`docs/references.md`](docs/references.md) — ledger through **R30**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry experimental program. **R25–R30** = related-programs imports (SPECIFICATION + roadmap-v2). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
 
 ## Roadmap (proposed next steps)
 
-**Immediate (next session):**
-1. **S3** — PDG empirical layer for B5.
-2. **S2-b** — exact `modular_1p` operator probe or bilocal Casini–Huerta term (toward ?₂→H).
-3. **S4** — ?₇ rank form (toy-dS saturation).
+Successor document: [`docs/roadmap-v2.md`](docs/roadmap-v2.md). Immediate:
 
-**Near-term:**
-4. **S5** — B7 Kelvin-relation real data.
-5. B9-nonlinear / rare-event layer; ħ-row empirical memo from published junction tables (VERIFY-first).
-6. Arrival-time track (R14); ?₁ / ?₄/?₈/?₉ / strong ?₆.
+1. **S5** — B7 Kelvin-relation real data.
+2. **EXP-D / S3-EM** — Rb/Cs α tension through the S3 pipeline (zero hardware).
+3. **B11** — composition classifier (expands B8 for the lab).
+4. **B12-RGRC** — rival-grammar recovery challenge (roadmapped; not yet built).
+5. M1 canonicalization + M6 preregistration (`v0.7-frozen` GWTC-next prediction).
 
 ## Discipline
 

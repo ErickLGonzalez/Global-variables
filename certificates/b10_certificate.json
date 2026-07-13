@@ -1,0 +1,74 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "EXACT-RATIONAL (CP gate, intervals, forcing, composition) + NUMERICAL-DISCOVERY (tomography)",
+  "problem": "B10: CV Gaussian-channel completion (EXP-A back-end)",
+  "timestamp_utc": "2026-07-13T19:48:28Z",
+  "calibration_route": "synthetic ground truth (BENCHMARK tier); real-data runs must record instrument route",
+  "m_layer_stipulations": [
+    "vacuum covariance = I/2 convention; Omega block-diagonal",
+    "noise holes: diagonal entries (demo); off-diagonal holes via the same bisection pattern",
+    "tomography assumes T = sqrt(eta) I isotropy (single mode)"
+  ],
+  "headline": "uncertainty principle as an exact CP gate; Caves amplifier bound recovered as a certified PERMITTED boundary (flat); symplectic forcing; quantum-limited semigroup exact; tomography + held-out squeezed prediction pass. hbar row Pos/Uni/Cmp exercised at BENCHMARK tier.",
+  "results": {
+    "T1": {
+      "attenuator": {
+        "status": "PSD_CERTIFIED",
+        "pivots": [
+          "8/25",
+          "0"
+        ],
+        "rank": 1,
+        "verdict": "QUANTUM_LIMITED (CP saturated: flat boundary)"
+      },
+      "amplifier": {
+        "status": "PSD_CERTIFIED",
+        "pivots": [
+          "8/9",
+          "0"
+        ],
+        "rank": 1,
+        "verdict": "QUANTUM_LIMITED (CP saturated: flat boundary)"
+      },
+      "beam_splitter": {
+        "status": "PSD_CERTIFIED",
+        "pivots": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "rank": 0,
+        "verdict": "QUANTUM_LIMITED (CP saturated: flat boundary)"
+      },
+      "fake": {
+        "status": "NOT_PSD_CERTIFIED",
+        "pivots": [
+          "1/3",
+          "-55/27"
+        ],
+        "rank": 1,
+        "verdict": "NOT_A_CHANNEL (CP violated; exact witness)"
+      }
+    },
+    "T2": {
+      "certified_lower": "250199979298361/281474976710656",
+      "exact_bound": "8/9"
+    },
+    "T3": {
+      "status": "FORCED",
+      "mechanism": "symplectic condition det T = 1 (exact)",
+      "value": "2"
+    },
+    "T4": {
+      "eta_composite": "144/625",
+      "N_composite": "481/1250"
+    },
+    "T5": {
+      "eta_hat": 0.35942319516955323
+    },
+    "T6": {
+      "rel_err": 0.0003487612617071269
+    }
+  }
+}

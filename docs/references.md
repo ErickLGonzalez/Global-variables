@@ -54,3 +54,29 @@ Added as a group because the 1984–85 Berkeley sequence is, to date, the cleane
 | R22 | Precursor/classical layer: Josephson (1962); Stewart (1968) & McCumber (1968) RCSJ model; Ivanchenko–Zil'berman (1969); Kramers (1940) escape theory; Fulton & Dunkleberger, PRB 9, 4760 (1974); Büttiker–Harris–Landauer, PRB 28, 1268 (1983); precursor observations Voss & Webb, PRL 47, 265 (1981), Jackel et al. (1981), Washburn et al. (1985) | TARGET/METHOD | Supplies (a) the RCSJ → tilted-washboard mapping B9's model.py linearizes, (b) the CLASSICAL NULL HYPOTHESIS (thermal escape) every quantum claim had to defeat, and (c) the cautionary precursors: correct-looking saturation with unresolved noise ambiguity. B9-T2/T3 exist because of this row — the program treats "plausible signal, uncertified environment" as REJECTED-pending, permanently. |
 
 **Cross-agent note:** a second AI analysis of this block was reviewed the same day; convergences, corrections, and adopted/rejected items in `docs/notes/nobel2025-circuit-decompilation.md`.
+
+---
+
+## R23–R24: Experimental-program block (added 2026-07-14) — verbose provenance
+
+| Ref | Source | Role | Original contribution traced into this project |
+|---|---|---|---|
+| R23 | Howl & Fuentes, "Quantum Frequency Interferometry: with applications ranging from gravitational wave detection to dark matter searches," arXiv:2103.02618 | METHOD/TARGET | The estimation-theory half of the coupling-matrix machine: frequency modes trapped in one volume, in contact at all times, permitting estimation of GLOBAL multi-mode Gaussian channels (mode-mixing + two-mode squeezing generators) with QFIM bounds — i.e., experimental reconstruction of exactly the object stack our B2 (Choi), B7 (susceptibility), B8 (grammar), B9 (M/W/σ) machinery certifies. Direct seed of EXP-A/B10; the QFIM ⪰ 0 layer is the Pos column at the metrology tier. Read directly 2026-07-14. |
+| R24 | Zhang, del Aguila, Mazzoni, Poli, Tino, "A trapped atom interferometer with ultracold Sr atoms," arXiv:1609.06092 | METHOD (engineering) | The platform half: Ramsey–Bordé Bragg + Bloch oscillations holding ⁸⁸Sr against gravity, 1 s in-lattice interference, decoherence budget; Sr's zero nuclear spin and >100 s Bloch coherence. Contributions traced: trapped long interrogation without towers; loss-vs-decoherence discrimination; T-scaling diagnostics; the platform class feeding future h/m → α inputs (EXP-D). Read directly 2026-07-14. |
+
+Companion analysis + cross-agent review: `docs/notes/experimental-program-bec.md`. Adopted from the reviewed second-agent document: BENCHMARK/ANALOGUE-REAL/FUNDAMENTAL-REAL promotion policy (verbatim), falsifiability pentad, Phase A/B/C demonstrator, experiment-record schema (+2 mandatory fields: calibration_route, m_layer_stipulations). Rejected: G/Λ rows as primary cells of a BEC classifier (tier violation); finite-rank design lacking the information-Gram refinement (S4).
+
+---
+
+## R25–R30: Related-programs block (added 2026-07-14) — verbose provenance
+
+Filed with `docs/notes/related-programs-review.md` (independent sweep + cross-agent comparison) and `docs/SPECIFICATION.md`.
+
+| Ref | Source | Role | Original contribution traced into this project |
+|---|---|---|---|
+| R25 | Wan & Zhou, "Matrix moment approach to positivity bounds and UV reconstruction from IR," JHEP 02 (2025) 168, arXiv:2411.11964 | METHOD (convergence witness) | The physics community independently running B1's mathematics (moment matrices, positivity cones, reconstruction from truncated data) inside EFT positivity bounds. Elevates our moment/flat-extension layer from "one benchmark" to the central verifier, with an external anchor. |
+| R26 | Arkani-Hamed, Huang & Huang, "The EFT-Hedron," JHEP 05 (2021) 259, arXiv:2012.15849; He & Kruczenski, "S-matrix bootstrap in 3+1D: regularization and dual convex problem," JHEP 08 (2021) 125, arXiv:2103.11484 | METHOD | Convex geometry of allowed theory space; DUAL certificates that exclude. Import: FORCED boundaries as extremal rays (B10's quantum-limited flatness is one); add dual/exclusion functionals to the verifier layer (roadmap M-item). |
+| R27 | Guerrieri, Häring & Su, "From data to the analytic S-matrix: a bootstrap fit of the pion scattering amplitude," arXiv:2410.23333 | METHOD/TARGET | Bootstrap meets REAL data — the community's B4/S3 analogue. Confirms REAL-mode certificates as a shared frontier; candidate future cross-check domain. |
+| R28 | Hardy, "Reformulating and Reconstructing Quantum Theory," arXiv:1104.2066 (GPT reconstruction lineage) | METHOD | Operational axioms recover quantum structure — our program restricted to the ħ row, done rigorously. Import: neutral operational substrate (SPEC §1) and GPT rival family for B12-RGRC (guards Pos against Hilbert-space circularity). |
+| R29 | Categorical quantum mechanics lineage (Abramsky–Coecke); symmetric monoidal process theories | METHOD | The Cmp column's proper mathematics: typed processes, ⊗, †, diagram equivalence. Import: the 𝒞-skeleton of SPECIFICATION §1; process equivalence as the syntactic layer of "same." |
+| R30 | Equation/law discovery block: SINDy lineage (R12); differential-invariants discovery arXiv:2505.18798; AI Poincaré 2.0 arXiv:2203.12610; causal discovery review arXiv:2305.13341 | METHOD | Mature generator-side machinery (candidate enumeration, sparsity, train/test, intervention-based identifiability). Import: M2 generator engine feeding OUR certified verifiers; NONIDENTIFIABLE(cause) vocabulary; intervention metadata in B12-RGRC. |

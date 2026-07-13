@@ -9,3 +9,4 @@ Incoming sprint bundles extracted into the repo, then archived here for provenan
 | `gv-s4-experiments.zip` | (this sprint) | S4 ?â‚‡ toy rank saturation (`s4_ds/`, `tests/test_s4.py`, BEC experimental program note) |
 
 Extracted trees (`*-extract/`) are ephemeral and gitignored; use these zips if you need the original drop layout.
+| `gv-b10-roadmap-v2.zip` | (this sprint) | B10 CV Gaussian-channel completion + SPEC/roadmap-v2 + R23–R30 |

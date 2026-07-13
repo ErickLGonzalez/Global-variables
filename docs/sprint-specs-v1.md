@@ -30,6 +30,8 @@ Deep-research specs so each sprint starts with a full work order: inputs, algori
 
 **Data:** tabulated Seebeck (S) and Peltier (Π) coefficients for 3–5 materials at matched T. **Test:** Π = T·S is Onsager reciprocity in disguise; run the B7 completion with Π hidden → reciprocity must FORCE Π = TS within measurement intervals; report per-material certificates. **Falsifier:** certified violation beyond error bars (would contradict microreversibility — escalate, audit data first). **DoD:** b7 REAL certificate; the program's second real-data composition/symmetry law after B4.
 
+**Next-phase roadmap:** after S1–S4 and B10, see [`docs/roadmap-v2.md`](roadmap-v2.md) and [`docs/SPECIFICATION.md`](SPECIFICATION.md).
+
 ## Queued behind: B8-nonlinear (certified closure dimension from R15-addendum Adoption D — replace trial-and-error latent dimension with B3-rank certificates on delay-embedded data); arrival-time catalogue (R14 Adoption C).
 
 ## Engine growth path (per-sprint standing task)
