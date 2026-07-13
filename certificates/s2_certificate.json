@@ -1,0 +1,48 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY (lattice Gaussian exact kernels; finite differences; quarantined)",
+  "problem": "S2: GNS program for ?2 -- free-fermion microscopic verification layer",
+  "timestamp_utc": "2026-07-13T02:39:56Z",
+  "m_layer_stipulations": [
+    "infinite-chain kernels at half filling (v_F = 1); lattice-continuum matching",
+    "central finite differences (h=2) on S(l); UV constant removed by differentiation",
+    "hard-wall region truncation; von Neumann entropy only",
+    "GNS Gram OFF-DIAGONAL identification NOT achieved this sprint: documented obstruction in docs/notes/s2-gns-status.md"
+  ],
+  "headline": "B6 matrix structure populated from microscopic data: vacuum flat boundary and thermal energy-density identity verified; modular first law validated; positivity gate armed. ?2 stays P: no premature promotion.",
+  "results": {
+    "T1": {
+      "c_fit": 1.0001075647386053
+    },
+    "T2": {
+      "l30": {
+        "l": 30,
+        "Sp": 0.011128868813240322,
+        "Spp": -0.00037132142365531307,
+        "Q": 1.937775961155931e-07,
+        "Q_over_Spp": 0.0005218594559075892
+      },
+      "l58": {
+        "l": 58,
+        "Sp": 0.005749577490966384,
+        "Spp": -9.915622125999946e-05,
+        "Q": 6.036351562967602e-09,
+        "Q_over_Spp": 6.087718436889166e-05
+      }
+    },
+    "T3": {
+      "prediction": 0.012851047397251769,
+      "median_rel_dev": 0.01933943818797342
+    },
+    "T4": {
+      "errors": [
+        9.139925726620035e-05,
+        2.2843362305291492e-05
+      ],
+      "ratio": 4.001129783115527
+    },
+    "T5": {
+      "nu_max": 1.6114599092513215
+    }
+  }
+}

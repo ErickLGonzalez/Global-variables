@@ -43,3 +43,23 @@ Stipulations: \(\mathrm{Sp_{null}}\simeq\mathrm{Sp_{et}}/2\); vacuum \(Q_{22}:=\
 **PARTIAL GNS.** Continuum vacuum ray certified. Lattice operator-pair tracking **not** certified. Full ?₂→H remains blocked on: (i) continuum-limit / larger-\(L\) or null-cut formulation of the same kernels; (ii) or an explicit Wall free-field integrand whose two smearings reproduce \(M\) off vacuum; (iii) interacting checks stay with BFKW as external existence proof, not an in-repo operator certificate.
 
 Cholesky remains rejected as evidence.
+
+---
+
+## Addendum: State-layer verification + obstruction diagnosis (2026-07-13)
+
+A complementary **state layer** (`s2_gns/gaussian.py`, `s2_gns/qnec_lattice.py`, `tests/test_s2_state_layer.py`, 5/5) now verifies the OTHER half of the GNS claim — that the state/modular technology is sound:
+
+1. Central charge extracted blind from S(l): c_fit = 1.0001 (Dirac c = 1).
+2. **Vacuum saturation from microscopic data:** |Q|/|S''| = 0.001 at l = 30, shrinking with l — the B6 rank-1 flat boundary emerges from correlation data, not postulates.
+3. **Thermal identity from data:** Q(l) = c·π²/(3β²) = 2π × energy density, median deviation 1.9% across the window — B6's coth identity with T ≠ 0, verified microscopically.
+4. Entanglement first law (symmetric form): dS/dε = Tr[K dC] to 0.00%, error scaling exactly 4.00× under ε-halving. (Instructive finding en route: the ground state sits on the **boundary** of the Gaussian-state set, and the positivity gate correctly rejected backward perturbations — interior base point required.)
+5. Positivity gate armed: corrupted C rejected as NOT_A_GAUSSIAN_STATE.
+
+**Diagnostic conclusion (the point of running both layers):** the state side passes everything; the probe's mismatch is therefore **localized to the operator ansatz**. And the literature says why: the probe's A₀ used only the *local* geometric kernel β(x) = x(ℓ−x)/ℓ, but the exact modular Hamiltonian of a single interval for free fermions is NOT purely local — Casini–Huerta's continuum solution contains an additional **bilocal term** coupling x ↔ conjugate points, and Eisler–Peschel showed the lattice modular Hamiltonian likewise carries long-range hopping beyond the β-weighted energy density. The 10²–10³ relative errors are the *expected signature of the missing bilocal/long-range piece*, not a failure of the GNS idea.
+
+**Concrete next construction (S2-b spec):** rerun the probe with A₀ = the **exact vacuum lattice kernel** K_vac = ln((1−C_vac)/C_vac) (now available as `modular_1p`) held FIXED as the state-independent operator, and ω varied over the coherent/current family (legitimate GNS test on the vacuum orbit: fixed operator, varying state); thermal states then map where the orbit ends. Secondary route: implement the Casini–Huerta bilocal term explicitly and test the corrected geometric ansatz. Falsifier unchanged: if the exact-kernel operator pair still fails across the coherent family, the vacuum-orbit Gram identification is refuted, and edit-007 records the refutation instead.
+
+**?₂ status: remains P.** Continuum vacuum ray exact + state layer verified + operator obstruction diagnosed with a named repair path. No premature promotion.
+
+See also: [`s2-gns-status.md`](s2-gns-status.md). Certificate: `certificates/s2_certificate.json`.

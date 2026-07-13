@@ -15,6 +15,14 @@ from .probe import (
     probe_matrix,
 )
 
+from .gaussian import (
+    ground_state_C,
+    modular_1p,
+    thermal_C,
+    validity_gate,
+)
+from .qnec_lattice import thermal_identity_report, vacuum_saturation_report
+
 __all__ = [
     "vacuum_correlation",
     "thermal_correlation",
@@ -25,4 +33,10 @@ __all__ = [
     "continuum_vacuum_M",
     "vacuum_gram_rank1",
     "coherent_pivot_split",
+    "ground_state_C",
+    "thermal_C",
+    "modular_1p",
+    "validity_gate",
+    "vacuum_saturation_report",
+    "thermal_identity_report",
 ]

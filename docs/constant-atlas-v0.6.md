@@ -177,7 +177,7 @@ Then: S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ rank form; S5 B7 Kelvin data; B9-n
 - Positivity column — **G Pos = P (H-track)** via 2D QNEC ≡ Schur pivot (B6); **Λ Pos = P** (weak ?₇); GNS identification of M remains open for ?₂→H.
 - Topology — **flavor Top = P** (weak ?₆); index form of ?₆ open.
 - Gravity Uni — **P** (semiclassical boundary/horizon; edit-006 adjudication of R-SCHUR-QNEC tension).
-- B1–B9 + Atlas Engine — **implemented**; S1 **done** (atlas v0.6); next: S2.
+- B1–B9 + Atlas Engine — **implemented**; S1 **done** (atlas v0.6); S2 **partial** (operator + state layers); next: S2-b or S3.
 
 ---
 
@@ -196,3 +196,4 @@ Then: S2 GNS for ?₂→H; S3 PDG/B5; S4 ?₇ rank form; S5 B7 Kelvin data; B9-n
 | v0.5+B9 | 2026-07-13 | — (infra + B9; no matrix cell) | Implement B9 circuit decompilation from 2025 Nobel / Berkeley sequence (R16–R22): FDT gate, calibration-route discipline, Gibbs-circularity finding, held-out spectroscopy. See `docs/notes/nobel2025-circuit-decompilation.md`. |
 | v0.6 | 2026-07-11 | [edit-004](atlas-edits/edit-004-cluster-cmp-extension.md) `b197c55489851e7848010edd92c4ebf03618d1da`; [edit-005](atlas-edits/edit-005-weak-conjecture6-top.md) `2ea395032f6d0c2fbea28d3b2705f4b4d4b5721d`; [edit-006](atlas-edits/edit-006-weak-conjecture7-and-findings.md) `1f916239e727bb7bb2f67b62dae718db9426a1f5` | Ratify Atlas Engine first pass: Cmp→P (λ_H/Yukawa/neutrino/θ_QCD); weak ?₆ Top→P; weak ?₇ Λ Pos→P; Sym convention annotated; G Uni —→P (semiclassical). Idempotence on MATRIX_V06. Standing rule R-OS-UNI added. |
 | v0.6+S2 | 2026-07-11 | [edit-007](atlas-edits/edit-007-gns-partial-draft.md) (draft; no cell change) | S2 GNS probe: continuum vacuum ray exact; lattice (K,cut-T) mismatch recorded. ?₂ stays P (H-track). Rule R-REL-ENTROPY-POS added. See `docs/notes/s2-gns-free-fermion.md`. |
+| v0.6+S2-state | 2026-07-13 | — (infra; no cell change) | S2 state layer: microscopic Gaussian verification (c fit, vacuum saturation, thermal identity, modular first law, positivity gate). Operator obstruction diagnosed. `certificates/s2_certificate.json`. |

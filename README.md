@@ -158,7 +158,7 @@ python3 tests/test_atlas_engine.py
 
 **Atlas Engine v0.1** (5/5): restraint matrix as a constraint-satisfaction object. Eight theorem-anchored implication rules propagate to fixpoint → **7 candidate upgrades** (Cmp/Top/Λ-Pos), each with derivation chains; engine cannot mint H. Certificates: `certificates/b8_certificate.json`, `certificates/atlas_engine_certificate.json`.
 
-**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1 done; **S2 partial** (vacuum GNS ray; lattice pair mismatch); next S3 PDG/B5 or S2 continuum follow-up.
+**Sprint work orders:** [`docs/sprint-specs-v1.md`](docs/sprint-specs-v1.md) — S1 done; **S2 partial** (operator probe + state layer 5/5); next S2-b or S3 PDG/B5.
 
 ## B9 — Circuit decompilation: 2025 Nobel methodology as gates (implemented ✅)
 
@@ -189,12 +189,19 @@ b9_circuit/
 
 Current atlas: [`docs/constant-atlas-v0.6.md`](docs/constant-atlas-v0.6.md).
 
-## S2 — GNS probe for ?₂ (partial ✅)
+## S2 — GNS program for ?₂ (partial ✅)
 
-Free-fermion route: continuum vacuum Gram ray exact; lattice geometric (modular weight, cut stress) pair fails ratio tracking at L≤120. Note: [`docs/notes/s2-gns-free-fermion.md`](docs/notes/s2-gns-free-fermion.md). Certificate: `certificates/s2_gns_certificate.json`.
+Two complementary layers; ?₂ stays **P (H-track)**.
+
+**Operator probe** (6/6): continuum vacuum Gram ray exact; geometric (modular weight, cut stress) pair fails ratio tracking. `certificates/s2_gns_certificate.json`.
+
+**State layer** (5/5): free Dirac Gaussian kernels populate B6 from data — c_fit = 1.0001 blind, vacuum flat-boundary saturation, thermal energy-density identity (1.9%), entanglement first law (4× ε-scaling), positivity gate. Obstruction localized to operator ansatz (missing bilocal modular term). `certificates/s2_certificate.json`.
+
+Notes: [`docs/notes/s2-gns-free-fermion.md`](docs/notes/s2-gns-free-fermion.md), [`docs/notes/s2-gns-status.md`](docs/notes/s2-gns-status.md).
 
 ```bash
 python3 tests/test_s2_gns.py
+python3 tests/test_s2_state_layer.py
 ```
 
 ## Research library
@@ -205,7 +212,7 @@ python3 tests/test_s2_gns.py
 
 **Immediate (next session):**
 1. **S3** — PDG empirical layer for B5.
-2. **S2 follow-up** — continuum Wall integrand / larger-L null-cut for GNS pair (toward ?₂→H).
+2. **S2-b** — exact `modular_1p` operator probe or bilocal Casini–Huerta term (toward ?₂→H).
 3. **S4** — ?₇ rank form (toy-dS saturation).
 
 **Near-term:**
