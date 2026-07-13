@@ -222,7 +222,15 @@ python3 tests/test_s2b.py
 python3 tests/test_b10.py
 ```
 
-**Program v2:** [`docs/SPECIFICATION.md`](docs/SPECIFICATION.md) — formal 𝕽, three-layer separation, evidence levels E0–E4, extended outcomes. [`docs/notes/related-programs-review.md`](docs/notes/related-programs-review.md) — bootstrap/EFT-hedron, GPT, categorical QM, equation discovery (R25–R30). [`docs/roadmap-v2.md`](docs/roadmap-v2.md) — machines M1–M7, B12-RGRC, experiment puzzle-chain EXP-D→B→A→E→C→F.
+**Program v2:** [`docs/SPECIFICATION.md`](docs/SPECIFICATION.md) — formal 𝕽, three-layer separation, evidence levels E0–E4, extended outcomes. [`docs/notes/related-programs-review.md`](docs/notes/related-programs-review.md) — bootstrap/EFT-hedron, GPT, categorical QM, equation discovery (R25–R30). [`docs/roadmap-v2.md`](docs/roadmap-v2.md) — machines M1–M7, B12-RGRC, experiment puzzle-chain EXP-D→B→A→E→C→F. Claims: [`docs/claims-table.md`](docs/claims-table.md).
+
+## B12-RGRC — rival-grammar recovery challenge, core (implemented ✅, 4/4)
+
+Six generator families (genuine shared latent, calibration artifact, sensor common mode, shared-mathematics trap, direct coupling, independence). **18/18** blind classification; **0/24** false `GENUINE_SHARED_LATENT` on look-alikes; passive F1 vs F6 → `NONIDENTIFIABLE`; clamp interventions separate them; held-out intervention prediction <12%. GPT/CPTP families deferred to B12-b. Certificate: `certificates/b12_certificate.json`.
+
+```bash
+python3 tests/test_b12.py
+```
 
 ## Research library
 
@@ -235,7 +243,7 @@ Successor document: [`docs/roadmap-v2.md`](docs/roadmap-v2.md). Immediate:
 1. **S5** — B7 Kelvin-relation real data.
 2. **EXP-D / S3-EM** — Rb/Cs α tension through the S3 pipeline (zero hardware).
 3. **B11** — composition classifier (expands B8 for the lab).
-4. **B12-RGRC** — rival-grammar recovery challenge (roadmapped; not yet built).
+4. **B12-b** — GPT-beyond-quantum / CPTP families (full M4 scope).
 5. M1 canonicalization + M6 preregistration (`v0.7-frozen` GWTC-next prediction).
 
 ## Discipline

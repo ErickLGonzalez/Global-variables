@@ -1,0 +1,42 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY / STATISTICAL (BENCHMARK tier, E3)",
+  "problem": "B12-RGRC: rival-grammar recovery challenge (core: shared-latent discrimination)",
+  "timestamp_utc": "2026-07-13T20:07:40Z",
+  "m_layer_stipulations": [
+    "OU-class generators; thresholds registered in engine.py before T1/T2 were run",
+    "clamp intervention = do(x1 = 0); latent proxy = mean shift",
+    "GPT-beyond-quantum and CPTP families deferred to B12-b (roadmap M4 full scope)"
+  ],
+  "headline": "engine separates GENUINE shared latents from shared calibration, shared sensors, shared mathematics, direct coupling and independence: 18/18 blind, 0/24 false-shared; refuses (NONIDENTIFIABLE) exactly where passive data provably cannot decide; predicts an unseen intervention to <12%. The words 'genuinely shared' now have an executable test.",
+  "results": {
+    "T1": {
+      "F1": "GENUINE_SHARED_LATENT",
+      "F2": "SHARED_CALIBRATION_ARTIFACT",
+      "F3": "INDEPENDENT",
+      "F4": "SHARED_MATHEMATICS_ONLY",
+      "F5": "SHARED_SENSOR_COMMON_MODE",
+      "F6": "DIRECT_COUPLING"
+    },
+    "T2": {
+      "false_shared": 0,
+      "trials": 24
+    },
+    "T3": {
+      "F1_passive": "NONIDENTIFIABLE",
+      "F1_interventional": "GENUINE_SHARED_LATENT",
+      "F6_passive": "NONIDENTIFIABLE",
+      "F6_interventional": "DIRECT_COUPLING"
+    },
+    "T4": {
+      "pred": [
+        3.1558299571499915,
+        1.801666248687743
+      ],
+      "sim": [
+        2.9617068346673108,
+        1.7070401753199531
+      ]
+    }
+  }
+}

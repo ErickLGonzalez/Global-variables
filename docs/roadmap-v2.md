@@ -69,7 +69,7 @@ next — the puzzle structure is explicit and auditable.
 
 P0 claims table (SPEC §6) retrofitted to README — one sprint.
 P1 SPECIFICATION.md (DONE this sprint) + ontology/ schemas.
-P2 B12-RGRC build (M4) — the decisive stress test.
+P2 B12-RGRC core (M4) — DONE (4/4): six families, 18/18 blind, 0/24 false-shared; GPT/CPTP deferred to B12-b.
 P3 M1 canonicalization + M7 measurement layer (before any new
    cosmology/biology/BEC claims).
 P4 M2 generator engine (B3/B5 re-derivation as acceptance).
