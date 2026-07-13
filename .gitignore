@@ -7,3 +7,8 @@ __pycache__/
 
 desktop.ini
 
+# Ephemeral extract trees from incoming sprint zips
+*-extract/
+gv-*.zip
+!archive/sprint-drops/*.zip
+

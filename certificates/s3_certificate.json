@@ -1,0 +1,54 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "EMPIRICAL-STATISTICAL (real PDG-lineage extractions + 2-loop RG; REAL-mode analogue of B4 for the coupling sector)",
+  "problem": "S3: one alpha_s across channels and scales (B5 empirical layer)",
+  "timestamp_utc": "2026-07-13T03:10:52Z",
+  "calibration_route": "independent measurement classes (tau, EW fit, lattice, ttbar); world average used only as a non-input cross-check (no Gibbs-style circularity)",
+  "m_layer_stipulations": [
+    "input values verified 2026-07-14 against PDG-lineage sources; re-verify before promotion decisions",
+    "2-loop MS-bar running; m_b = 4.18 threshold by continuity; truncation error << data errors (T1 closes the span)",
+    "error propagation by evolving the +/-1 sigma ends"
+  ],
+  "headline": "d_identifiable = 1 across four real measurement classes spanning 51x in scale; no-running null rejected at >10 sigma; B5's factorization verdict and the alpha_s RG=H entry both certified on real data",
+  "results": {
+    "T1": {
+      "alpha_at_mtau": 0.31330145885531996,
+      "pull_sigma": 0.08676392368799728
+    },
+    "T2": {
+      "alpha_MZ": 0.11859249910984196,
+      "err": 0.0008832388361367126,
+      "chi2_dof": 0.10892994231530277,
+      "per_channel": {
+        "tau_decays": {
+          "central": 0.11782882651112983,
+          "err": 0.001980745177264251
+        },
+        "EW_fit_Z": {
+          "central": 0.1194,
+          "err": 0.0029
+        },
+        "lattice": {
+          "central": 0.1188,
+          "err": 0.0011000000000000038
+        },
+        "ttbar": {
+          "central": 0.1177,
+          "err": 0.003500000000000003
+        }
+      }
+    },
+    "T3": {
+      "chi2": 165.35153330877947,
+      "significance_sigma": 12.858908713758701
+    },
+    "T4": {
+      "score_single": 2.3267898269459084,
+      "score_channel_dependent": 8.0
+    },
+    "T5": {
+      "shift": 0.005271912479428806,
+      "shift_over_error": 2.661580368813631
+    }
+  }
+}
