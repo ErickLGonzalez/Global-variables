@@ -226,10 +226,20 @@ python3 tests/test_b10.py
 
 ## B12-RGRC — rival-grammar recovery challenge, core (implemented ✅, 4/4)
 
-Six generator families (genuine shared latent, calibration artifact, sensor common mode, shared-mathematics trap, direct coupling, independence). **18/18** blind classification; **0/24** false `GENUINE_SHARED_LATENT` on look-alikes; passive F1 vs F6 → `NONIDENTIFIABLE`; clamp interventions separate them; held-out intervention prediction <12%. GPT/CPTP families deferred to B12-b. Certificate: `certificates/b12_certificate.json`.
+Six generator families (genuine shared latent, calibration artifact, sensor common mode, shared-mathematics trap, direct coupling, independence). **18/18** blind classification; **0/24** false `GENUINE_SHARED_LATENT` on look-alikes; passive F1 vs F6 → `NONIDENTIFIABLE`; clamp interventions separate them; held-out intervention prediction <12%. GPT/CPTP process families: see B12-b below. Certificate: `certificates/b12_certificate.json`.
 
 ```bash
 python3 tests/test_b12.py
+```
+
+## B12-b — rival grammars, quantum layer (implemented ✅, 5/5) + prereg-001
+
+Process families G1–G4 (QUANTUM_CPTP / CLASSICAL_EMBEDDABLE / BEYOND_QUANTUM / NOT_A_PROCESS) + CHSH ladder. **12/12** blind; **0/12** false BEYOND_QUANTUM; population-only access → `NONIDENTIFIABLE(apparatus)`; held-out channel prediction trace distance < 0.02. Certificate: `certificates/b12b_certificate.json`.
+
+**M6:** [`docs/preregistrations/prereg-001-gwtc-next-area.md`](docs/preregistrations/prereg-001-gwtc-next-area.md) — DRAFT-FOR-FREEZE prospective registration (P1–P3 GWTC-next + α_s P4). Activates at tag `v0.7-frozen`.
+
+```bash
+python3 tests/test_b12b.py
 ```
 
 ## Research library
@@ -243,8 +253,8 @@ Successor document: [`docs/roadmap-v2.md`](docs/roadmap-v2.md). Immediate:
 1. **S5** — B7 Kelvin-relation real data.
 2. **EXP-D / S3-EM** — Rb/Cs α tension through the S3 pipeline (zero hardware).
 3. **B11** — composition classifier (expands B8 for the lab).
-4. **B12-b** — GPT-beyond-quantum / CPTP families (full M4 scope).
-5. M1 canonicalization + M6 preregistration (`v0.7-frozen` GWTC-next prediction).
+4. **B12-c** — GPT state-space families beyond correlation tables.
+5. Freeze tag `v0.7-frozen` to activate prereg-001; M1 canonicalization.
 
 ## Discipline
 

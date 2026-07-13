@@ -69,11 +69,11 @@ next — the puzzle structure is explicit and auditable.
 
 P0 claims table (SPEC §6) retrofitted to README — one sprint.
 P1 SPECIFICATION.md (DONE this sprint) + ontology/ schemas.
-P2 B12-RGRC core (M4) — DONE (4/4): six families, 18/18 blind, 0/24 false-shared; GPT/CPTP deferred to B12-b.
+P2 B12-RGRC (M4) — DONE core (4/4) + B12-b quantum layer (5/5); GPT state-space families deferred to B12-c.
 P3 M1 canonicalization + M7 measurement layer (before any new
    cosmology/biology/BEC claims).
 P4 M2 generator engine (B3/B5 re-derivation as acceptance).
-P5 M6 preregistration: freeze v0.7, register the GWTC-next prediction.
+P5 M6 preregistration: prereg-001 DRAFT-FOR-FREEZE filed; ACTIVE at tag `v0.7-frozen`.
 P6 External replication pack (`external_replication/`) + CI hardening.
 
 Benchmark namespace going forward: B11 = composition classifier;

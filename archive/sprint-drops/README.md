@@ -11,3 +11,4 @@ Incoming sprint bundles extracted into the repo, then archived here for provenan
 Extracted trees (`*-extract/`) are ephemeral and gitignored; use these zips if you need the original drop layout.
 | `gv-b10-roadmap-v2.zip` | (this sprint) | B10 CV Gaussian-channel completion + SPEC/roadmap-v2 + R23–R30 |
 | `gv-b12-rgrc.zip` | (this sprint) | B12-RGRC core (shared-latent discrimination) + claims-table |
+| `gv-b12b-prereg.zip` | (this sprint) | B12-b quantum rival grammars + prereg-001 GWTC-next |

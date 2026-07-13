@@ -17,6 +17,7 @@ not upgrade a category. Updated at each merge touching results.
 | B9 circuit decompilation gates | recovered known result + framework capability | BENCHMARK / E3 | Nobel-recipe encoding; T3 circularity finding is ours |
 | B10 CP gate, Caves boundary | known theorem (re-expression) | BENCHMARK / E0 | quantum limits as certified intervals |
 | B12-RGRC shared-latent discrimination | framework capability | BENCHMARK / E3 | 0/24 false-shared; no-go executed |
+| B12-b quantum rival grammars (CPTP / P-not-CP / CHSH) | framework capability | BENCHMARK / E3 | Cmp as discriminator; 0/12 false-beyond; apparatus refusal |
 | S1 engine upgrades (edits 004–006) | framework prediction (theorem-anchored) | — | rule-propagated cells, human-ratified |
 | S2/S2-b GNS layers; capacity=entropy | empirical consistency (lattice) + known theorem | BENCHMARK / E3 | ?₂ stays P; obstruction localized |
 | S3 α_s cross-channel d=1 | empirical consistency | FUNDAMENTAL-REAL / E2 | memo only (edit-008); no cell change |
@@ -24,4 +25,4 @@ not upgrade a category. Updated at each merge touching results.
 | S4 information-Gram ℓ-independence | framework prediction (novel, in-toy) | BENCHMARK / E3–E4 | refines ?₇; lab test = EXP-C |
 | Atlas H cells | known theorems | per-cell | anchored in ledger |
 | Atlas P cells / conjectures ?ₙ | speculative interpretation with falsifiers | — | promotion rules apply |
-| GWTC-next η_A registration (planned) | novel prospective prediction | pending M6 | the program's first true L4 item |
+| GWTC-next η_A registration (prereg-001) | novel prospective prediction | DRAFT-FOR-FREEZE → ACTIVE at `v0.7-frozen` | P1–P3 + α_s P4; see `docs/preregistrations/prereg-001-gwtc-next-area.md` |

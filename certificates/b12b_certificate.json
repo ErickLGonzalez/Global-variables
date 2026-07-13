@@ -1,0 +1,50 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY / STATISTICAL (BENCHMARK tier, E3; bootstrap-calibrated)",
+  "problem": "B12-b: rival grammars, quantum layer (CPTP / classical / P-not-CP / non-process; CHSH ladder)",
+  "timestamp_utc": "2026-07-13T20:21:04Z",
+  "m_layer_stipulations": [
+    "single-qubit process tomography; shot noise 1/sqrt(n) per Pauli component; 5-sigma bootstrap gates",
+    "population-only access = X/Y components unobserved (the apparatus-limited regime, by construction)",
+    "GPT state-space families beyond correlation tables deferred to B12-c"
+  ],
+  "headline": "the Cmp column separates quantum from beyond-quantum: P-not-CP channels detected by certified Choi negativity (failed ancilla composition), 12/12 blind, 0/12 false-beyond; CP shown UNDECIDABLE under population-only apparatus access (refusal with M-layer cause); Tsirelson gate live in the CHSH ladder.",
+  "results": {
+    "T1": {
+      "G1": "QUANTUM_CPTP",
+      "G2": "CLASSICAL_EMBEDDABLE",
+      "G3": "BEYOND_QUANTUM",
+      "G4": "NOT_A_PROCESS"
+    },
+    "T2": {
+      "G1_populations": "NONIDENTIFIABLE",
+      "G1_full": "QUANTUM_CPTP",
+      "G3_populations": "NONIDENTIFIABLE",
+      "G3_full": "BEYOND_QUANTUM"
+    },
+    "T3": {
+      "C1": {
+        "S": 1.795,
+        "sigma": 0.0089,
+        "verdict": "LHV_COMPATIBLE"
+      },
+      "C2": {
+        "S": 2.825,
+        "sigma": 0.0071,
+        "verdict": "QUANTUM_COMPATIBLE (violates classical bound)"
+      },
+      "C3": {
+        "S": 3.919,
+        "sigma": 0.002,
+        "verdict": "BEYOND_QUANTUM_CORRELATIONS (violates Tsirelson)"
+      }
+    },
+    "T4": {
+      "false_beyond": 0,
+      "trials": 12
+    },
+    "T5": {
+      "trace_distance": 0.000914768551376612
+    }
+  }
+}
