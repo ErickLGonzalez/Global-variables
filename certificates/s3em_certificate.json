@@ -1,0 +1,49 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "EMPIRICAL-STATISTICAL (FUNDAMENTAL-REAL tier, E2)",
+  "problem": "S3-EM: alpha-channel consistency (EXP-D, puzzle-chain step 1)",
+  "timestamp_utc": "2026-07-14T14:56:45Z",
+  "calibration_route": "three independent measurement classes; no world-average input (values web-verified 2026-07-15; provenance in module docstring)",
+  "m_layer_stipulations": [
+    "input values as published; CODATA x2.5 expansion analyzed separately (T5), never silently applied",
+    "2023 a_e determination flagged VERIFY-BEFORE-USE, not input",
+    "registered decision rule (memo edit-009): the next independent h/m measurement adjudicates the jackknife asymmetry; no systematics verdict before then"
+  ],
+  "headline": "the alpha row's 5.5-sigma tension certified, LOCALIZED to the h/m channel (shared chain <= 7%), jackknifed (drop-Rb restores consistency at 0.66 sigma), and the pipeline honestly REFUSES the single-value verdict it FORCED for alpha_s -- verdicts follow data, not hope.",
+  "results": {
+    "T1": {
+      "pull_RbCs": 5.487954724560283,
+      "chi2_dof": 16.878809982692918
+    },
+    "T2": {
+      "permitted_band": [
+        19.0,
+        217.0
+      ]
+    },
+    "T3": {
+      "drop_Rb_2020_recoil": {
+        "pull_sigma": 0.6585086435527127,
+        "consistent": true
+      },
+      "drop_Cs_2018_recoil": {
+        "pull_sigma": 2.3383836740792963,
+        "consistent": false
+      },
+      "drop_ae_2008_g2": {
+        "pull_sigma": 5.487954724560283,
+        "consistent": false
+      }
+    },
+    "T4": {
+      "shared_input_budget_rel": 7.579320550022937e-11,
+      "observed_gap_rel": 1.1675764032808898e-09,
+      "max_fraction_explainable_by_shared_inputs": 0.06491498568080895,
+      "verdict": "LOCALIZATION FORCED: the tension lives in the h/m measurement channel; the shared conversion chain (R_inf, mass ratios) is >= 13x too precise to absorb it"
+    },
+    "T5": {
+      "chi2_dof_inflated": 3.924263154917467,
+      "max_pull": 2.1951818898241133
+    }
+  }
+}

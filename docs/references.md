@@ -80,3 +80,15 @@ Filed with `docs/notes/related-programs-review.md` (independent sweep + cross-ag
 | R28 | Hardy, "Reformulating and Reconstructing Quantum Theory," arXiv:1104.2066 (GPT reconstruction lineage) | METHOD | Operational axioms recover quantum structure — our program restricted to the ħ row, done rigorously. Import: neutral operational substrate (SPEC §1) and GPT rival family for B12-RGRC (guards Pos against Hilbert-space circularity). |
 | R29 | Categorical quantum mechanics lineage (Abramsky–Coecke); symmetric monoidal process theories | METHOD | The Cmp column's proper mathematics: typed processes, ⊗, †, diagram equivalence. Import: the 𝒞-skeleton of SPECIFICATION §1; process equivalence as the syntactic layer of "same." |
 | R30 | Equation/law discovery block: SINDy lineage (R12); differential-invariants discovery arXiv:2505.18798; AI Poincaré 2.0 arXiv:2203.12610; causal discovery review arXiv:2305.13341 | METHOD | Mature generator-side machinery (candidate enumeration, sparsity, train/test, intervention-based identifiability). Import: M2 generator engine feeding OUR certified verifiers; NONIDENTIFIABLE(cause) vocabulary; intervention metadata in B12-RGRC. |
+
+---
+
+## R31–R33: α-row tension block (added 2026-07-15) — verbose provenance
+
+Input to S3-EM (edit-009 memo). All values web-verified 2026-07-15.
+
+| Ref | Source | Role | Original contribution traced into this project |
+|---|---|---|---|
+| R31 | Morel, Yao, Cladé, Guellati-Khélifa (LKB), "Determination of the fine-structure constant with an accuracy of 81 parts per trillion," *Nature* **588**, 61 (2020) | ANCHOR (α row) | Rb photon-recoil α⁻¹ = 137.035999206(11); identified new beam-profile-class systematics as the likely explanation for the earlier 2.4σ shift in the Rb series. S3-EM T1 pull, T3 jackknife pivot. |
+| R32 | Parker, Yu, Zhong, Estey, Müller (Berkeley), "Measurement of the fine-structure constant as a test of the Standard Model," *Science* **360**, 191 (2018) | ANCHOR (α row) | Cs recoil α⁻¹ = 137.035999046(27); the Rb–Cs gap this creates is the >5σ tension analyzed by S3-EM. Provides the second h/m channel that makes localization possible. |
+| R33 | Hanneke, Fogwell, Gabrielse, *PRL* **100**, 120801 (2008) [electron g−2] + Aoyama, Kinoshita, Nio, *PRD* **97**, 036001 (2018) [QED-input α⁻¹]. Newer a_e determinations flagged VERIFY-BEFORE-USE, not input | ANCHOR/METHOD | Third, independent channel via g−2 route — the "tie-breaker" the jackknife exploits. |

@@ -37,10 +37,11 @@ Chain rule: the certificate of experiment k becomes a mandatory
 `m_layer_stipulations` input of experiment k+1. Solving one unlocks the
 next — the puzzle structure is explicit and auditable.
 
-1. **EXP-D — α-consistency (zero hardware, S3-EM).** Runs the S3 pipeline
-   on published Rb/Cs recoil + g−2 extractions (live >5σ tension).
-   → *Output certificate:* validated multi-channel combination protocol
-   on the atlas's most precise row. **Cells: α Pos/Uni/RG memo.**
+1. **EXP-D — α-consistency (zero hardware, S3-EM).** DONE (5/5):
+   `s3em_alpha/` + `tests/test_s3em.py` certify the live 5.5σ Rb–Cs
+   tension, localize it to h/m (shared chain ≤7%), refuse single-value
+   FORCED, emit NONIDENTIFIABLE(systematics vs new physics). Memo:
+   edit-009. **Cells: α Pos/Uni memo (no change).**
 2. **EXP-B — FDT audit (tabletop condensate/optomech).** Uses EXP-D's
    combination protocol for its thermometry channels; B9 gates
    (independent calibration route mandatory).

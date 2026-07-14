@@ -12,3 +12,4 @@ Extracted trees (`*-extract/`) are ephemeral and gitignored; use these zips if y
 | `gv-b10-roadmap-v2.zip` | (this sprint) | B10 CV Gaussian-channel completion + SPEC/roadmap-v2 + R23–R30 |
 | `gv-b12-rgrc.zip` | (this sprint) | B12-RGRC core (shared-latent discrimination) + claims-table |
 | `gv-b12b-prereg.zip` | (this sprint) | B12-b quantum rival grammars + prereg-001 GWTC-next |
+| `gv-s3em-alpha.zip` | (this sprint) | S3-EM a-row tension (EXP-D) + edit-009 + R31–R33 |

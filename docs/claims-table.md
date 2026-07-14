@@ -21,6 +21,7 @@ not upgrade a category. Updated at each merge touching results.
 | S1 engine upgrades (edits 004–006) | framework prediction (theorem-anchored) | — | rule-propagated cells, human-ratified |
 | S2/S2-b GNS layers; capacity=entropy | empirical consistency (lattice) + known theorem | BENCHMARK / E3 | ?₂ stays P; obstruction localized |
 | S3 α_s cross-channel d=1 | empirical consistency | FUNDAMENTAL-REAL / E2 | memo only (edit-008); no cell change |
+| S3-EM α-row tension (Rb/Cs/a_e) | empirical consistency | FUNDAMENTAL-REAL / E2 | edit-009 memo; single-value FORCED refused; NONIDENTIFIABLE(cause) |
 | S4 ?₇-weak saturation | framework prediction (confirmed in toy) | BENCHMARK / E3–E4 | free-field tier |
 | S4 information-Gram ℓ-independence | framework prediction (novel, in-toy) | BENCHMARK / E3–E4 | refines ?₇; lab test = EXP-C |
 | Atlas H cells | known theorems | per-cell | anchored in ledger |

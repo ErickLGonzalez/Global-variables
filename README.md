@@ -187,6 +187,7 @@ b9_circuit/
 - [edit-006](docs/atlas-edits/edit-006-weak-conjecture7-and-findings.md) — weak ?₇ + Sym/Uni findings (atlas v0.6)
 - [edit-007](docs/atlas-edits/edit-007-gns-partial-draft.md) — **DRAFT** GNS partial for ?₂ (no atlas bump)
 - [edit-008](docs/atlas-edits/edit-008-s3-empirical-note.md) — S3 empirical memo (no cell change)
+- [edit-009](docs/atlas-edits/edit-009-alpha-tension-memo.md) — α-row tension memo (no cell change)
 
 Current atlas: [`docs/constant-atlas-v0.6.md`](docs/constant-atlas-v0.6.md).
 
@@ -242,16 +243,24 @@ Process families G1–G4 (QUANTUM_CPTP / CLASSICAL_EMBEDDABLE / BEYOND_QUANTUM /
 python3 tests/test_b12b.py
 ```
 
+## S3-EM — α-row tension, certified (implemented ✅, 5/5, FUNDAMENTAL-REAL)
+
+Puzzle-chain step 1 (EXP-D). Same pipeline that FORCED α_s (S3) here **refuses** a single-value α verdict: Rb 2020 / Cs 2018 / a_e → χ²/dof ≈ 17, **5.5σ** Rb–Cs pull; tension localized to h/m (shared chain ≤7%); CODATA ×2.5 softens but does not resolve. Cause: `NONIDENTIFIABLE(systematics vs new physics)`. Memo: edit-009; ledger R31–R33. Certificate: `certificates/s3em_certificate.json`.
+
+```bash
+python3 tests/test_s3em.py
+```
+
 ## Research library
 
-[`docs/references.md`](docs/references.md) — ledger through **R30**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry experimental program. **R25–R30** = related-programs imports (SPECIFICATION + roadmap-v2). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
+[`docs/references.md`](docs/references.md) — ledger through **R33**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry. **R25–R30** = related-programs imports. **R31–R33** = α-row tension (S3-EM). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
 
 ## Roadmap (proposed next steps)
 
 Successor document: [`docs/roadmap-v2.md`](docs/roadmap-v2.md). Immediate:
 
 1. **S5** — B7 Kelvin-relation real data.
-2. **EXP-D / S3-EM** — Rb/Cs α tension through the S3 pipeline (zero hardware).
+2. **EXP-B** — FDT audit (next puzzle-chain step after S3-EM).
 3. **B11** — composition classifier (expands B8 for the lab).
 4. **B12-c** — GPT state-space families beyond correlation tables.
 5. Freeze tag `v0.7-frozen` to activate prereg-001; M1 canonicalization.
