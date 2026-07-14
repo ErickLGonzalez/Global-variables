@@ -18,6 +18,7 @@ not upgrade a category. Updated at each merge touching results.
 | B10 CP gate, Caves boundary | known theorem (re-expression) | BENCHMARK / E0 | quantum limits as certified intervals |
 | B12-RGRC shared-latent discrimination | framework capability | BENCHMARK / E3 | 0/24 false-shared; no-go executed |
 | B12-b quantum rival grammars (CPTP / P-not-CP / CHSH) | framework capability | BENCHMARK / E3 | Cmp as discriminator; 0/12 false-beyond; apparatus refusal |
+| M1 canonicalization engine | framework capability | BENCHMARK / E3 | R15 rule as code; chart-invariant hashes across B7/B9/B12-b/S2 domains |
 | S1 engine upgrades (edits 004–006) | framework prediction (theorem-anchored) | — | rule-propagated cells, human-ratified |
 | S2/S2-b GNS layers; capacity=entropy | empirical consistency (lattice) + known theorem | BENCHMARK / E3 | ?₂ stays P; obstruction localized |
 | S3 α_s cross-channel d=1 | empirical consistency | FUNDAMENTAL-REAL / E2 | memo only (edit-008); no cell change |

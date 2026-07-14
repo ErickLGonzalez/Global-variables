@@ -251,6 +251,14 @@ Puzzle-chain step 1 (EXP-D). Same pipeline that FORCED α_s (S3) here **refuses*
 python3 tests/test_s3em.py
 ```
 
+## M1 — canonicalization engine (implemented ✅, 5/5)
+
+`canon/`: chart-invariant feature hashes (R15 rule as code). Similarity / unitary / congruence tests across B9 generators, B12-b Choi, S2/S4 Gram; cross-domain spectral class without collapsing factor_poset. Broader gauges deferred to M1-b. Certificate: `certificates/m1_certificate.json`.
+
+```bash
+python3 tests/test_m1.py
+```
+
 ## Research library
 
 [`docs/references.md`](docs/references.md) — ledger through **R33**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry. **R25–R30** = related-programs imports. **R31–R33** = α-row tension (S3-EM). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
@@ -262,8 +270,8 @@ Successor document: [`docs/roadmap-v2.md`](docs/roadmap-v2.md). Immediate:
 1. **S5** — B7 Kelvin-relation real data.
 2. **EXP-B** — FDT audit (next puzzle-chain step after S3-EM).
 3. **B11** — composition classifier (expands B8 for the lab).
-4. **B12-c** — GPT state-space families beyond correlation tables.
-5. Freeze tag `v0.7-frozen` to activate prereg-001; M1 canonicalization.
+4. **M1-b** — broader gauge/diffeomorphism-invariant families; **M7** measurement layer.
+5. Freeze tag `v0.7-frozen` to activate prereg-001.
 
 ## Discipline
 

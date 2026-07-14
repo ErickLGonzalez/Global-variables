@@ -1,0 +1,79 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY (canonical-invariant extractor; group-action tests)",
+  "problem": "M1: canonicalization engine (domain-independent as executable code)",
+  "timestamp_utc": "2026-07-14T16:25:21Z",
+  "m_layer_stipulations": [
+    "group actions treated: matrix similarity for generators; left/right unitary for qubit Choi; PSD congruence for covariance/Gram",
+    "PSD signature is the covariance-cone invariant under congruence; spectrum hash is the similarity invariant on generators. Using the WRONG invariant for a given group is an M1-b failure mode by design",
+    "broader gauge/reparameterization families deferred to M1-b (diffeomorphism-invariant features for continuous kernels)"
+  ],
+  "headline": "the R15 canonicalization rule as code: hashes are invariant under the stated group action across four domain generators (B7/B9/B10/B12-b), discriminate genuine physical differences (T5), and expose what IS shared across domains (T4 spectral class) without collapsing what is not (factor_poset).",
+  "results": {
+    "T1": {
+      "hash": "51c6648453aeccb6",
+      "invariant_under_similarity": true
+    },
+    "T2": {
+      "hash": "f30e661215f8820e",
+      "psd_signature": {
+        "dim": 4,
+        "rank": 4,
+        "n_pos": 4,
+        "n_zero": 0,
+        "n_neg": 0
+      }
+    },
+    "T3": {
+      "psd_signature": {
+        "dim": 6,
+        "rank": 6,
+        "n_pos": 6,
+        "n_zero": 0,
+        "n_neg": 0
+      },
+      "example_spectrum": [
+        [
+          0.07722000000000001,
+          0.0
+        ],
+        [
+          1.22093,
+          0.0
+        ],
+        [
+          2.16841,
+          0.0
+        ]
+      ]
+    },
+    "T4": {
+      "shared_spectrum_reals": [
+        -0.5,
+        -0.5
+      ],
+      "factor_posets": [
+        [
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    "T5": {
+      "hashes": [
+        "0bc2567831bcc9b4",
+        "61a46e07dbeda5de"
+      ]
+    }
+  }
+}
