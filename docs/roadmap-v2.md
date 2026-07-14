@@ -74,7 +74,8 @@ P2 B12-RGRC (M4) — DONE core (4/4) + B12-b quantum layer (5/5); GPT state-spac
 P3 M1 canonicalization — DONE (5/5) core (`canon/`); broader gauge
    families deferred to M1-b. M7 measurement layer still open (before any
    new cosmology/biology/BEC claims).
-P4 M2 generator engine (B3/B5 re-derivation as acceptance).
+P4 M2 generator engine — DONE (5/5) monomial core (`generator/`); B3/B5
+   rediscovered from raw tables; wider grammars deferred to M2-b.
 P5 M6 preregistration: prereg-001 DRAFT-FOR-FREEZE filed; ACTIVE at tag `v0.7-frozen`.
 P6 External replication pack (`external_replication/`) + CI hardening.
 

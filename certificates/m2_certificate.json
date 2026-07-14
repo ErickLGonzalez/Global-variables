@@ -1,0 +1,38 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "NUMERICAL-DISCOVERY (typed grammar; MDL; canonical dedup; BENCHMARK tier, E3)",
+  "problem": "M2: generator engine (roadmap 'infer' machine, acceptance = B3/B5 rediscovery from raw tables)",
+  "timestamp_utc": "2026-07-14T19:12:05Z",
+  "m_layer_stipulations": [
+    "monomial grammar only this sprint (integer/half exponents); sufficient for B3/B5; wider grammars deferred to M2-b",
+    "log-linear regression assumes positive inputs and outputs",
+    "canonical key = sorted exponent multiset (R15/M1 flavor); the multiplicative constant is a fit parameter, not part of the equivalence class",
+    "the engine only PROPOSES; certified verifiers dispose"
+  ],
+  "headline": "raw-table proposer that rediscovers G_F ~ e^2 M_W^-2 s_W^-2 (B3) and R_24 ~ A_22^2 (B5) with no template hints; canonical dedup compresses the search space; scrambled controls reject the noise-fitting failure mode. The 'infer' word of roadmap-v2, executable.",
+  "results": {
+    "T1": {
+      "exponents": [
+        2,
+        -2,
+        -2
+      ],
+      "c": 0.17677669529663692,
+      "n_classes": 83
+    },
+    "T2": {
+      "exponent": 2,
+      "c": 1.7000000000000002
+    },
+    "T3": {
+      "n_raw": 342,
+      "n_classes": 83
+    },
+    "T4": {
+      "best_scrambled_residual": 0.13099228530179632
+    },
+    "T5": {
+      "schema": "frozen"
+    }
+  }
+}

@@ -14,3 +14,4 @@ Extracted trees (`*-extract/`) are ephemeral and gitignored; use these zips if y
 | `gv-b12b-prereg.zip` | (this sprint) | B12-b quantum rival grammars + prereg-001 GWTC-next |
 | `gv-s3em-alpha.zip` | (this sprint) | S3-EM a-row tension (EXP-D) + edit-009 + R31–R33 |
 | `gv-m1-canon.zip` | (this sprint) | M1 canonicalization engine (canon/) + m1_certificate |
+| `gv-m2-generator.zip` | (this sprint) | M2 typed generator (generator/) + m2_certificate |

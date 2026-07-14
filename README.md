@@ -259,6 +259,14 @@ python3 tests/test_s3em.py
 python3 tests/test_m1.py
 ```
 
+## M2 — typed candidate generator (implemented ✅, 5/5)
+
+`generator/`: monomial grammar + MDL + M1-style canonical dedup. Rediscoveries from raw tables: G_F ~ e² M_W⁻² s_W⁻² (B3) and R_24 ~ A_22² (B5); scrambled controls reject noise-fitting. Engine proposes only — verifiers dispose. Wider grammars deferred to M2-b. Certificate: `certificates/m2_certificate.json`.
+
+```bash
+python3 tests/test_m2.py
+```
+
 ## Research library
 
 [`docs/references.md`](docs/references.md) — ledger through **R33**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry. **R25–R30** = related-programs imports. **R31–R33** = α-row tension (S3-EM). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
@@ -270,7 +278,7 @@ Successor document: [`docs/roadmap-v2.md`](docs/roadmap-v2.md). Immediate:
 1. **S5** — B7 Kelvin-relation real data.
 2. **EXP-B** — FDT audit (next puzzle-chain step after S3-EM).
 3. **B11** — composition classifier (expands B8 for the lab).
-4. **M1-b** — broader gauge/diffeomorphism-invariant families; **M7** measurement layer.
+4. **M2-b** — wider grammars; **M1-b** / **M7** measurement layer.
 5. Freeze tag `v0.7-frozen` to activate prereg-001.
 
 ## Discipline
