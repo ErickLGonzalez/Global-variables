@@ -1,0 +1,30 @@
+{
+  "certificate_version": "0.3",
+  "certificate_class": "EXACT-RATIONAL (Schur continued fractions, T1-T4) + NUMERICAL (metric-pair invariants, T5)",
+  "problem": "Truncation-audit probe + GfE mathematics import (R34-R35 review deliverable)",
+  "timestamp_utc": "2026-07-15T02:44:28Z",
+  "m_layer_stipulations": [
+    "Gaussian-ladder toy certifies the LOGIC of the audit, not a verdict on GfE's nonlinear setting",
+    "metric_pair invariants: simultaneous-congruence group action; Lorentzian-signature pairs deferred (positive-definite demo)"
+  ],
+  "headline": "the truncation critique of Gravity-from-Entropy as an executable gate: artifact vs protected vs unaudited, all exact; the quadratic-coupling license quantified; and the GQRE's invariant core (metric-pair spectrum + Burg divergence) imported into the canonicalization engine.",
+  "results": {
+    "T1": {
+      "shift": "-6/3311"
+    },
+    "T2": {
+      "lambda": "18/11"
+    },
+    "T3": {
+      "unaudited": "TRUNCATION_UNAUDITED",
+      "certified": "CLAIM_PERMITTED"
+    },
+    "T4": {
+      "ratio": 4.001693745687222
+    },
+    "T5": {
+      "hash": "601b4e4609d3b081",
+      "burg": 1.245821804
+    }
+  }
+}

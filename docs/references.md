@@ -92,3 +92,14 @@ Input to S3-EM (edit-009 memo). All values web-verified 2026-07-15.
 | R31 | Morel, Yao, Cladé, Guellati-Khélifa (LKB), "Determination of the fine-structure constant with an accuracy of 81 parts per trillion," *Nature* **588**, 61 (2020) | ANCHOR (α row) | Rb photon-recoil α⁻¹ = 137.035999206(11); identified new beam-profile-class systematics as the likely explanation for the earlier 2.4σ shift in the Rb series. S3-EM T1 pull, T3 jackknife pivot. |
 | R32 | Parker, Yu, Zhong, Estey, Müller (Berkeley), "Measurement of the fine-structure constant as a test of the Standard Model," *Science* **360**, 191 (2018) | ANCHOR (α row) | Cs recoil α⁻¹ = 137.035999046(27); the Rb–Cs gap this creates is the >5σ tension analyzed by S3-EM. Provides the second h/m channel that makes localization possible. |
 | R33 | Hanneke, Fogwell, Gabrielse, *PRL* **100**, 120801 (2008) [electron g−2] + Aoyama, Kinoshita, Nio, *PRD* **97**, 036001 (2018) [QED-input α⁻¹]. Newer a_e determinations flagged VERIFY-BEFORE-USE, not input | ANCHOR/METHOD | Third, independent channel via g−2 route — the "tie-breaker" the jackknife exploits. |
+
+---
+
+## R34–R35: Gravity-from-Entropy block (added 2026-07-16) — verbose provenance
+
+Review + code: `docs/notes/gfe-bianconi-review.md`, `probes/truncation_audit.py`, M1 `metric_pair` kind. Both papers read directly 2026-07-16.
+
+| Ref | Source | Role | Original contribution traced into this project |
+|---|---|---|---|
+| R34 | Bianconi, "Gravity from entropy," arXiv:2408.14391 (v7, 2025), Phys. Rev. D lineage | TARGET (rival grammar) + METHOD (imported mathematics) | Entropic action = GQRE between spacetime metric and matter-induced metric; Dirac–Kähler 0⊕1⊕2-form matter; auxiliary G-field → dressed Einstein–Hilbert with emergent positive Λ(G). Imports: metric-pair invariant spectrum (→ M1 `metric_pair`), Burg/Stein divergence core (→ canon). Rival typing of Λ filed against ?₇/?₈; rival grammar for ?₄. Truncation status: UNAUDITED per our gate (probes/truncation_audit.py) pending a consistency proof — the audit demand is now executable, not rhetorical. |
+| R35 | Bianconi, "The Thermodynamics of the Gravity from Entropy Theory," arXiv:2510.22545 (v4, 2026) | TARGET (rival grammar, cosmological layer) | GfE FRW thermodynamics: k-temperatures/k-pressures with a first law; dynamical Λ_G dark energy; entropy growth reconciled with GQRE/volume non-increase; Schwarzschild area law from GfE first principles (companion). Marks the future FUNDAMENTAL-REAL comparison surface (dark-energy dynamics) and an R-KMS-adjacent Thm structure for a future FRW toy sprint. |

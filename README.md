@@ -267,6 +267,10 @@ python3 tests/test_m1.py
 python3 tests/test_m2.py
 ```
 
+## Truncation-audit probe + GfE review (implemented ✅, 5/5)
+
+Deep-research sprint on Gravity-from-Entropy (Bianconi, R34–R35) with the truncation critique **converted into an executable gate**: on an exact Gaussian ladder, the truncated "emergent constant" differs from the full Schur elimination by an exact rational shift (**−6/3311** in the demo) unless the boundary coupling vanishes — then robustness is *certified* (Fractions-exact), not assumed; the shift scales quadratically in the neglected coupling (**4.002×** under halving). Three verdicts wired to SPEC §§2/4: TRUNCATION_ROBUST / TRUNCATION_ARTIFACT / **TRUNCATION_UNAUDITED — GfE's current status in our classification**, pending their consistency proof. **Mathematics imported:** GfE's metric-pair invariant spectrum + the Burg/Stein divergence (the GQRE's eigenvalue-log core) now live in M1 as `canonicalize(kind="metric_pair")`, congruence-invariance tested. Matrix mapping: Λ×Pos rival typing (vs ?₇/?₈), G×RG rival for ?₄, ?₃-row theory-side note, B12-c family spec. Note: `docs/notes/gfe-bianconi-review.md`.
+
 ## Research library
 
 [`docs/references.md`](docs/references.md) — ledger through **R33**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry. **R25–R30** = related-programs imports. **R31–R33** = α-row tension (S3-EM). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
