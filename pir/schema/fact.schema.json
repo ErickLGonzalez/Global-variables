@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pir/fact.schema.json",
+  "title": "PIR Fact (v0.1)",
+  "description": "Append-only derived fact. Carries BOTH pir_level (representation abstraction) and evidence_level (warrant strength) - orthogonal axes per ADJUDICATION #4. Verdict vocabulary locked to SPEC section 4/6 per ADJUDICATION #24. Adapted from the package draft: adds measurement_interface (SPEC section 2) and the SPEC-4 verdict AMBIGUOUS; see ADR-PIR-0001.",
+  "type": "object",
+  "required": ["fact_id", "pir_level", "evidence_level", "layer", "namespace",
+               "status", "analyzer", "depends_on_facts", "assumptions",
+               "source_spans", "content", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "fact_id": {"type": "string", "description": "Content-addressed ID (hash of canonical JSON of content+provenance)"},
+    "pir_level": {"enum": ["L0", "L1", "L2", "L3"]},
+    "evidence_level": {"enum": ["E0", "E1", "E2", "E3", "E4"]},
+    "layer": {"enum": ["UNIVERSAL", "DOMAIN", "MEASUREMENT"]},
+    "namespace": {"enum": ["raw", "apparatus", "operational", "domain", "latent",
+                            "gauge", "invariant", "global", "effective", "analyst"]},
+    "status": {"enum": ["SUPPORTED", "CONTRADICTED", "UNRESOLVED", "CONFLICT",
+                         "DOWNGRADED", "RETRACTED_BY_ERRATUM"]},
+    "verdict": {
+      "description": "OPTIONAL. SPEC section-4/6 vocabulary ONLY. Candidate-class labels are NOT verdicts (they live on hypothesis.candidate_class).",
+      "type": ["string", "null"],
+      "enum": ["FORCED", "PERMITTED", "REJECTED", "NONIDENTIFIABLE",
+               "OBSERVATIONALLY_EQUIVALENT", "APPARATUS_LIMITED",
+               "REPRESENTATION_DEPENDENT", "AMBIGUOUS", null]
+    },
+    "analyzer": {
+      "type": "object",
+      "required": ["id", "version", "tag"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "version": {"type": "string"},
+        "tag": {"enum": ["SOUND", "HEURISTIC"],
+                 "description": "SOUND passes assert only what they certify (E0-E2). HEURISTIC may not assert E0; at E3/E4 must populate warnings[]."}
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "description": "Located warnings (Ghidra WARNING-comment pattern). REQUIRED non-empty when analyzer.tag=HEURISTIC and evidence_level in E3/E4.",
+      "items": {"type": "object",
+        "required": ["location", "message"],
+        "additionalProperties": false,
+        "properties": {"location": {"type": "string"}, "message": {"type": "string"}}}
+    },
+    "depends_on_facts": {"type": "array", "items": {"type": "string"}},
+    "assumptions": {"type": "array", "items": {"type": "string"},
+      "description": "Assumption IDs (taint). Invalidation traversal walks these."},
+    "measurement_interface": {"type": "array", "items": {"type": "string"},
+      "description": "Declared measurement interface (calibration route / apparatus IDs). REQUIRED non-empty on DOMAIN and MEASUREMENT layer facts (SPEC section 2)."},
+    "source_spans": {"type": "array", "items": {"type": "object",
+      "required": ["artifact_id", "span"],
+      "additionalProperties": false,
+      "properties": {"artifact_id": {"type": "string"}, "span": {"type": "string"}}}},
+    "content": {"type": "object", "description": "Fact payload. Exact rationals serialized as strings 'p/q', never floats."},
+    "witness": {"type": ["object", "null"], "description": "Reserved: SAT-model feasibility witness (Stage 2 symbolic bridge)."},
+    "impossibility_certificate": {"type": ["object", "null"], "description": "Reserved: UNSAT-core-style certificate, e.g. exact negative Schur pivot."},
+    "similarity": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1,
+      "description": "Separate from similarity (BinDiff discipline). If either is set, correlator is required."},
+    "correlator": {"type": ["string", "null"]},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

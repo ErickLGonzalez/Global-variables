@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pir/provenance.schema.json",
+  "title": "PIR Provenance Record (v0.1 reference draft)",
+  "description": "PROV-O core (Entity-Activity-Agent) per ADJUDICATION #8. Append-only; cycles are illegal (negative test required).",
+  "type": "object",
+  "required": ["record_id", "entity", "activity", "agent", "used", "generated", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {"type": "string"},
+    "entity": {"type": "string", "description": "Fact/artifact/hypothesis ID this record describes"},
+    "activity": {"type": "object", "required": ["id", "type"],
+      "properties": {"id": {"type": "string"},
+        "type": {"enum": ["LOAD", "LOWER", "ANALYZE", "TRANSFORM", "CERTIFY",
+                           "DIFF", "FINGERPRINT", "RECOMPILE", "DOWNGRADE", "ANNOTATE"]},
+        "parameters_hash": {"type": "string"}}},
+    "agent": {"type": "object", "required": ["id", "kind"],
+      "properties": {"id": {"type": "string"},
+        "kind": {"enum": ["ANALYZER", "HUMAN", "AI_AGENT"]},
+        "version": {"type": "string"}}},
+    "used": {"type": "array", "items": {"type": "string"}},
+    "generated": {"type": "array", "items": {"type": "string"}},
+    "cross_namespace_transform": {"type": ["object", "null"],
+      "description": "REQUIRED when used/generated cross namespaces (ADJUDICATION #18).",
+      "properties": {"name": {"type": "string"}, "from_namespace": {"type": "string"},
+        "to_namespace": {"type": "string"}, "type_signature": {"type": "string"}}},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "description": "Minimal end-to-end PIR v0.1 example: one B9-style Josephson-circuit measurement lowered to L0 (artifact) / L1 (acts), one exact L2 fact with a Schur-pivot witness, one L3 hypothesis pair retained as OBSERVATIONALLY_EQUIVALENT, one declared discriminating intervention. Each sub-object validates against its pir/schema/*.schema.json.",
+  "artifact": {
+    "artifact_id": "art_sha256_9f2c1a5b7e0d3c48",
+    "kind": "DATASET",
+    "content_hash": "9f2c1a5b7e0d3c48e1a2b3c4d5e6f7089a0b1c2d3e4f50617283940a5b6c7d8e",
+    "namespace": "raw",
+    "format": "csv",
+    "apparatus_id": "apparatus:jj_dilution_rig_01",
+    "calibration_route": ["cal:flux_bias_transfer_v3", "cal:readout_chain_v2"],
+    "declared_resolution": {"phase_rad": "1/1000", "bandwidth_Hz": "5000000"},
+    "source_uri": "data/b9/circuit_run_042.csv",
+    "acquired_at": "2026-06-30T09:12:00Z"
+  },
+  "events": [
+    {
+      "event_id": "evt_0001",
+      "op": "PREPARE",
+      "artifact_id": "art_sha256_9f2c1a5b7e0d3c48",
+      "ports": [{"name": "initial_state", "type": "State", "unit": "1", "value": "ground", "uncertainty": null}],
+      "timing": {"t": 0.0, "ordering_index": 0},
+      "apparatus_id": "apparatus:jj_dilution_rig_01",
+      "calibration_route": ["cal:flux_bias_transfer_v3"],
+      "assumptions": ["asm:thermalization_complete"],
+      "source_spans": [{"artifact_id": "art_sha256_9f2c1a5b7e0d3c48", "span": "rows:1-1"}]
+    },
+    {
+      "event_id": "evt_0002",
+      "op": "INTERVENE",
+      "artifact_id": "art_sha256_9f2c1a5b7e0d3c48",
+      "ports": [{"name": "loop_flux", "type": "ApparatusParameter", "unit": "Phi0", "value": "1/2", "uncertainty": {"type": "interval", "half_width": "1/2000"}}],
+      "timing": {"t": 1e-06, "ordering_index": 1},
+      "apparatus_id": "apparatus:jj_dilution_rig_01",
+      "calibration_route": ["cal:flux_bias_transfer_v3"],
+      "assumptions": ["asm:flux_transfer_linear"],
+      "source_spans": [{"artifact_id": "art_sha256_9f2c1a5b7e0d3c48", "span": "col:flux_bias"}]
+    },
+    {
+      "event_id": "evt_0003",
+      "op": "MEASURE",
+      "artifact_id": "art_sha256_9f2c1a5b7e0d3c48",
+      "ports": [{"name": "escape_rate", "type": "Observable", "unit": "1/s", "value": null, "uncertainty": {"type": "poisson"}}],
+      "timing": {"t": 2e-06, "ordering_index": 2},
+      "apparatus_id": "apparatus:jj_dilution_rig_01",
+      "calibration_route": ["cal:readout_chain_v2"],
+      "assumptions": ["asm:detector_linearity"],
+      "source_spans": [{"artifact_id": "art_sha256_9f2c1a5b7e0d3c48", "span": "col:counts"}]
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "fct_rank_0001",
+      "pir_level": "L2",
+      "evidence_level": "E1",
+      "layer": "DOMAIN",
+      "namespace": "domain",
+      "status": "SUPPORTED",
+      "analyzer": {"id": "PositivityAnalyzer", "version": "0.1.0", "tag": "SOUND"},
+      "warnings": [],
+      "depends_on_facts": [],
+      "assumptions": ["asm:detector_linearity", "asm:flux_transfer_linear"],
+      "measurement_interface": ["cal:readout_chain_v2", "cal:flux_bias_transfer_v3"],
+      "source_spans": [{"artifact_id": "art_sha256_9f2c1a5b7e0d3c48", "span": "col:counts"}],
+      "content": {
+        "claim": "moment_matrix_psd_rank",
+        "rank": 3,
+        "min_schur_pivot": "7/1250",
+        "note": "exact Fraction pivot; PSD certified at declared resolution"
+      },
+      "witness": {"kind": "schur_pivot_chain", "pivots": ["7/1250", "3/400", "1/16"]},
+      "impossibility_certificate": null,
+      "similarity": null,
+      "confidence": null,
+      "correlator": null,
+      "created_at": "2026-07-15T12:00:00Z"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "hyp_qtunnel",
+      "family": "quantum_cptp",
+      "candidate_class": null,
+      "status": "OBSERVATIONALLY_EQUIVALENT_MEMBER",
+      "equivalence_class_id": "eqc_b9_escape_001",
+      "compatibility": [{"fact_id": "fct_rank_0001", "relation": "SUPPORTS"}],
+      "distinguishing_interventions": [{"intervention_id": "int_temp_sweep_01", "predicted_separation": "rate plateau below T*"}],
+      "fingerprint_full": "fpr_full_a91c0d22e5f60718",
+      "fingerprint_specific": "fpr_spec_c22b0e13f4a59607",
+      "derived_from_facts": ["fct_rank_0001"],
+      "assumptions": ["asm:markov_bath"]
+    },
+    {
+      "hypothesis_id": "hyp_thermal",
+      "family": "hidden_common_cause",
+      "candidate_class": ["HIDDEN_COMMON_CAUSE_CANDIDATE"],
+      "status": "OBSERVATIONALLY_EQUIVALENT_MEMBER",
+      "equivalence_class_id": "eqc_b9_escape_001",
+      "compatibility": [{"fact_id": "fct_rank_0001", "relation": "SUPPORTS"}],
+      "distinguishing_interventions": [{"intervention_id": "int_temp_sweep_01", "predicted_separation": "Arrhenius scaling continues below T*"}],
+      "fingerprint_full": "fpr_full_b07d1e24a6f80931",
+      "fingerprint_specific": "fpr_spec_d13a2f05b7e91042",
+      "derived_from_facts": ["fct_rank_0001"],
+      "assumptions": ["asm:thermal_activation_only"]
+    }
+  ],
+  "interventions": [
+    {
+      "intervention_id": "int_temp_sweep_01",
+      "kind": "TEMPERATURE_CHANGE",
+      "target": "apparatus:jj_dilution_rig_01.mixing_chamber",
+      "parameters": {"T_range_mK": ["15", "250"], "points": 12},
+      "admissible": true,
+      "cost_estimate": {"hours": 8},
+      "feasibility": {"status": "routine"},
+      "objective_scores": {"candidate_disagreement": 0.93, "expected_information_gain": 1.4, "d_identifiable_reduction": 1.0},
+      "predicted_outcomes": [
+        {"hypothesis_id": "hyp_qtunnel", "prediction": "escape rate saturates below crossover temperature"},
+        {"hypothesis_id": "hyp_thermal", "prediction": "escape rate continues Arrhenius decline"}
+      ],
+      "assumptions": ["asm:thermometry_calibrated"],
+      "status": "PROPOSED"
+    }
+  ],
+  "verdict_note": "Verdict for eqc_b9_escape_001 under passive data: OBSERVATIONALLY_EQUIVALENT (SPEC section 6). Selection deferred pending int_temp_sweep_01. Candidate-class tags are taxonomy, not verdicts."
+}

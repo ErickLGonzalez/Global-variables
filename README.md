@@ -271,6 +271,24 @@ python3 tests/test_m2.py
 
 Deep-research sprint on Gravity-from-Entropy (Bianconi, R34–R35) with the truncation critique **converted into an executable gate**: on an exact Gaussian ladder, the truncated "emergent constant" differs from the full Schur elimination by an exact rational shift (**−6/3311** in the demo) unless the boundary coupling vanishes — then robustness is *certified* (Fractions-exact), not assumed; the shift scales quadratically in the neglected coupling (**4.002×** under halving). Three verdicts wired to SPEC §§2/4: TRUNCATION_ROBUST / TRUNCATION_ARTIFACT / **TRUNCATION_UNAUDITED — GfE's current status in our classification**, pending their consistency proof. **Mathematics imported:** GfE's metric-pair invariant spectrum + the Burg/Stein divergence (the GQRE's eigenvalue-log core) now live in M1 as `canonicalize(kind="metric_pair")`, congruence-invariance tested. Matrix mapping: Λ×Pos rival typing (vs ?₇/?₈), G×RG rival for ?₄, ?₃-row theory-side note, B12-c family spec. Note: `docs/notes/gfe-bianconi-review.md`.
 
+## PIR — evidence substrate (Stage 1, implemented ✅)
+
+**PIR (Physics Intermediate Representation) is an evidence substrate, not a proof engine.** It records what was measured (L0), what was done (L1), what was certified (L2), and which grammars remain in play (L3) — each fact carrying **orthogonal** representation (L0–L3) and warrant (E0–E4) coordinates, full provenance, and assumption taint. **The atlas engine never reads raw datasets directly; it reads certified PIR facts.** The mathematics that decides verdicts stays in B1–B12 and the frozen [verifier ops](docs/verifier-ops-v0.1.md); PIR is where their inputs, outputs, and dependencies are stored honestly.
+
+Stage 1 delivers the substrate only — **no atlas edits, no changes to any B1–B12 verdict or certificate**. Enforced invariants: append-only facts (invalidation downgrades transitively, deleting nothing); verdict vocabulary locked to SPEC §4/§6 (candidate-class labels are hypothesis taxonomy, never verdicts); SOUND/HEURISTIC honesty (HEURISTIC E3/E4 must carry located warnings); typed cross-namespace transforms (no silent promotion); hash-stable canonical JSON (exact `Fraction`s as `"p/q"`, never floats).
+
+```
+pir/            types · models · namespaces · canonical · provenance · passes · schema/
+ci/run_all_certified.py   reruns tests/test_b*.py, diffs regenerated vs committed
+                          certificates (jitter-tolerant, degradation-strict),
+                          signed run manifest; exits nonzero on any degradation
+docs/pir-specification-v0.1.md · docs/verifier-ops-v0.1.md · docs/adr/ADR-PIR-0001.md
+examples/pir/minimal_circuit.json   B9-style circuit → L0/L1 → exact L2 fact →
+                                    OBSERVATIONALLY_EQUIVALENT hypothesis pair
+```
+
+Run: `python3 tests/test_pir_models.py` · `test_pir_provenance.py` · `test_pir_namespaces.py` · `test_pir_passes.py` (positive + the six required negative tests) and `python3 tests/test_ci_guard.py` (CI green on the repo, red on a corrupted certificate). Substrate contract: [`docs/pir-specification-v0.1.md`](docs/pir-specification-v0.1.md).
+
 ## Research library
 
 [`docs/references.md`](docs/references.md) — ledger through **R33**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry. **R25–R30** = related-programs imports. **R31–R33** = α-row tension (S3-EM). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.
