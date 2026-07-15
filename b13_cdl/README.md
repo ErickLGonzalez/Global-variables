@@ -6,10 +6,12 @@ executing Survey Recommendations Stages 1–5.
 
 ## Quick start (computational agent)
 ```
-python3 tests/test_b13.py        # full harness: schemas, 8 pipelines, certificates
+python3 tests/test_b13.py        # full harness: schemas, 8 pipelines, certificates, PIR facts
 python3 -m src.cdl.coverage      # standalone Stage-5 coverage report
 ```
-Python >= 3.9, **stdlib only** — no installs.
+Python >= 3.9, **stdlib only** — no installs. The optional PIR-fact bridge
+(Tier 3, below) imports the in-repo `pir` package, which is itself stdlib-only,
+so there is still nothing to install.
 
 ## Contents
 - `docs/survey-v1.1-addendum.md` — four new entries: A14 muon g−2/HVP, A15 H₀ tension,
@@ -19,9 +21,29 @@ Python >= 3.9, **stdlib only** — no installs.
 - `data/ledger.json` — 25 entries (A1–A15, M1–M10) with block×predicate tags,
   contested flags (Stage 4), evidence-level ceilings.
 - `data/falsifiers.json` — 15 registered falsifiers (Stage 2); liveness computed, not asserted.
-- `src/cdl/` — 8 pipelines (7 entry pipelines + coverage meta-pipeline).
+- `src/cdl/` — 8 pipelines (7 entry pipelines + coverage meta-pipeline) plus
+  `pir_bridge.py` (Tier-3 bridge to the `pir` substrate).
 - `tests/test_b13.py` — headless CI-style harness (blueprint-B1 pattern).
-- `certificates/` — one fresh certificate set from the pre-delivery run (rerun to regenerate).
+- `certificates/` — 8 pipeline certificates at **stable filenames**
+  (`b13cdl-<pipeline>.json`; reruns overwrite) plus `pir_facts.json` (the
+  PIR-fact view). `certificate_id` is a content hash, so reruns are reproducible.
+
+## Certificate identity & the PIR bridge (design notes)
+See `docs/pir-bridge-v0.1.md`. In short:
+- **Stable, content-addressed certificates (Tier 1):** `certificate_id` is a
+  sha256 of the canonical certificate body (excluding id + timestamp) — same
+  inputs → same id — and each pipeline writes one stable filename that reruns
+  overwrite. This keeps certificates diffable and lets the repo CI gate diff
+  them (below).
+- **Under the repo CI gate (Tier 2):** `ci/run_all_certified.py` reruns
+  `b13_cdl/tests/test_b13.py` alongside B1–B12, diffing regenerated vs committed
+  certificates with the shared degradation predicate (strict on
+  verdict/soundness, tolerant to timestamps and float jitter).
+- **PIR-fact view (Tier 3):** each certificate also becomes a `pir.Fact`.
+  Crucially, `CONDITIONAL(X)` is modelled as **assumption-taint** (`asm:X` from
+  the certificate's stipulations), *not* a new verdict — so it does not pre-empt
+  the DRAFT `CONDITIONAL(X)` SPEC decision, and invalidating e.g. `asm:GRH`
+  downgrades exactly the GRH-conditional facts via PIR's invalidation traversal.
 
 ## Key certified results of the delivery run
 - **ew_vacuum (HEURISTIC, warning carried):** central 2024-era inputs sit METASTABLE-side,

@@ -1,0 +1,77 @@
+{
+  "certificate_id": "b13cdl-h0_tension-1d1cfc00c30b",
+  "entry_id": "cdl-h0-tension",
+  "inputs": {
+    "units": "km/s/Mpc"
+  },
+  "notes": "Falsifier f-standard-sirens (GW sirens at +/-1 km/s/Mpc) is branch-independent. Couples to cdl-dark-energy-eos (A3): evolving w reshapes the early-branch conditional. contested: intra-branch spread.",
+  "pipeline": "h0_tension",
+  "soundness": {
+    "tag": "SOUND"
+  },
+  "stipulations": [
+    {
+      "assumed": {
+        "H0": 67.4,
+        "sigma": 0.5
+      },
+      "name": "planck2018_cmb",
+      "source": "Planck 2018, A&A 641 A6 (conditional on LCDM)"
+    },
+    {
+      "assumed": {
+        "H0": 67.97,
+        "sigma": 0.38
+      },
+      "name": "desi_bao_cmb",
+      "source": "DESI BAO + CMB, 2024-25 (conditional on LCDM)"
+    },
+    {
+      "assumed": {
+        "H0": 73.04,
+        "sigma": 1.04
+      },
+      "name": "sh0es_2022",
+      "source": "Riess et al. ApJL 934 L7 (Cepheid ladder)"
+    },
+    {
+      "assumed": {
+        "H0": 73.17,
+        "sigma": 0.86
+      },
+      "name": "ladder_jwst_2025",
+      "source": "JWST-era distance-ladder compilation (2025)"
+    },
+    {
+      "assumed": {
+        "H0": 69.8,
+        "sigma": 1.7
+      },
+      "name": "cchp_trgb_jagb",
+      "source": "Freedman et al. CCHP TRGB/JAGB (JWST)"
+    }
+  ],
+  "timestamp_utc": "2026-07-15T21:38:15Z",
+  "verdict": "NONIDENTIFIABLE(model-vs-systematic): early- and late-branch H0 are each conditional forward maps; identification requires a branch-independent probe",
+  "verdict_detail": {
+    "headline_early_vs_late_sigma": 5.8,
+    "intra_late_branch_spread_sigma": 1.77,
+    "reading": "early-branch pair internally consistent; late branch has method spread (SH0ES vs CCHP); headline tension ~5 sigma and hardening \u2014 JWST crowding checks removed the leading systematic candidate on the ladder side",
+    "tension_matrix_sigma": {
+      "desi_bao_cmb__vs__cchp_trgb_jagb": 1.05,
+      "desi_bao_cmb__vs__ladder_jwst_2025": 5.53,
+      "desi_bao_cmb__vs__sh0es_2022": 4.58,
+      "ladder_jwst_2025__vs__cchp_trgb_jagb": 1.77,
+      "planck2018_cmb__vs__cchp_trgb_jagb": 1.35,
+      "planck2018_cmb__vs__desi_bao_cmb": 0.91,
+      "planck2018_cmb__vs__ladder_jwst_2025": 5.8,
+      "planck2018_cmb__vs__sh0es_2022": 4.89,
+      "sh0es_2022__vs__cchp_trgb_jagb": 1.63,
+      "sh0es_2022__vs__ladder_jwst_2025": 0.1
+    }
+  },
+  "witness": {
+    "statement": "if a single H0 existed and both branches' conditionals held, all pairwise sigmas would be O(1); they are not",
+    "type": "branch-consistency-pattern"
+  }
+}

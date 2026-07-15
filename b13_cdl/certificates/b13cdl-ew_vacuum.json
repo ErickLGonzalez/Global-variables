@@ -1,56 +1,56 @@
 {
-  "certificate_id": "b13cdl-ew_vacuum-b7e38f54a683",
-  "pipeline": "ew_vacuum",
+  "certificate_id": "b13cdl-ew_vacuum-ea742adbc447",
   "entry_id": "cdl-ew-vacuum",
-  "timestamp_utc": "2026-07-15T18:12:28Z",
+  "inputs": {
+    "M_H": 125.2,
+    "alpha_s_MZ": 0.118,
+    "m_t_pole": 172.57
+  },
+  "notes": "Bidirectional: falsifier f-top-mass-ee (e+e- top threshold scan) decides.",
+  "pipeline": "ew_vacuum",
   "soundness": {
     "tag": "HEURISTIC",
     "warning": "ew_vacuum.critical_mh: linearized Buttazzo-2013 boundary; valid near 2013 central inputs only. SOUND upgrade: 2-loop matching + 3-loop RGE pipeline (B13 backlog item 1)."
   },
   "stipulations": [
     {
-      "name": "boundary_coefficients",
       "assumed": {
         "MH0": 129.6,
-        "mt0": 173.34,
         "as0": 0.1184,
-        "c_mt": 2.0,
         "c_as_per_unit": 714.2857142857143,
+        "c_mt": 2.0,
+        "mt0": 173.34,
         "sigma_th": 0.3
       },
+      "name": "boundary_coefficients",
       "source": "arXiv:1307.3536 (linearized)"
     },
     {
-      "name": "input_values",
       "assumed": {
-        "m_t_pole": [
-          172.57,
-          0.29
+        "M_H": [
+          125.2,
+          0.11
         ],
         "alpha_s_MZ": [
           0.118,
           0.0009
         ],
-        "M_H": [
-          125.2,
-          0.11
+        "m_t_pole": [
+          172.57,
+          0.29
         ]
       },
+      "name": "input_values",
       "source": "PDG-era, stipulated"
     }
   ],
-  "inputs": {
-    "m_t_pole": 172.57,
-    "alpha_s_MZ": 0.118,
-    "M_H": 125.2
-  },
+  "timestamp_utc": "2026-07-15T21:38:15Z",
   "verdict": "CONDITIONAL(m_t,alpha_s,M_H)-value: METASTABLE-side",
   "verdict_detail": {
     "M_H_critical_GeV": 128.346,
-    "sigma_boundary_GeV": 0.916,
     "delta_GeV": -3.146,
+    "interpretation": "negative delta = central values on metastable side; |n_sigma| < 2 means verdict is input-limited, not settled",
     "n_sigma_from_boundary": -3.408,
-    "interpretation": "negative delta = central values on metastable side; |n_sigma| < 2 means verdict is input-limited, not settled"
-  },
-  "notes": "Bidirectional: falsifier f-top-mass-ee (e+e- top threshold scan) decides."
+    "sigma_boundary_GeV": 0.916
+  }
 }

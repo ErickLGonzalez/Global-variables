@@ -1,0 +1,40 @@
+{
+  "certificate_id": "b13cdl-varying_constants-36713bdcd081",
+  "entry_id": "cdl-varying-constants",
+  "inputs": {
+    "n_sigma_exclusion": 5
+  },
+  "notes": "Filed as REJECTED per erratum culture, not silently dropped. General varying-constants searches (f-clock-drift) remain live falsifiers for the alpha and mu rows.",
+  "pipeline": "varying_constants",
+  "soundness": {
+    "tag": "SOUND"
+  },
+  "stipulations": [
+    {
+      "assumed": {
+        "|Gdot/G|_per_yr": 7e-11
+      },
+      "name": "LNH_prediction",
+      "source": "Dirac (1937); |Gdot/G| ~ H_0"
+    },
+    {
+      "assumed": {
+        "central_per_yr": 7.1e-14,
+        "sigma_per_yr": 7.6e-14
+      },
+      "name": "LLR_measurement",
+      "source": "Class. Quantum Grav. 35, 035015 (2018)"
+    }
+  ],
+  "timestamp_utc": "2026-07-15T21:38:15Z",
+  "verdict": "REJECTED: Dirac-LNH varying-G prediction excluded",
+  "verdict_detail": {
+    "exclusion_margin_orders_of_magnitude": 2.19,
+    "llr_bound_5sigma_per_yr": 4.51e-13,
+    "lnh_prediction_per_yr": 7e-11
+  },
+  "witness": {
+    "statement": "LNH prediction exceeds the 5-sigma LLR band by ~2.2 orders of magnitude",
+    "type": "interval-separation"
+  }
+}

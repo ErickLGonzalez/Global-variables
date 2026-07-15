@@ -1,0 +1,677 @@
+{
+  "facts": [
+    {
+      "analyzer": {
+        "id": "b13cdl.ew_vacuum",
+        "tag": "HEURISTIC",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:boundary_coefficients",
+        "asm:input_values"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-ew-vacuum",
+        "verdict_detail": {
+          "M_H_critical_GeV": 128.346,
+          "delta_GeV": -3.146,
+          "interpretation": "negative delta = central values on metastable side; |n_sigma| < 2 means verdict is input-limited, not settled",
+          "n_sigma_from_boundary": -3.408,
+          "sigma_boundary_GeV": 0.916
+        },
+        "verdict_string": "CONDITIONAL(m_t,alpha_s,M_H)-value: METASTABLE-side",
+        "witness": null
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E3",
+      "fact_id": "fct_sha256_69c8d793643e4d01",
+      "impossibility_certificate": null,
+      "layer": "MEASUREMENT",
+      "measurement_interface": [
+        "arXiv:1307.3536 (linearized)",
+        "PDG-era, stipulated"
+      ],
+      "namespace": "domain",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-ew_vacuum-ea742adbc447",
+          "span": "ew_vacuum"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": null,
+      "warnings": [
+        {
+          "location": "ew_vacuum",
+          "message": "ew_vacuum.critical_mh: linearized Buttazzo-2013 boundary; valid near 2013 central inputs only. SOUND upgrade: 2-loop matching + 3-loop RGE pipeline (B13 backlog item 1)."
+        }
+      ],
+      "witness": null
+    },
+    {
+      "analyzer": {
+        "id": "b13cdl.strong_cp",
+        "tag": "SOUND",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:lattice_coefficient_dn_per_theta",
+        "asm:nEDM_limit",
+        "asm:conservative_convention"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-strong-cp",
+        "verdict_detail": {
+          "exact_fractions": {
+            "central": "9/76000000000",
+            "conservative": "1/4500000000"
+          },
+          "theta_bar_upper_central": 1.1842105263157895e-10,
+          "theta_bar_upper_conservative": 2.2222222222222221e-10
+        },
+        "verdict_string": "CONDITIONAL(lattice-k)-value: |theta_bar| PERMITTED interval [0, upper)",
+        "witness": {
+          "statement": "upper bounds are exact rationals; any theta_bar above the conservative bound implies |d_n| above the 90% CL limit",
+          "type": "exact-division"
+        }
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E0",
+      "fact_id": "fct_sha256_93b3949cea4a1e8a",
+      "impossibility_certificate": null,
+      "layer": "MEASUREMENT",
+      "measurement_interface": [
+        "arXiv:1902.03254",
+        "arXiv:2001.11966",
+        "B13-CDL design \u00a74"
+      ],
+      "namespace": "domain",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-strong_cp-af75156e9991",
+          "span": "strong_cp"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": "PERMITTED",
+      "warnings": [],
+      "witness": null
+    },
+    {
+      "analyzer": {
+        "id": "b13cdl.varying_constants",
+        "tag": "SOUND",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:LNH_prediction",
+        "asm:LLR_measurement"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-varying-constants",
+        "verdict_detail": {
+          "exclusion_margin_orders_of_magnitude": 2.19,
+          "llr_bound_5sigma_per_yr": 4.51e-13,
+          "lnh_prediction_per_yr": 7e-11
+        },
+        "verdict_string": "REJECTED: Dirac-LNH varying-G prediction excluded",
+        "witness": {
+          "statement": "LNH prediction exceeds the 5-sigma LLR band by ~2.2 orders of magnitude",
+          "type": "interval-separation"
+        }
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E1",
+      "fact_id": "fct_sha256_67d69a52c0aabc8e",
+      "impossibility_certificate": null,
+      "layer": "MEASUREMENT",
+      "measurement_interface": [
+        "Dirac (1937); |Gdot/G| ~ H_0",
+        "Class. Quantum Grav. 35, 035015 (2018)"
+      ],
+      "namespace": "domain",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-varying_constants-36713bdcd081",
+          "span": "varying_constants"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": "REJECTED",
+      "warnings": [],
+      "witness": null
+    },
+    {
+      "analyzer": {
+        "id": "b13cdl.grh_miller",
+        "tag": "SOUND",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:GRH",
+        "asm:witness_bound"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-rh-grh",
+        "verdict_detail": {
+          "results": [
+            {
+              "grh_base_bound": 41,
+              "n": "97",
+              "verdict": "PRIME CONDITIONAL(GRH)",
+              "witness_base": null
+            },
+            {
+              "grh_base_bound": 80,
+              "n": "561",
+              "verdict": "COMPOSITE (UNCONDITIONAL)",
+              "witness_base": 2
+            },
+            {
+              "grh_base_bound": 116,
+              "n": "2047",
+              "verdict": "COMPOSITE (UNCONDITIONAL)",
+              "witness_base": 3
+            },
+            {
+              "grh_base_bound": 399,
+              "n": "1373653",
+              "verdict": "COMPOSITE (UNCONDITIONAL)",
+              "witness_base": 5
+            },
+            {
+              "grh_base_bound": 581,
+              "n": "25326001",
+              "verdict": "COMPOSITE (UNCONDITIONAL)",
+              "witness_base": 7
+            },
+            {
+              "grh_base_bound": 2027,
+              "n": "67280421310721",
+              "verdict": "PRIME CONDITIONAL(GRH)",
+              "witness_base": null
+            },
+            {
+              "grh_base_bound": 958,
+              "n": "3215031751",
+              "verdict": "COMPOSITE (UNCONDITIONAL)",
+              "witness_base": 11
+            },
+            {
+              "grh_base_bound": 3575,
+              "n": "2305843009213693951",
+              "verdict": "PRIME CONDITIONAL(GRH)",
+              "witness_base": null
+            }
+          ]
+        },
+        "verdict_string": "Mixed per-n verdicts; see verdict_detail (asymmetry preserved)",
+        "witness": {
+          "statement": "each COMPOSITE row carries a base a that any third party can re-verify with one modular exponentiation chain",
+          "type": "miller-witness-bases"
+        }
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E0",
+      "fact_id": "fct_sha256_6b6d8a04ca309ce0",
+      "impossibility_certificate": null,
+      "layer": "UNIVERSAL",
+      "measurement_interface": [],
+      "namespace": "invariant",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-grh_miller-1103a3a520c8",
+          "span": "grh_miller"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": null,
+      "warnings": [],
+      "witness": null
+    },
+    {
+      "analyzer": {
+        "id": "b13cdl.tunnell_bsd",
+        "tag": "SOUND",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:weak_BSD_for_E_n"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-bsd-tunnell",
+        "verdict_detail": {
+          "cross_check_vs_known_table": "PASS",
+          "results": [
+            {
+              "A": 2,
+              "B": 2,
+              "n": 1,
+              "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+              "witness": {
+                "A": 2,
+                "B": 2,
+                "relation": "A != 2B"
+              }
+            },
+            {
+              "A": 2,
+              "B": 2,
+              "n": 2,
+              "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+              "witness": {
+                "A": 2,
+                "B": 2,
+                "relation": "A != 2B"
+              }
+            },
+            {
+              "A": 4,
+              "B": 4,
+              "n": 3,
+              "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+              "witness": {
+                "A": 4,
+                "B": 4,
+                "relation": "A != 2B"
+              }
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 5,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 6,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 7,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 4,
+              "B": 4,
+              "n": 10,
+              "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+              "witness": {
+                "A": 4,
+                "B": 4,
+                "relation": "A != 2B"
+              }
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 13,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 14,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 15,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 21,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 22,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 23,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 30,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 31,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 8,
+              "B": 4,
+              "n": 34,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 32,
+              "B": 16,
+              "n": 41,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            },
+            {
+              "A": 0,
+              "B": 0,
+              "n": 157,
+              "verdict": "CONGRUENT CONDITIONAL(BSD)",
+              "witness": null
+            }
+          ]
+        },
+        "verdict_string": "Mixed per-n verdicts; see verdict_detail (asymmetry preserved)",
+        "witness": {
+          "statement": "each NOT_CONGRUENT row carries exact (A,B) counts, re-verifiable by exhaustive enumeration",
+          "type": "ternary-form-counts"
+        }
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E0",
+      "fact_id": "fct_sha256_f7aaee4623f9a29f",
+      "impossibility_certificate": null,
+      "layer": "UNIVERSAL",
+      "measurement_interface": [],
+      "namespace": "invariant",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-tunnell_bsd-666c34c46989",
+          "span": "tunnell_bsd"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": null,
+      "warnings": [],
+      "witness": null
+    },
+    {
+      "analyzer": {
+        "id": "b13cdl.muon_g2",
+        "tag": "SOUND",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:exp_2025",
+        "asm:wp25_lattice",
+        "asm:wp20_datadriven"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-muon-g2",
+        "verdict_detail": {
+          "reading": {
+            "exp_vs_wp20": "strong tension (~5.8 sigma) under data-driven HVP",
+            "exp_vs_wp25": "agreement (~0.6 sigma) \u2014 no new-physics signal under lattice HVP",
+            "wp25_vs_wp20": "the discrepancy lives INSIDE theory (HVP method), not between experiment and theory"
+          },
+          "tension_matrix_sigma": {
+            "exp_vs_wp20": 5.76,
+            "exp_vs_wp25": 0.6,
+            "wp25_vs_wp20": 2.96
+          }
+        },
+        "verdict_string": "NONIDENTIFIABLE(HVP-method): experiment-vs-SM verdict is not method-invariant; pipeline declines a single sigma",
+        "witness": {
+          "statement": "the two theory branches differ by more than the experiment-theory gap under either branch; verdict identification requires an external selector (MUonE, new e+e- data) \u2014 see falsifiers f-muone, f-ee-hadrons-new",
+          "type": "method-branch-divergence"
+        }
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E2",
+      "fact_id": "fct_sha256_86dcacab8e9bc4cb",
+      "impossibility_certificate": null,
+      "layer": "MEASUREMENT",
+      "measurement_interface": [
+        "Muon g-2 Collab final report (2025)",
+        "Theory Initiative White Paper 2025 (lattice HVP)",
+        "Theory Initiative White Paper 2020 (e+e- HVP)"
+      ],
+      "namespace": "domain",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-muon_g2-4dfb0a27ac03",
+          "span": "muon_g2"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": "NONIDENTIFIABLE",
+      "warnings": [],
+      "witness": null
+    },
+    {
+      "analyzer": {
+        "id": "b13cdl.h0_tension",
+        "tag": "SOUND",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:planck2018_cmb",
+        "asm:desi_bao_cmb",
+        "asm:sh0es_2022",
+        "asm:ladder_jwst_2025",
+        "asm:cchp_trgb_jagb"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-h0-tension",
+        "verdict_detail": {
+          "headline_early_vs_late_sigma": 5.8,
+          "intra_late_branch_spread_sigma": 1.77,
+          "reading": "early-branch pair internally consistent; late branch has method spread (SH0ES vs CCHP); headline tension ~5 sigma and hardening \u2014 JWST crowding checks removed the leading systematic candidate on the ladder side",
+          "tension_matrix_sigma": {
+            "desi_bao_cmb__vs__cchp_trgb_jagb": 1.05,
+            "desi_bao_cmb__vs__ladder_jwst_2025": 5.53,
+            "desi_bao_cmb__vs__sh0es_2022": 4.58,
+            "ladder_jwst_2025__vs__cchp_trgb_jagb": 1.77,
+            "planck2018_cmb__vs__cchp_trgb_jagb": 1.35,
+            "planck2018_cmb__vs__desi_bao_cmb": 0.91,
+            "planck2018_cmb__vs__ladder_jwst_2025": 5.8,
+            "planck2018_cmb__vs__sh0es_2022": 4.89,
+            "sh0es_2022__vs__cchp_trgb_jagb": 1.63,
+            "sh0es_2022__vs__ladder_jwst_2025": 0.1
+          }
+        },
+        "verdict_string": "NONIDENTIFIABLE(model-vs-systematic): early- and late-branch H0 are each conditional forward maps; identification requires a branch-independent probe",
+        "witness": {
+          "statement": "if a single H0 existed and both branches' conditionals held, all pairwise sigmas would be O(1); they are not",
+          "type": "branch-consistency-pattern"
+        }
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E2",
+      "fact_id": "fct_sha256_39c61fcec7899466",
+      "impossibility_certificate": null,
+      "layer": "MEASUREMENT",
+      "measurement_interface": [
+        "Planck 2018, A&A 641 A6 (conditional on LCDM)",
+        "DESI BAO + CMB, 2024-25 (conditional on LCDM)",
+        "Riess et al. ApJL 934 L7 (Cepheid ladder)",
+        "JWST-era distance-ladder compilation (2025)",
+        "Freedman et al. CCHP TRGB/JAGB (JWST)"
+      ],
+      "namespace": "domain",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-h0_tension-1d1cfc00c30b",
+          "span": "h0_tension"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": "NONIDENTIFIABLE",
+      "warnings": [],
+      "witness": null
+    },
+    {
+      "analyzer": {
+        "id": "b13cdl.coverage",
+        "tag": "SOUND",
+        "version": "0.1.0"
+      },
+      "assumptions": [
+        "asm:liveness_rule"
+      ],
+      "confidence": null,
+      "content": {
+        "entry_id": "cdl-rh-grh",
+        "verdict_detail": {
+          "admission_rule": "ADMIT new entry iff it (a) touches a block x predicate cell with < 3 current entries, or (b) supplies a new compute hook (pipeline) for an existing cell. Otherwise DEPRIORITIZE.",
+          "bidirectional_entries_without_falsifiers": [
+            "A10",
+            "M4",
+            "M5",
+            "M7",
+            "M8"
+          ],
+          "falsifier_liveness": {
+            "f-0vbb-tonne": "live",
+            "f-abc-triple": "live",
+            "f-beat-gw": "live",
+            "f-clock-drift": "latent (gap 1.0 OOM)",
+            "f-ee-hadrons-new": "live",
+            "f-hyperk-dune": "live",
+            "f-llr-g": "closed_decisive",
+            "f-muone": "live",
+            "f-nedm-next": "latent (gap 1.3 OOM)",
+            "f-poly-sat-solver": "live",
+            "f-ramanujan-violation": "live",
+            "f-stage5-spectroscopy": "live",
+            "f-standard-sirens": "live",
+            "f-top-mass-ee": "live",
+            "f-zero-off-line": "live"
+          },
+          "predicate_counts": {
+            "Cau": 6,
+            "Cmp": 10,
+            "Pos": 9,
+            "RG": 7,
+            "Sym": 11,
+            "Thm": 11,
+            "Top": 5,
+            "Uni": 1
+          },
+          "saturated_cells": {
+            "G|RG": [
+              "A10",
+              "A12",
+              "A15"
+            ],
+            "Lambda|Pos": [
+              "A2",
+              "A3",
+              "A15"
+            ],
+            "alpha|Sym": [
+              "A5",
+              "A12",
+              "A14"
+            ],
+            "initial_parameters|Cau": [
+              "A3",
+              "A9",
+              "A15"
+            ],
+            "initial_parameters|Pos": [
+              "A3",
+              "A9",
+              "A15"
+            ],
+            "lambda_H|RG": [
+              "A1",
+              "A6",
+              "A10"
+            ]
+          },
+          "scarce_predicates": [
+            "Uni"
+          ]
+        },
+        "verdict_string": "Uni-column scarcity CONFIRMED; Stage-4 audit PASS; falsifier linkage GAPS: ['A10', 'M4', 'M5', 'M7', 'M8']",
+        "witness": null
+      },
+      "correlator": null,
+      "created_at": "2026-07-15T21:38:15Z",
+      "depends_on_facts": [],
+      "evidence_level": "E0",
+      "fact_id": "fct_sha256_1f6687cc64087b1f",
+      "impossibility_certificate": null,
+      "layer": "UNIVERSAL",
+      "measurement_interface": [],
+      "namespace": "analyst",
+      "pir_level": "L2",
+      "similarity": null,
+      "source_spans": [
+        {
+          "artifact_id": "b13cdl-coverage-ca51665a144c",
+          "span": "coverage"
+        }
+      ],
+      "status": "SUPPORTED",
+      "verdict": null,
+      "warnings": [],
+      "witness": null
+    }
+  ],
+  "note": "CONDITIONAL(X) is modelled as assumption-taint (asm:X), not a new verdict; invalidating an assumption downgrades exactly its dependent facts.",
+  "pir_view_version": "0.1",
+  "source": "b13_cdl pipelines -> pir.Fact (Tier-3 bridge)"
+}

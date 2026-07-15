@@ -40,6 +40,8 @@ from typing import Any, Dict, List, Optional, Tuple
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CERT_DIR = os.path.join(ROOT, "certificates")
 TESTS_DIR = os.path.join(ROOT, "tests")
+B13_CERT_DIR = os.path.join(ROOT, "b13_cdl", "certificates")
+B13_TEST = os.path.join(ROOT, "b13_cdl", "tests", "test_b13.py")
 
 # Fields whose values must never silently regress. Compared as exact strings.
 _CERTIFICATION_FLAGS = ("hard_constraints_certified", "score")
@@ -48,7 +50,8 @@ _STRING_STATUS_KEYS = ("status", "verdict", "outcome")
 _FLOAT_RTOL = 1e-6
 _FLOAT_ATOL = 1e-9
 # Keys that are expected to change every run and are not degradations.
-_VOLATILE_KEYS = frozenset({"timestamp_utc", "generated", "generated_at", "wall_time_s"})
+_VOLATILE_KEYS = frozenset({"timestamp_utc", "generated", "generated_at",
+                            "wall_time_s", "created_at"})
 
 
 # --------------------------------------------------------------------------- #
@@ -167,13 +170,29 @@ def _library_versions() -> Dict[str, str]:
     return vers
 
 
-def _snapshot_certs() -> Dict[str, str]:
-    """Return {basename: raw-text} of every committed certificate."""
+def _snapshot_certs(cert_dir: str = CERT_DIR) -> Dict[str, str]:
+    """Return {basename: raw-text} of every committed certificate in ``cert_dir``."""
     snap = {}
-    for p in glob.glob(os.path.join(CERT_DIR, "*.json")):
+    for p in glob.glob(os.path.join(cert_dir, "*.json")):
         with open(p) as f:
             snap[os.path.basename(p)] = f.read()
     return snap
+
+
+def _suites() -> List[Dict[str, Any]]:
+    """The certified suites to re-run, each pinned to its own certificate zone.
+
+    A suite = {name, cert_dir, tests}. B1-B12 write to certificates/; B13-CDL
+    writes to b13_cdl/certificates/. Keeping the zones separate lets each be
+    snapshotted, diffed, and restored independently."""
+    suites = [{
+        "name": "benchmarks",
+        "cert_dir": CERT_DIR,
+        "tests": sorted(glob.glob(os.path.join(TESTS_DIR, "test_b*.py"))),
+    }]
+    if os.path.exists(B13_TEST):
+        suites.append({"name": "b13-cdl", "cert_dir": B13_CERT_DIR, "tests": [B13_TEST]})
+    return suites
 
 
 def run(build_dir: str, seed: str = "0", verbose: bool = True) -> Dict:
@@ -181,60 +200,63 @@ def run(build_dir: str, seed: str = "0", verbose: bool = True) -> Dict:
     regen_dir = os.path.join(build_dir, "regenerated")
     os.makedirs(regen_dir, exist_ok=True)
 
-    committed_snapshot = _snapshot_certs()
-    tests = sorted(glob.glob(os.path.join(TESTS_DIR, "test_b*.py")))
     env = dict(os.environ, PYTHONHASHSEED=seed, PIR_CI_SEED=seed)
-
     benchmarks: List[Dict] = []
     degraded_any = False
     failed_any = False
+    all_tests: List[str] = []
 
-    for test_path in tests:
-        name = os.path.basename(test_path)
-        # Which certs existed before this test ran.
-        before = _snapshot_certs()
-        proc = subprocess.run(
-            [sys.executable, test_path], cwd=ROOT, env=env,
-            capture_output=True, text=True,
-        )
-        ok = proc.returncode == 0
-        entry: Dict[str, Any] = {"test": name, "passed": ok, "returncode": proc.returncode}
-        if not ok:
-            failed_any = True
-            entry["stderr_tail"] = proc.stderr.strip().splitlines()[-3:]
+    for suite in _suites():
+        cert_dir = suite["cert_dir"]
+        committed_snapshot = _snapshot_certs(cert_dir)
+        for test_path in suite["tests"]:
+            all_tests.append(test_path)
+            name = os.path.basename(test_path)
+            before = _snapshot_certs(cert_dir)
+            proc = subprocess.run(
+                [sys.executable, test_path], cwd=ROOT, env=env,
+                capture_output=True, text=True,
+            )
+            ok = proc.returncode == 0
+            entry: Dict[str, Any] = {"test": name, "suite": suite["name"],
+                                     "passed": ok, "returncode": proc.returncode}
+            if not ok:
+                failed_any = True
+                entry["stderr_tail"] = proc.stderr.strip().splitlines()[-3:]
+                benchmarks.append(entry)
+                if verbose:
+                    print(f"[FAIL] {name} (exit {proc.returncode})")
+                continue
+
+            after = _snapshot_certs(cert_dir)
+            touched = [b for b, txt in after.items() if before.get(b) != txt]
+            entry["certificates"] = []
+            for b in touched:
+                regenerated = json.loads(after[b])
+                with open(os.path.join(regen_dir, b), "w") as f:
+                    json.dump(regenerated, f, indent=2, sort_keys=True)
+                committed_txt = committed_snapshot.get(b)
+                cert_result: Dict[str, Any] = {"name": b}
+                if committed_txt is None:
+                    cert_result["status"] = "NEW"
+                else:
+                    degraded, reasons = is_degradation(json.loads(committed_txt), regenerated)
+                    cert_result["status"] = "DEGRADED" if degraded else "OK"
+                    cert_result["reasons"] = reasons
+                    if degraded:
+                        degraded_any = True
+                entry["certificates"].append(cert_result)
             benchmarks.append(entry)
             if verbose:
-                print(f"[FAIL] {name} (exit {proc.returncode})")
-            continue
+                tag = "OK" if all(c.get("status") in ("OK", "NEW") for c in entry["certificates"]) else "DEGRADED"
+                print(f"[{tag}] {name}  ({len(touched)} cert(s))")
 
-        # Detect which certificate files this test wrote (changed vs before).
-        after = _snapshot_certs()
-        touched = [b for b, txt in after.items() if before.get(b) != txt]
-        entry["certificates"] = []
-        for b in touched:
-            regenerated = json.loads(after[b])
-            with open(os.path.join(regen_dir, b), "w") as f:
-                json.dump(regenerated, f, indent=2, sort_keys=True)
-            committed_txt = committed_snapshot.get(b)
-            cert_result: Dict[str, Any] = {"name": b}
-            if committed_txt is None:
-                cert_result["status"] = "NEW"  # no committed baseline yet
-            else:
-                degraded, reasons = is_degradation(json.loads(committed_txt), regenerated)
-                cert_result["status"] = "DEGRADED" if degraded else "OK"
-                cert_result["reasons"] = reasons
-                if degraded:
-                    degraded_any = True
-            entry["certificates"].append(cert_result)
-        benchmarks.append(entry)
-        if verbose:
-            tag = "OK" if all(c.get("status") in ("OK", "NEW") for c in entry["certificates"]) else "DEGRADED"
-            print(f"[{tag}] {name}  ({len(touched)} cert(s))")
+        # Restore this zone's committed certificates exactly.
+        for b, txt in committed_snapshot.items():
+            with open(os.path.join(cert_dir, b), "w") as f:
+                f.write(txt)
 
-    # Restore committed certificates exactly (leave the tree unchanged).
-    for b, txt in committed_snapshot.items():
-        with open(os.path.join(CERT_DIR, b), "w") as f:
-            f.write(txt)
+    tests = all_tests
 
     manifest = {
         "tool": "ci/run_all_certified.py",
