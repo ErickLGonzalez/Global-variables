@@ -131,6 +131,20 @@ def canonicalize(kind: str, **artifact) -> Tuple[dict, str]:
         C = np.asarray(artifact["C"], dtype=complex)
         feats["psd_signature"] = psd_signature(C.real)
         feats["bloch_singular_values"] = bloch_singular_values(C)
+    elif kind == "metric_pair":
+        # GfE-imported mathematics (R34, Sec II.A): the Lorentz/GL-
+        # invariant spectrum of a metric PAIR is the generalized
+        # eigenvalue set of (G, g) -- eigenvalues of g^{-1} G, invariant
+        # under simultaneous congruence g -> A g A^T, G -> A G A^T.
+        # The eigenvalue-log core of the GQRE is the Burg/Stein
+        # divergence D(g||G) = sum(lam - ln lam - 1) >= 0, = 0 iff G = g.
+        g = np.asarray(artifact["g"], dtype=float)
+        G = np.asarray(artifact["G"], dtype=float)
+        lam = np.sort(np.real(np.linalg.eigvals(np.linalg.solve(g, G))))
+        quantized = tuple(float(np.round(l / 1e-6) * 1e-6) for l in lam)
+        feats["pair_spectrum"] = quantized
+        feats["burg_divergence"] = float(np.round(
+            np.sum(lam - np.log(lam) - 1.0) / 1e-9) * 1e-9)
     elif kind == "covariance":
         C = np.asarray(artifact["C"])
         feats["psd_signature"] = psd_signature(C)
