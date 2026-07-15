@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CDL pipeline certificate",
+  "type": "object",
+  "required": ["certificate_id", "pipeline", "entry_id", "timestamp_utc",
+               "soundness", "stipulations", "inputs", "verdict"],
+  "properties": {
+    "certificate_id": {"type": "string"},
+    "pipeline": {"type": "string"},
+    "entry_id": {"type": "string"},
+    "timestamp_utc": {"type": "string"},
+    "soundness": {
+      "type": "object",
+      "required": ["tag"],
+      "properties": {
+        "tag": {"type": "string", "enum": ["SOUND", "HEURISTIC"]},
+        "warning": {"type": "string", "description": "Required if HEURISTIC: located warning naming the approximation and the SOUND upgrade path"}
+      }
+    },
+    "stipulations": {
+      "type": "array",
+      "items": {"type": "object",
+                "required": ["name", "assumed"],
+                "properties": {"name": {"type": "string"},
+                                "assumed": {},
+                                "source": {"type": "string"}}},
+      "description": "Named unknowns and assumed values/truths the verdict is conditional on (m-layer analogue)"
+    },
+    "inputs": {"type": "object"},
+    "verdict": {"type": "string"},
+    "verdict_detail": {"type": "object"},
+    "witness": {"description": "Independently checkable witness (SAT-model / negative-pivot analogue) where applicable"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

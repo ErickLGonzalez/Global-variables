@@ -1,0 +1,82 @@
+{
+  "certificate_id": "b13cdl-grh_miller-a3e7f3bfd2a4",
+  "pipeline": "grh_miller",
+  "entry_id": "cdl-rh-grh",
+  "timestamp_utc": "2026-07-15T18:12:28Z",
+  "soundness": {
+    "tag": "SOUND"
+  },
+  "stipulations": [
+    {
+      "name": "GRH",
+      "assumed": true,
+      "source": "Stipulated only for PRIME verdicts; COMPOSITE verdicts are unconditional"
+    },
+    {
+      "name": "witness_bound",
+      "assumed": "a <= 2*ln(n)^2",
+      "source": "Miller (1976); Bach (1990)"
+    }
+  ],
+  "inputs": {
+    "test_set_size": 8
+  },
+  "verdict": "Mixed per-n verdicts; see verdict_detail (asymmetry preserved)",
+  "verdict_detail": {
+    "results": [
+      {
+        "n": "97",
+        "verdict": "PRIME CONDITIONAL(GRH)",
+        "witness_base": null,
+        "grh_base_bound": 41
+      },
+      {
+        "n": "561",
+        "verdict": "COMPOSITE (UNCONDITIONAL)",
+        "witness_base": 2,
+        "grh_base_bound": 80
+      },
+      {
+        "n": "2047",
+        "verdict": "COMPOSITE (UNCONDITIONAL)",
+        "witness_base": 3,
+        "grh_base_bound": 116
+      },
+      {
+        "n": "1373653",
+        "verdict": "COMPOSITE (UNCONDITIONAL)",
+        "witness_base": 5,
+        "grh_base_bound": 399
+      },
+      {
+        "n": "25326001",
+        "verdict": "COMPOSITE (UNCONDITIONAL)",
+        "witness_base": 7,
+        "grh_base_bound": 581
+      },
+      {
+        "n": "67280421310721",
+        "verdict": "PRIME CONDITIONAL(GRH)",
+        "witness_base": null,
+        "grh_base_bound": 2027
+      },
+      {
+        "n": "3215031751",
+        "verdict": "COMPOSITE (UNCONDITIONAL)",
+        "witness_base": 11,
+        "grh_base_bound": 958
+      },
+      {
+        "n": "2305843009213693951",
+        "verdict": "PRIME CONDITIONAL(GRH)",
+        "witness_base": null,
+        "grh_base_bound": 3575
+      }
+    ]
+  },
+  "notes": "AKS (2002) provides the unconditional-polynomial-time upgrade path; this pipeline exists to encode the CONDITIONAL(GRH) verdict shape, not for speed.",
+  "witness": {
+    "type": "miller-witness-bases",
+    "statement": "each COMPOSITE row carries a base a that any third party can re-verify with one modular exponentiation chain"
+  }
+}

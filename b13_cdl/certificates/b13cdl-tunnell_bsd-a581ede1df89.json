@@ -1,0 +1,191 @@
+{
+  "certificate_id": "b13cdl-tunnell_bsd-a581ede1df89",
+  "pipeline": "tunnell_bsd",
+  "entry_id": "cdl-bsd-tunnell",
+  "timestamp_utc": "2026-07-15T18:12:28Z",
+  "soundness": {
+    "tag": "SOUND"
+  },
+  "stipulations": [
+    {
+      "name": "weak_BSD_for_E_n",
+      "assumed": true,
+      "source": "Stipulated only for CONGRUENT verdicts; NOT_CONGRUENT rows are unconditional (Tunnell 1983 forward direction)"
+    }
+  ],
+  "inputs": {
+    "test_set": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      10,
+      13,
+      14,
+      15,
+      21,
+      22,
+      23,
+      30,
+      31,
+      34,
+      41,
+      157
+    ]
+  },
+  "verdict": "Mixed per-n verdicts; see verdict_detail (asymmetry preserved)",
+  "verdict_detail": {
+    "results": [
+      {
+        "n": 1,
+        "A": 2,
+        "B": 2,
+        "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+        "witness": {
+          "A": 2,
+          "B": 2,
+          "relation": "A != 2B"
+        }
+      },
+      {
+        "n": 2,
+        "A": 2,
+        "B": 2,
+        "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+        "witness": {
+          "A": 2,
+          "B": 2,
+          "relation": "A != 2B"
+        }
+      },
+      {
+        "n": 3,
+        "A": 4,
+        "B": 4,
+        "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+        "witness": {
+          "A": 4,
+          "B": 4,
+          "relation": "A != 2B"
+        }
+      },
+      {
+        "n": 5,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 6,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 7,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 10,
+        "A": 4,
+        "B": 4,
+        "verdict": "NOT_CONGRUENT (UNCONDITIONAL, Tunnell forward direction)",
+        "witness": {
+          "A": 4,
+          "B": 4,
+          "relation": "A != 2B"
+        }
+      },
+      {
+        "n": 13,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 14,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 15,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 21,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 22,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 23,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 30,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 31,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 34,
+        "A": 8,
+        "B": 4,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 41,
+        "A": 32,
+        "B": 16,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      },
+      {
+        "n": 157,
+        "A": 0,
+        "B": 0,
+        "verdict": "CONGRUENT CONDITIONAL(BSD)",
+        "witness": null
+      }
+    ],
+    "cross_check_vs_known_table": "PASS"
+  },
+  "notes": "Negative-control: cross-checked against the classical congruent-number table (5,6,7 congruent; 1,2,3 not; 157 the famous Zagier example).",
+  "witness": {
+    "type": "ternary-form-counts",
+    "statement": "each NOT_CONGRUENT row carries exact (A,B) counts, re-verifiable by exhaustive enumeration"
+  }
+}

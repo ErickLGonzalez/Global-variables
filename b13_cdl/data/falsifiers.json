@@ -1,0 +1,95 @@
+{
+  "falsifier_ledger_version": "1.0",
+  "liveness_rule": "live iff required_capability within one order of magnitude of current_capability (Survey Rec-2); computed by coverage.py, not hand-asserted",
+  "falsifiers": [
+    {"id": "f-top-mass-ee", "entry_id": "cdl-ew-vacuum",
+     "description": "Future e+e- top-threshold scan determines m_t(pole) precisely, settling stable vs metastable",
+     "required_capability": {"quantity": "sigma(m_t) [GeV]", "value": 0.05},
+     "current_capability": {"quantity": "sigma(m_t) [GeV]", "value": 0.3},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-nedm-next", "entry_id": "cdl-strong-cp",
+     "description": "Next-gen nEDM (n2EDM, TUCAN) improves |d_n| bound; nonzero measures theta-bar",
+     "required_capability": {"quantity": "|d_n| sensitivity [e cm]", "value": 1e-27},
+     "current_capability": {"quantity": "|d_n| limit [e cm]", "value": 1.8e-26},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-clock-drift", "entry_id": "cdl-varying-constants",
+     "description": "Optical-clock alpha-drift detection at current 1e-18/yr sensitivity",
+     "required_capability": {"quantity": "alpha-dot/alpha [1/yr]", "value": 1e-19},
+     "current_capability": {"quantity": "alpha-dot/alpha [1/yr]", "value": 1.1e-18},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-llr-g", "entry_id": "cdl-varying-constants",
+     "description": "LLR Gdot/G bound vs Dirac LNH prediction ~H0 ~ 7e-11/yr; LNH already excluded by ~3 OOM",
+     "required_capability": {"quantity": "Gdot/G [1/yr]", "value": 7e-11},
+     "current_capability": {"quantity": "Gdot/G bound [1/yr]", "value": 7.6e-14},
+     "direction": "already_decisive"},
+
+    {"id": "f-muone", "entry_id": "cdl-muon-g2",
+     "description": "MUonE spacelike HVP measurement independently selects data-driven vs lattice branch",
+     "required_capability": {"quantity": "HVP,LO precision [1e-11]", "value": 30},
+     "current_capability": {"quantity": "HVP,LO lattice-vs-data spread [1e-11]", "value": 200},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-ee-hadrons-new", "entry_id": "cdl-muon-g2",
+     "description": "New e+e- to hadrons datasets (Belle II, BESIII, BaBar reanalyses) resolve CMD-3 vs prior catalogue",
+     "required_capability": {"quantity": "2pi cross-section consistency [sigma]", "value": 2},
+     "current_capability": {"quantity": "CMD-3 vs KLOE/BaBar discrepancy [sigma]", "value": 5},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-standard-sirens", "entry_id": "cdl-h0-tension",
+     "description": "GW standard-siren H0 catalogue at +/-1 km/s/Mpc, ladder- and sound-horizon-independent",
+     "required_capability": {"quantity": "sigma(H0) [km/s/Mpc]", "value": 1.0},
+     "current_capability": {"quantity": "siren sigma(H0) [km/s/Mpc]", "value": 4.0},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-stage5-spectroscopy", "entry_id": "cdl-dark-energy-eos",
+     "description": "Stage-V spectroscopic survey pins w0, wa beyond DESI",
+     "required_capability": {"quantity": "sigma(w0)", "value": 0.02},
+     "current_capability": {"quantity": "sigma(w0) DESI-era", "value": 0.06},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-hyperk-dune", "entry_id": "cdl-proton-decay",
+     "description": "Hyper-K/JUNO/DUNE extend tau_p reach; observation measures M_X",
+     "required_capability": {"quantity": "tau_p reach [yr]", "value": 1e35},
+     "current_capability": {"quantity": "tau_p limit [yr]", "value": 2.4e34},
+     "direction": "larger_is_better"},
+
+    {"id": "f-0vbb-tonne", "entry_id": "cdl-neutrino-block",
+     "description": "Tonne-scale 0vbb (LEGEND-1000, nEXO) covers inverted-ordering band",
+     "required_capability": {"quantity": "m_ee sensitivity [meV]", "value": 15},
+     "current_capability": {"quantity": "m_ee limit [meV]", "value": 60},
+     "direction": "smaller_is_better"},
+
+    {"id": "f-zero-off-line", "entry_id": "cdl-rh-grh",
+     "description": "A single nontrivial zeta zero off Re(s)=1/2 refutes RH and every RH-conditional theorem",
+     "required_capability": {"quantity": "zeros verified", "value": 1e13},
+     "current_capability": {"quantity": "zeros verified", "value": 1e13},
+     "direction": "witness_search"},
+
+    {"id": "f-poly-sat-solver", "entry_id": "cdl-p-vs-np",
+     "description": "A polynomial-time SAT algorithm collapses OWFs and conditional cryptography",
+     "required_capability": {"quantity": "n/a", "value": null},
+     "current_capability": {"quantity": "n/a", "value": null},
+     "direction": "witness_search"},
+
+    {"id": "f-abc-triple", "entry_id": "cdl-abc",
+     "description": "A single sufficiently-high-quality abc triple (q > 1 asymptotically often) refutes abc",
+     "required_capability": {"quantity": "max quality found", "value": 1.63},
+     "current_capability": {"quantity": "max quality found", "value": 1.6299},
+     "direction": "witness_search"},
+
+    {"id": "f-ramanujan-violation", "entry_id": "cdl-langlands",
+     "description": "A Maass form with lambda_1 < 1/4 or Hecke eigenvalue beyond Ramanujan bound refutes functoriality in range",
+     "required_capability": {"quantity": "eigenvalue precision", "value": 1e-8},
+     "current_capability": {"quantity": "eigenvalue precision (LMFDB)", "value": 1e-8},
+     "direction": "witness_search"},
+
+    {"id": "f-beat-gw", "entry_id": "cdl-ugc",
+     "description": "A poly-time MAX-CUT algorithm with ratio > alpha_GW ~ 0.87856 refutes UGC (given P != NP)",
+     "required_capability": {"quantity": "approximation ratio", "value": 0.8786},
+     "current_capability": {"quantity": "best known ratio", "value": 0.87856},
+     "direction": "witness_search"}
+  ]
+}

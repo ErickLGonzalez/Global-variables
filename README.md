@@ -289,6 +289,14 @@ examples/pir/minimal_circuit.json   B9-style circuit → L0/L1 → exact L2 fact
 
 Run: `python3 tests/test_pir_models.py` · `test_pir_provenance.py` · `test_pir_namespaces.py` · `test_pir_passes.py` (positive + the six required negative tests) and `python3 tests/test_ci_guard.py` (CI green on the repo, red on a corrupted certificate). Substrate contract: [`docs/pir-specification-v0.1.md`](docs/pir-specification-v0.1.md).
 
+## B13-CDL — Conditional-Dependency Ledger (implemented ✅, v0.1)
+
+Turns the Conditional-Dependency Survey (v1.0 + v1.1 addendum) into a **machine-readable ledger + certified pipeline suite** (Survey Recommendation Stages 1–5). Self-contained, **stdlib-only**, under [`b13_cdl/`](b13_cdl/): 25 ledger entries (A1–A15, M1–M10) with block×predicate tags, 15 registered falsifiers (liveness computed, not asserted), and 8 pipelines emitting schema-validated certificates. Certified results include: `ew_vacuum` HEURISTIC METASTABLE-side 3.4σ (warning carried, input-conditionality made explicit), `strong_cp` SOUND `|θ̄| < 1.18e-10` (exact rationals), `varying_constants` SOUND Dirac-LNH REJECTED (~2.9 OOM witness), `grh_miller`/`tunnell_bsd` SOUND with the epistemic asymmetry preserved (composite/not-congruent UNCONDITIONAL, prime/congruent CONDITIONAL(GRH/BSD)), `muon_g2`/`h0_tension` SOUND NONIDENTIFIABLE(method) honest refusals, and `coverage` SOUND (Uni-column scarcity confirmed, Stage-4 audit PASS).
+
+Run: `python3 b13_cdl/tests/test_b13.py` (schemas + 8 pipelines + certificates, exit 0). Design: [`b13_cdl/docs/B13-CDL-design.md`](b13_cdl/docs/B13-CDL-design.md); survey addendum: [`b13_cdl/docs/survey-v1.1-addendum.md`](b13_cdl/docs/survey-v1.1-addendum.md).
+
+**DRAFT items awaiting sign-off — deliberately NOT filed to `docs/claims-table.md`, SPEC, or the atlas:** (1) a `CONDITIONAL(X)` verdict-vocabulary extension to SPEC §6, and (2) the mathematics-entry relabeling B\* → M\* (benchmark-ID collision fix). These live only inside `b13_cdl/` as drafts.
+
 ## Research library
 
 [`docs/references.md`](docs/references.md) — ledger through **R33**. **R16–R22** = 2025 Nobel / Berkeley (B9). **R23–R24** = BEC / interferometry. **R25–R30** = related-programs imports. **R31–R33** = α-row tension (S3-EM). **R15** + addendum: B7/B8/engine. **R14** Maudlin: M-layer + arrival-time track.

@@ -1,0 +1,49 @@
+{
+  "certificate_id": "b13cdl-strong_cp-4b75b02b5ffa",
+  "pipeline": "strong_cp",
+  "entry_id": "cdl-strong-cp",
+  "timestamp_utc": "2026-07-15T18:12:28Z",
+  "soundness": {
+    "tag": "SOUND"
+  },
+  "stipulations": [
+    {
+      "name": "lattice_coefficient_dn_per_theta",
+      "assumed": {
+        "central_e_cm": 1.52e-16,
+        "sigma_e_cm": 7.1e-17
+      },
+      "source": "arXiv:1902.03254"
+    },
+    {
+      "name": "nEDM_limit",
+      "assumed": {
+        "limit_e_cm": 1.8e-26,
+        "CL": 0.9
+      },
+      "source": "arXiv:2001.11966"
+    },
+    {
+      "name": "conservative_convention",
+      "assumed": "denominator = |k| - 1*sigma_k",
+      "source": "B13-CDL design \u00a74"
+    }
+  ],
+  "inputs": {
+    "d_n_limit_e_cm": 1.8e-26
+  },
+  "verdict": "CONDITIONAL(lattice-k)-value: |theta_bar| PERMITTED interval [0, upper)",
+  "verdict_detail": {
+    "theta_bar_upper_central": 1.1842105263157895e-10,
+    "theta_bar_upper_conservative": 2.2222222222222221e-10,
+    "exact_fractions": {
+      "central": "9/76000000000",
+      "conservative": "1/4500000000"
+    }
+  },
+  "notes": "Bidirectional: f-nedm-next. A nonzero d_n measures theta_bar directly.",
+  "witness": {
+    "type": "exact-division",
+    "statement": "upper bounds are exact rationals; any theta_bar above the conservative bound implies |d_n| above the 90% CL limit"
+  }
+}

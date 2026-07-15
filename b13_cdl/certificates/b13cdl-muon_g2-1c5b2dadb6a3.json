@@ -1,0 +1,56 @@
+{
+  "certificate_id": "b13cdl-muon_g2-1c5b2dadb6a3",
+  "pipeline": "muon_g2",
+  "entry_id": "cdl-muon-g2",
+  "timestamp_utc": "2026-07-15T18:12:28Z",
+  "soundness": {
+    "tag": "SOUND"
+  },
+  "stipulations": [
+    {
+      "name": "exp_2025",
+      "assumed": {
+        "value_1e-11": 116592071.5,
+        "sigma_1e-11": 14.5
+      },
+      "source": "Muon g-2 Collab final report (2025)"
+    },
+    {
+      "name": "wp25_lattice",
+      "assumed": {
+        "value_1e-11": 116592033.0,
+        "sigma_1e-11": 62.0
+      },
+      "source": "Theory Initiative White Paper 2025 (lattice HVP)"
+    },
+    {
+      "name": "wp20_datadriven",
+      "assumed": {
+        "value_1e-11": 116591810.0,
+        "sigma_1e-11": 43.0
+      },
+      "source": "Theory Initiative White Paper 2020 (e+e- HVP)"
+    }
+  ],
+  "inputs": {
+    "units": "1e-11"
+  },
+  "verdict": "NONIDENTIFIABLE(HVP-method): experiment-vs-SM verdict is not method-invariant; pipeline declines a single sigma",
+  "verdict_detail": {
+    "tension_matrix_sigma": {
+      "exp_vs_wp25": 0.6,
+      "exp_vs_wp20": 5.76,
+      "wp25_vs_wp20": 2.96
+    },
+    "reading": {
+      "exp_vs_wp25": "agreement (~0.6 sigma) \u2014 no new-physics signal under lattice HVP",
+      "exp_vs_wp20": "strong tension (~5.8 sigma) under data-driven HVP",
+      "wp25_vs_wp20": "the discrepancy lives INSIDE theory (HVP method), not between experiment and theory"
+    }
+  },
+  "notes": "Structural twin of S3-EM (fine-structure Rb/Cs h/m channel): honest refusal is the deliverable, not a limitation. contested: method-dependent.",
+  "witness": {
+    "type": "method-branch-divergence",
+    "statement": "the two theory branches differ by more than the experiment-theory gap under either branch; verdict identification requires an external selector (MUonE, new e+e- data) \u2014 see falsifiers f-muone, f-ee-hadrons-new"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CDL ledger entry",
+  "type": "object",
+  "required": ["entry_id", "label", "domain", "title", "blocks", "predicates",
+               "conditional_type", "unknown", "compute_friendliness",
+               "bidirectional", "contested", "evidence_level_ceiling"],
+  "properties": {
+    "entry_id": {"type": "string", "pattern": "^cdl-[a-z0-9-]+$"},
+    "label": {"type": "string", "description": "Survey label, e.g. A1, M10"},
+    "domain": {"type": "string", "enum": ["physics", "mathematics"]},
+    "title": {"type": "string"},
+    "blocks": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "predicates": {
+      "type": "array", "minItems": 1,
+      "items": {"type": "string",
+                "enum": ["Sym", "Pos", "Uni", "Cau", "Cmp", "RG", "Top", "Thm"]}
+    },
+    "conditional_type": {
+      "type": "string", "enum": ["value", "truth", "method"],
+      "description": "Stage-3 flag: value=numerical outcome depends on unknown; truth=theoremhood depends on unknown; method=verdict depends on evaluation path"
+    },
+    "unknown": {"type": "string", "description": "The fundamental unknown conditioning the entry"},
+    "dependency_mechanism": {"type": "string"},
+    "compute_friendliness": {"type": "string", "enum": ["maximal", "high", "medium", "low", "structural", "none"]},
+    "bidirectional": {"type": "boolean"},
+    "falsifier_ids": {"type": "array", "items": {"type": "string"}},
+    "contested": {"type": "boolean"},
+    "contested_reason": {"type": "string"},
+    "evidence_level_ceiling": {"type": "string", "enum": ["E0", "E1", "E2", "E3", "E4"],
+      "description": "Highest evidence level this entry can honestly occupy while the unknown is open"},
+    "pipeline": {"type": ["string", "null"], "description": "Module in src/cdl implementing the forward map, if any"},
+    "references": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
