@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pir/artifact.schema.json",
+  "title": "PIR Evidence Artifact (v0.1 reference draft)",
+  "description": "Immutable L0 evidence. NO theoretical labels, NO inferred universal claims (loader validation enforces). Content-addressed.",
+  "type": "object",
+  "required": ["artifact_id", "kind", "content_hash", "namespace", "acquired_at"],
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {"type": "string"},
+    "kind": {"enum": ["DATASET", "PAPER_TABLE", "CALIBRATION", "APPARATUS_MANIFEST",
+                       "SIMULATION_TRACE", "CERTIFICATE_EXTERNAL"]},
+    "content_hash": {"type": "string", "description": "sha256 of raw bytes"},
+    "namespace": {"const": "raw"},
+    "format": {"type": "string", "description": "csv|hdf5|json|paper-table|..."},
+    "apparatus_id": {"type": ["string", "null"]},
+    "calibration_route": {"type": ["array", "null"], "items": {"type": "string"}},
+    "declared_resolution": {"type": ["object", "null"],
+      "description": "Numeric apparatus resolution/bandwidth limits so APPARATUS_LIMITED verdicts can name the bounding threshold."},
+    "source_uri": {"type": ["string", "null"]},
+    "acquired_at": {"type": "string", "format": "date-time"}
+  }
+}

@@ -12,3 +12,6 @@ desktop.ini
 gv-*.zip
 !archive/sprint-drops/*.zip
 
+# CI build outputs (regenerated certificates, run manifests)
+build/
+

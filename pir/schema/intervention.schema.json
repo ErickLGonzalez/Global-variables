@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pir/intervention.schema.json",
+  "title": "PIR Declared Intervention (v0.1 reference draft)",
+  "description": "Observational equivalence is defined RELATIVE to a declared intervention set (ADJUDICATION #6). Proposals from intervention search must state assumptions and predicted outcomes.",
+  "type": "object",
+  "required": ["intervention_id", "kind", "target", "admissible", "assumptions"],
+  "additionalProperties": false,
+  "properties": {
+    "intervention_id": {"type": "string"},
+    "kind": {"enum": ["APPARATUS_SWAP", "BOUNDARY_CHANGE", "TIMING_PERMUTATION",
+                       "LOOP_DEFORMATION", "SOURCE_DETECTOR_EXCHANGE", "SCALE_SWEEP",
+                       "PERTURBATION", "COUPLING_CHANGE", "GEOMETRY_CHANGE",
+                       "TEMPERATURE_CHANGE", "PREPARATION_REORDER"]},
+    "target": {"type": "string"},
+    "parameters": {"type": "object"},
+    "admissible": {"type": "boolean"},
+    "cost_estimate": {"type": ["object", "null"]},
+    "feasibility": {"type": ["object", "null"]},
+    "objective_scores": {"type": ["object", "null"],
+      "properties": {"candidate_disagreement": {"type": "number"},
+        "expected_information_gain": {"type": "number"},
+        "d_identifiable_reduction": {"type": "number"}}},
+    "predicted_outcomes": {"type": "array", "items": {"type": "object",
+      "properties": {"hypothesis_id": {"type": "string"}, "prediction": {"type": "string"}}}},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["PROPOSED", "EXECUTED", "RETIRED"], "default": "PROPOSED"}
+  }
+}

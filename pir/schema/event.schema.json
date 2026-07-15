@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pir/event.schema.json",
+  "title": "PIR L1 Operational Act (v0.1 reference draft)",
+  "description": "One act-op: what was prepared, changed, coupled, measured. Typed ports; units mandatory; uncertainty explicit.",
+  "type": "object",
+  "required": ["event_id", "op", "artifact_id", "ports", "timing", "assumptions"],
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {"type": "string"},
+    "op": {"enum": ["PREPARE", "INTERVENE", "EVOLVE", "COUPLE", "SPLIT", "RECOMBINE",
+                     "TRANSPORT", "PHASE_ACCUMULATE", "MEASURE", "RECORD", "CONDITION",
+                     "TRACE_OUT", "COARSE_GRAIN", "SYMMETRY_ACT", "COMPOSE", "PARALLEL"]},
+    "artifact_id": {"type": "string", "description": "L0 artifact this act is grounded in"},
+    "ports": {"type": "array", "items": {"type": "object",
+      "required": ["name", "type", "unit"],
+      "properties": {"name": {"type": "string"},
+        "type": {"enum": ["State", "Effect", "Observable", "Process", "Coupling",
+                           "SymmetryParameter", "GaugeCoordinate", "Invariant",
+                           "NuisanceParameter", "ApparatusParameter", "BoundarySector",
+                           "GlobalCandidate", "ScaleDependentEffectiveParameter"]},
+        "unit": {"type": "string"},
+        "value": {},
+        "uncertainty": {"type": ["object", "null"]}}}},
+    "timing": {"type": "object", "properties": {"t": {"type": ["number", "string"]},
+      "ordering_index": {"type": "integer"}}},
+    "apparatus_id": {"type": ["string", "null"]},
+    "calibration_route": {"type": ["array", "null"], "items": {"type": "string"}},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "source_spans": {"type": "array", "items": {"type": "object"}}
+  }
+}

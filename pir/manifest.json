@@ -1,0 +1,130 @@
+{
+  "package": "pir-foundation-stage1",
+  "pir_version": "0.1.0",
+  "work_order": "AGENT_WORK_ORDER_v2 (PIR Foundation, Stage 1)",
+  "generated_utc": "2026-07-15T17:24:41Z",
+  "note": "Machine-readable manifest of files created for the Stage-1 PIR substrate. No existing B1-B12 code, verdict, certificate, or atlas cell was modified; README.md gained a PIR section.",
+  "files": [
+    {
+      "path": "docs/adr/ADR-PIR-0001.md",
+      "sha256": "3a41d584e8c52da9538d8a203b376c21c879629efd27854f0a779ca5b99901a2",
+      "bytes": 6950
+    },
+    {
+      "path": "docs/pir-specification-v0.1.md",
+      "sha256": "8bcce6800c07e895dcae4e0666b0c4649c282c088e609a5b37752044cc4343b8",
+      "bytes": 6633
+    },
+    {
+      "path": "docs/verifier-ops-v0.1.md",
+      "sha256": "05b3e5756d67fe26bd9c566ad32cd650333d39aec93c74b5ee8c3e8a1a519987",
+      "bytes": 5979
+    },
+    {
+      "path": "pir/__init__.py",
+      "sha256": "a12a0dc89e80bc0db65a22879e487ce7404b87a71763ec1d64a72caa4a87218b",
+      "bytes": 2145
+    },
+    {
+      "path": "pir/types.py",
+      "sha256": "72c60986c41bfb78f2f3fe534e277f0e452287f3c686b145791127a0d285844e",
+      "bytes": 5286
+    },
+    {
+      "path": "pir/namespaces.py",
+      "sha256": "bffa2fe4263d777759ff76ec74b94f4e0c347a9a7ed383d54a6da1ffd6c0be54",
+      "bytes": 4055
+    },
+    {
+      "path": "pir/canonical.py",
+      "sha256": "56477299992f5a0134e36f15f99e0838001853f9a4311c9c67544d7313c10e61",
+      "bytes": 3040
+    },
+    {
+      "path": "pir/models.py",
+      "sha256": "32a2cba6a4885f816393767e1f365dc1331783b0c37aa743306c0491c123d237",
+      "bytes": 18986
+    },
+    {
+      "path": "pir/provenance.py",
+      "sha256": "b758b901e0c42ade3ba2b525237b59698324205ec83198ca6930dcbddf624642",
+      "bytes": 8334
+    },
+    {
+      "path": "pir/passes.py",
+      "sha256": "eb38a7f652925982bd9c6b4e50a705faafd1e396af7830bdd7001588e7d9b82a",
+      "bytes": 4330
+    },
+    {
+      "path": "pir/jsonschema_mini.py",
+      "sha256": "f93bd1418dd2523ae7c9b4c131a7630a401c6a7bad665507a2afd38c76c75779",
+      "bytes": 3488
+    },
+    {
+      "path": "pir/schema/artifact.schema.json",
+      "sha256": "dc7305e58dcb57eb3d85a3c34abd58d60c94b0e767e45b140464e458860c05a4",
+      "bytes": 1283
+    },
+    {
+      "path": "pir/schema/event.schema.json",
+      "sha256": "78e557ec549a8fa7da2675805514d073367dce5f58e68d593dbf70c4f8bcc079",
+      "bytes": 1840
+    },
+    {
+      "path": "pir/schema/fact.schema.json",
+      "sha256": "706937c5f9ca8dbf147e4dadfd19a06209acd24c945333914d885ad56a808642",
+      "bytes": 4120
+    },
+    {
+      "path": "pir/schema/hypothesis.schema.json",
+      "sha256": "074c51bc5b491474b16d863666770da1734cb81b795b6fed9e54419e6c2bfc3f",
+      "bytes": 2103
+    },
+    {
+      "path": "pir/schema/intervention.schema.json",
+      "sha256": "3518a61a9253c5fcc38581be3c936e0b4f39145917c6d5a0b8d7fdf5da622be1",
+      "bytes": 1644
+    },
+    {
+      "path": "pir/schema/provenance.schema.json",
+      "sha256": "fb69b9a082d93ad2d64ee4a3260ed4487295a17e8d0df66122058d9ec4e8d6b6",
+      "bytes": 1651
+    },
+    {
+      "path": "tests/test_pir_models.py",
+      "sha256": "a714043a5e4d3d59fcf03faa0a3898c4088966d260024145198049d3cd7f0619",
+      "bytes": 7815
+    },
+    {
+      "path": "tests/test_pir_provenance.py",
+      "sha256": "a723ab0e02ed18d21e3d08aaf26e9b3488c4cc7dcffb8b41a70888c15b966596",
+      "bytes": 4963
+    },
+    {
+      "path": "tests/test_pir_namespaces.py",
+      "sha256": "26f6cef7e70bc01f25d77ac709a256abb6b0c2def6c5bd73b7bc41d65eb62340",
+      "bytes": 3272
+    },
+    {
+      "path": "tests/test_pir_passes.py",
+      "sha256": "afcbfd2bbbae2f70b5f5a6f2fe30ec99e1367fd28a33eb11d8ea1164ea22db68",
+      "bytes": 3918
+    },
+    {
+      "path": "tests/test_ci_guard.py",
+      "sha256": "9ccb75c54f0043fb2e0cc930d01ef69eb21e21892da791277e28ade80a2ef3a3",
+      "bytes": 4884
+    },
+    {
+      "path": "examples/pir/minimal_circuit.json",
+      "sha256": "d7e7d11675edfb23e404e4f503818ef3812211322812ec94cbe9d12b00518c41",
+      "bytes": 5994
+    },
+    {
+      "path": "ci/run_all_certified.py",
+      "sha256": "8f8f29296e69d64a49c1dff2ca8c57166b57de46c178a57cd41d26ddb187d541",
+      "bytes": 11667
+    }
+  ],
+  "signature_sha256": "252c560115e6e19ea63640fa851d6a16a415bb776d04d1704f89e4a115af8903"
+}

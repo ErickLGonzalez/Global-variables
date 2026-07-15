@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pir/hypothesis.schema.json",
+  "title": "PIR L3 Candidate Grammar / Hypothesis (v0.1 reference draft)",
+  "description": "Competing explanatory family. Retained in parallel with provenance (PGSD pattern, ADJUDICATION #5). candidate_class tags are taxonomy, NEVER verdicts (ADJUDICATION #24).",
+  "type": "object",
+  "required": ["hypothesis_id", "family", "status", "derived_from_facts", "assumptions"],
+  "additionalProperties": false,
+  "properties": {
+    "hypothesis_id": {"type": "string"},
+    "family": {"type": "string", "description": "e.g. hamiltonian|gradient_flow|GENERIC|quantum_cptp|hidden_common_cause|apparatus_artifact"},
+    "candidate_class": {"type": ["array", "null"], "items": {
+      "enum": ["GLOBAL_CANDIDATE", "TOPOLOGICAL_CANDIDATE",
+               "HIDDEN_COMMON_CAUSE_CANDIDATE", "REPRESENTATION_ARTIFACT",
+               "NOT_DETECTED"]},
+      "description": "Taxonomy tags only. Emitting these as verdicts is a schema violation."},
+    "status": {"enum": ["ACTIVE", "ELIMINATED", "OBSERVATIONALLY_EQUIVALENT_MEMBER",
+                          "SELECTED_REPRESENTATIVE", "DOWNGRADED"]},
+    "equivalence_class_id": {"type": ["string", "null"]},
+    "compatibility": {"type": "array", "description": "Per-fact compatibility matrix rows",
+      "items": {"type": "object", "required": ["fact_id", "relation"],
+        "properties": {"fact_id": {"type": "string"},
+          "relation": {"enum": ["SUPPORTS", "CONTRADICTS", "SILENT"]}}}},
+    "distinguishing_interventions": {"type": "array", "items": {"type": "object",
+      "properties": {"intervention_id": {"type": "string"},
+        "predicted_separation": {"type": "string"}}}},
+    "fingerprint_full": {"type": ["string", "null"], "description": "Similarity-invariant canonical hash"},
+    "fingerprint_specific": {"type": ["string", "null"], "description": "Finer-invariant disambiguation hash"},
+    "derived_from_facts": {"type": "array", "items": {"type": "string"}},
+    "assumptions": {"type": "array", "items": {"type": "string"}}
+  }
+}
