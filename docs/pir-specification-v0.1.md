@@ -134,7 +134,10 @@ substrate, no benchmark/verdict/certificate/atlas change:
 | **P8** BEC domain + cross-domain PIR-Diff | `pir/domains/bec.py`, `pir/diff.py` | `tests/test_pir_s3.py` |
 
 Deliberately deferred: **P9 workbench UI** (research-first repo; CLI/CI/JSON
-artifacts suffice). Conditional results throughout use assumption-taint per
+artifacts suffice) — scoped for a future session in
+`docs/pir-p9-workbench-scope.md`. Benchmark coverage now includes B9 (E3) and
+B1/B2/B3 (E0) lowered and verdict-reproduced (`pir/domains/exact_benchmarks.py`,
+`tests/test_pir_exact_benchmarks.py`). Conditional results throughout use assumption-taint per
 ADR-0002 rather than a new verdict. Depth note: the constraint bridge, B9/BEC
 lowerings, and cross-domain diff are exact where the arithmetic allows and
 honest toys where the setting is nonlinear — each carries its evidence level and
