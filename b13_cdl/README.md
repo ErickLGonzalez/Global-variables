@@ -57,8 +57,14 @@ See `docs/pir-bridge-v0.1.md`. In short:
 - **coverage (SOUND):** Uni-column scarcity CONFIRMED (A13 only); Stage-4 audit PASS;
   all bidirectional entries falsifier-linked.
 
-## Awaiting Erick sign-off (DRAFT items — do not file to claims-table.md yet)
-1. CONDITIONAL(X) verdict vocabulary (SPEC §6 extension).
-2. Mathematics-entry relabeling B* → M* (benchmark-ID collision fix).
+## Sign-off status
+1. **CONDITIONAL(X) verdict vocabulary — RESOLVED (provisional).** Adopted
+   *conditionality = assumption-taint*, not a new verdict: see
+   `../docs/adr/ADR-0002-conditionality-as-taint.md` and SPEC §4. No
+   `CONDITIONAL(X)` verdict is added; conditioning unknowns ride as `asm:X` and
+   invalidation traversal handles withdrawal. Status is PROVISIONAL pending
+   ratification (a scheduled reminder tracks it).
+2. **Mathematics-entry relabeling B\* → M\* (benchmark-ID collision fix) —
+   still awaiting sign-off** (do not file to claims-table.md yet).
 
 Rosy 🌹 — 2026-07-15

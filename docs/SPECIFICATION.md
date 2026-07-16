@@ -81,6 +81,13 @@ the engine and benchmarks must emit *with a stated cause*:
 - **AMBIGUOUS** — classification tie (B8 semantics), distinct from
   NONIDENTIFIABLE: the menu contains ≥2 compatible grammars.
 
+*Conditional results* (a verdict that holds only under a stipulated unknown,
+e.g. GRH/BSD/lattice-coefficient) are **not** a separate verdict: they are
+recorded as **assumption-taint** on the result (`asm:X`), so withdrawing X
+downgrades exactly the dependent results via the PIR invalidation traversal.
+This is the provisional resolution of the proposed `CONDITIONAL(X)` extension —
+see `docs/adr/ADR-0002-conditionality-as-taint.md` (Status: PROVISIONAL).
+
 ## 5. Observational equivalence and the "same" relation
 
 𝕽₁ ~_obs 𝕽₂ ⇔ for all declared measurement interfaces 𝖬 in scope and all

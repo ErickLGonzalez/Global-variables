@@ -57,9 +57,10 @@ append-only `pir.FactStore`; the combined view is written to
   no located warning — so building the facts validates the mapping above.
 
 ### Why `CONDITIONAL(X)` maps to assumptions, not a verdict
-B13's proposed `CONDITIONAL(X)` verdict is a DRAFT SPEC-§6 extension awaiting
-sign-off. Rather than pre-empt that decision, the bridge represents the
-conditioning unknowns X as PIR **assumptions**. The PIR `verdict` field uses only
+**Resolved (provisional), 2026-07-16:** conditionality is modelled as
+assumption-taint, not a new verdict — see
+`../../docs/adr/ADR-0002-conditionality-as-taint.md` and SPEC §4. The bridge
+represents the conditioning unknowns X as PIR **assumptions**. The PIR `verdict` field uses only
 the SPEC-locked vocabulary (`PERMITTED`, `REJECTED`, `NONIDENTIFIABLE`, or none
 for mixed/meta certificates). The payoff is exact and testable
 (`tests/test_b13.py`): invalidating `asm:GRH` downgrades precisely the
