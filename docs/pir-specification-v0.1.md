@@ -135,9 +135,18 @@ substrate, no benchmark/verdict/certificate/atlas change:
 
 Deliberately deferred: **P9 workbench UI** (research-first repo; CLI/CI/JSON
 artifacts suffice) — scoped for a future session in
-`docs/pir-p9-workbench-scope.md`. Benchmark coverage now includes B9 (E3) and
-B1/B2/B3 (E0) lowered and verdict-reproduced (`pir/domains/exact_benchmarks.py`,
-`tests/test_pir_exact_benchmarks.py`). Conditional results throughout use assumption-taint per
+`docs/pir-p9-workbench-scope.md`.
+
+**Full benchmark-suite coverage.** Every committed benchmark certificate is now
+lowered into PIR facts (23 benchmarks):
+- bespoke, verdict-*re-derived* lowerings — B9 (E3, `pir/domains/b9.py`) and
+  B1/B2/B3 (E0, `pir/domains/exact_benchmarks.py`);
+- a generic, conservative lowering for the rest (B4–B12, M1/M2, S-layer, atlas,
+  truncation; `pir/domains/generic.py`) that maps a raw status to a SPEC verdict
+  only when unambiguous and otherwise preserves the domain state verbatim with a
+  null verdict. Evidence level is read from the certificate class; assumptions
+  come from `m_layer_stipulations`. Tests: `tests/test_pir_exact_benchmarks.py`,
+  `tests/test_pir_generic_lowering.py`. All read-only over the certificates. Conditional results throughout use assumption-taint per
 ADR-0002 rather than a new verdict. Depth note: the constraint bridge, B9/BEC
 lowerings, and cross-domain diff are exact where the arithmetic allows and
 honest toys where the setting is nonlinear — each carries its evidence level and
