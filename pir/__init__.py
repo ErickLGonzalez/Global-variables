@@ -23,6 +23,9 @@ from __future__ import annotations
 __version__ = "0.1.0"
 
 from . import canonical, jsonschema_mini, models, namespaces, passes, provenance, types
+# Stage 2/3 subsystems (import-safe; each is additive over the substrate).
+from . import analyzers, candidates, diff, domains, fingerprints, forward
+from . import intervention_search, runtime, symbolic
 from .models import (
     AnalyzerRef,
     Artifact,

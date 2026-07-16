@@ -116,19 +116,26 @@ synthetically corrupted certificate.
 
 ## 9. Scope and progress
 
-Stage 1 (substrate) in scope: schemas, models, provenance, pass registry,
-verifier-op reference, CI.
+Stage 1 (substrate): schemas, models, provenance, pass registry, verifier-op
+reference, CI — complete.
 
-Stage 2 progress:
-- **P2 — B9 circuit lowering (started):** `pir/domains/b9.py` lowers the committed
-  B9 certificate into L0/L1/L2 and **re-derives** B9's per-test verdicts from the
-  stored residuals (the FDT gate at 0.15 is reproduced, not copied). B9's
-  `m_layer_stipulations` become assumptions (ADR-0002 conditionality=taint), so
-  invalidating `asm:hard_wall_truncation` downgrades exactly the T6 held-out
-  fact. Test: `tests/test_pir_b9_lowering.py`. No B9 code, verdict, certificate,
-  or atlas cell is changed. Still to do in P2: the full Circuit Domain Semantics
-  Module (4 contracts) and structural-graph export.
+Stage 2 / Stage 3 (analysis + forward loop) — implemented, all additive over the
+substrate, no benchmark/verdict/certificate/atlas change:
 
-Out of scope (later): analyzer runtime (P3), symbolic constraint bridge (P4),
-candidate lattice & fingerprints (P5), forward recompilation (S3/P6),
-intervention search (P7), BEC cross-domain diff (P8), workbench UI (deferred).
+| Item | Module(s) | Test |
+|---|---|---|
+| **P2** B9 lowering + Circuit Domain Semantics (4 contracts) + structural graph | `pir/domains/b9.py`, `pir/domains/circuit_semantics.py` | `tests/test_pir_b9_lowering.py` |
+| **P3** analyzer runtime + 3 priority analyzers | `pir/runtime.py`, `pir/analyzers.py` | `tests/test_pir_runtime.py` |
+| **P4** symbolic constraint bridge (exact SAT/UNSAT, witness + Farkas) | `pir/symbolic/` | `tests/test_pir_symbolic.py` |
+| **P5a** candidate lattice + GVAR rules | `pir/candidates.py` | `tests/test_pir_candidates.py` |
+| **P5b** two-hash fingerprints + known-grammar DB | `pir/fingerprints.py` | `tests/test_pir_candidates.py` |
+| **P6** forward recompilation (held-out comparison) | `pir/forward.py` | `tests/test_pir_s3.py` |
+| **P7** intervention search (OED objectives) | `pir/intervention_search.py` | `tests/test_pir_s3.py` |
+| **P8** BEC domain + cross-domain PIR-Diff | `pir/domains/bec.py`, `pir/diff.py` | `tests/test_pir_s3.py` |
+
+Deliberately deferred: **P9 workbench UI** (research-first repo; CLI/CI/JSON
+artifacts suffice). Conditional results throughout use assumption-taint per
+ADR-0002 rather than a new verdict. Depth note: the constraint bridge, B9/BEC
+lowerings, and cross-domain diff are exact where the arithmetic allows and
+honest toys where the setting is nonlinear — each carries its evidence level and
+warnings, and none promotes an atlas cell.
