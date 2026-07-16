@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pir
 from pir.domains import b9
+from pir.domains import circuit_semantics as cs
 
 FAILURES = []
 
@@ -107,11 +108,34 @@ def l3_taint_invalidation():
     return {"affected": sorted(affected)}
 
 
+def l4_domain_contracts():
+    cert = b9.load_certificate()
+    _, events, _ = b9.lower(cert)
+    errs = []
+    # C1-C3: the lowered act-trace obeys the four circuit-domain contracts.
+    errs.extend(cs.validate(events))
+    # C3: promotability rule — spectroscopy promotable, Gibbs not.
+    if cs.is_promotable_route("cal:spectroscopy_route") is not True:
+        errs.append("spectroscopy route should be promotable")
+    if cs.is_promotable_route("cal:gibbs_route") is not False:
+        errs.append("gibbs route must be non-promotable")
+    # C4: structural graph exports nodes + a coherent edge set.
+    g = cs.structural_graph(events)
+    if len(g.nodes) != len(events):
+        errs.append("graph node count != event count")
+    time_edges = [e for e in g.edges if e["kind"] == "time"]
+    if len(time_edges) != len(events) - 1:
+        errs.append(f"expected {len(events)-1} time edges, got {len(time_edges)}")
+    check("circuit domain semantics: 4 contracts hold + structural graph exported", errs)
+    return {"nodes": len(g.nodes), "edges": len(g.edges)}
+
+
 if __name__ == "__main__":
     print("== B9 -> PIR lowering ==")
     r1 = l1_reproduction()
     r2 = l2_schema_and_honesty()
     r3 = l3_taint_invalidation()
+    r4 = l4_domain_contracts()
     print("\n== SUMMARY ==")
     if FAILURES:
         print(f"FAIL: {len(FAILURES)} check(s) failed.")
