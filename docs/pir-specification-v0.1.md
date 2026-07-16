@@ -114,10 +114,21 @@ per-file content hashes) and exits nonzero on any failure or degradation.
 `tests/test_ci_guard.py` proves it goes green on the current repo and red on a
 synthetically corrupted certificate.
 
-## 9. Scope and non-goals (Stage 1)
+## 9. Scope and progress
 
-In scope: schemas, models, provenance, pass registry, verifier-op reference, CI.
-Out of scope (later stages): B9 lowering (S2/P2), analyzer runtime (P3), symbolic
-constraint bridge (P4), candidate lattice & fingerprints (P5), forward
-recompilation (S3/P6), intervention search (P7), BEC cross-domain diff (P8), and
-the workbench UI (deferred indefinitely).
+Stage 1 (substrate) in scope: schemas, models, provenance, pass registry,
+verifier-op reference, CI.
+
+Stage 2 progress:
+- **P2 — B9 circuit lowering (started):** `pir/domains/b9.py` lowers the committed
+  B9 certificate into L0/L1/L2 and **re-derives** B9's per-test verdicts from the
+  stored residuals (the FDT gate at 0.15 is reproduced, not copied). B9's
+  `m_layer_stipulations` become assumptions (ADR-0002 conditionality=taint), so
+  invalidating `asm:hard_wall_truncation` downgrades exactly the T6 held-out
+  fact. Test: `tests/test_pir_b9_lowering.py`. No B9 code, verdict, certificate,
+  or atlas cell is changed. Still to do in P2: the full Circuit Domain Semantics
+  Module (4 contracts) and structural-graph export.
+
+Out of scope (later): analyzer runtime (P3), symbolic constraint bridge (P4),
+candidate lattice & fingerprints (P5), forward recompilation (S3/P6),
+intervention search (P7), BEC cross-domain diff (P8), workbench UI (deferred).
