@@ -53,9 +53,12 @@ preserves the clean, test-driven substrate history.
   `pir.domains.bec.lower()` — benchmark facts (generate to JSON in a build step).
 - `pir.diff.cross_domain_diff(...)`, `pir.candidates.*`, `pir.runtime.*` — the
   analysis products to render.
-- Suggested build step: a small `ci/export_pir_view.py` that serializes the
-  above to a `build/pir_view/*.json` bundle the UI reads; keep it out of the
-  committed tree (gitignored like `build/`).
+- **Build step: DONE.** `ci/export_pir_view.py` already serializes the whole
+  corpus view (facts, coverage, verdict×evidence matrix, invalidation demo,
+  cross-domain diff, structural graph, corpus analysis) to
+  `build/pir_view/bundle.json` (gitignored). Run `python3 ci/export_pir_view.py`
+  to regenerate; `tests/test_pir_export.py` locks the bundle shape. **The P9
+  session can start directly at the UI page and read this bundle.**
 
 ## Acceptance criteria for the P9 session
 - A single self-contained page (Artifact or static HTML) renders the six surfaces
@@ -70,7 +73,8 @@ preserves the clean, test-driven substrate history.
 
 ## Kickoff prompt for the future session
 > Implement PIR P9 (workbench UI) per `docs/pir-p9-workbench-scope.md`: a
-> read-only, self-contained viewer over the exported PIR-fact / provenance /
-> candidate-lattice / cross-domain-diff JSON. Read-only; no atlas/SPEC/verdict
-> changes; preserve SOUND/HEURISTIC and evidence-level honesty. Start by writing
-> the `ci/export_pir_view.py` bundle exporter, then build the page.
+> read-only, self-contained viewer over the exported PIR view bundle. The data
+> layer is already done — run `python3 ci/export_pir_view.py` to (re)generate
+> `build/pir_view/bundle.json`, then build the page against it. Read-only; no
+> atlas/SPEC/verdict changes; preserve SOUND/HEURISTIC and evidence-level
+> honesty (no HEURISTIC/E3 result may read as certified).
