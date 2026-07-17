@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PIR Workbench v0.1</title>
+</head>
+<body>
+<style>
+  /* PIR Workbench — self-contained, read-only viewer over the PIR view bundle.
+     No external hosts, fonts, or scripts (CSP-clean; publishable as an Artifact). */
+  :root{
+    --bg:#f6f7f9; --panel:#ffffff; --panel-2:#f0f2f5; --ink:#1a1d21; --ink-2:#5a626c;
+    --line:#dfe3e8; --accent:#3257d6; --accent-ink:#ffffff;
+    --sound-bg:#e7f5ec; --sound-ink:#1f7a43; --sound-line:#8fceaa;
+    --heur-bg:#fdf1df; --heur-ink:#9a5b06; --heur-line:#efc584;
+    --warn-bg:#fdeceb; --warn-ink:#9a2820; --warn-line:#f0b3ad;
+    --e0:#2f7d4f; --e1:#3f7bbf; --e2:#8a6d1f; --e3:#a24f2a; --e4:#7a4f8a;
+    --forced:#1f7a43; --permitted:#3f6fbf; --rejected:#b23a2f; --oe:#7a4f8a;
+    --nonid:#8a6d1f; --repdep:#a24f2a; --none:#8a919b;
+  }
+  :root[data-theme="dark"], :root.dark{
+    --bg:#0f1216; --panel:#171b21; --panel-2:#1e242c; --ink:#e8ebef; --ink-2:#9aa3ad;
+    --line:#2a323c; --accent:#6f8bef; --accent-ink:#0f1216;
+    --sound-bg:#13291d; --sound-ink:#6cd694; --sound-line:#2c5c3f;
+    --heur-bg:#2e2413; --heur-ink:#e9b569; --heur-line:#5c4626;
+    --warn-bg:#301a18; --warn-ink:#f0a49c; --warn-line:#5c2f2a;
+    --e0:#6cd694; --e1:#7ab0ea; --e2:#dcc06a; --e3:#e79f78; --e4:#c79bd6;
+    --forced:#6cd694; --permitted:#7ab0ea; --rejected:#ef8b80; --oe:#c79bd6;
+    --nonid:#dcc06a; --repdep:#e79f78; --none:#8a919b;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1216; --panel:#171b21; --panel-2:#1e242c; --ink:#e8ebef; --ink-2:#9aa3ad;
+      --line:#2a323c; --accent:#6f8bef; --accent-ink:#0f1216;
+      --sound-bg:#13291d; --sound-ink:#6cd694; --sound-line:#2c5c3f;
+      --heur-bg:#2e2413; --heur-ink:#e9b569; --heur-line:#5c4626;
+      --warn-bg:#301a18; --warn-ink:#f0a49c; --warn-line:#5c2f2a;
+      --e0:#6cd694; --e1:#7ab0ea; --e2:#dcc06a; --e3:#e79f78; --e4:#c79bd6;
+      --forced:#6cd694; --permitted:#7ab0ea; --rejected:#ef8b80; --oe:#c79bd6;
+      --nonid:#dcc06a; --repdep:#e79f78; --none:#8a919b;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;}
+  a{color:var(--accent)}
+  .wrap{max-width:1180px;margin:0 auto;padding:20px 18px 64px;}
+  header.app{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 18px;margin-bottom:6px;}
+  header.app h1{font-size:20px;margin:0;letter-spacing:.2px;}
+  header.app .sub{color:var(--ink-2);font-size:13px;}
+  .grow{flex:1 1 auto}
+  .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);
+    background:var(--panel);border-radius:999px;padding:3px 10px;font-size:12px;color:var(--ink-2);}
+  .pill.ro{border-color:var(--sound-line);background:var(--sound-bg);color:var(--sound-ink);font-weight:600;}
+  button.tgl{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+    border-radius:8px;padding:6px 11px;font-size:12.5px;}
+  button.tgl:hover{border-color:var(--accent)}
+  .counts{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 4px}
+  .counts .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:96px;}
+  .counts .kpi .n{font-size:22px;font-weight:700;line-height:1.1}
+  .counts .kpi .l{font-size:11.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.4px}
+
+  details.legend{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:8px 14px;margin:12px 0 8px;}
+  details.legend summary{cursor:pointer;font-weight:600;font-size:13px;}
+  details.legend .body{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:10px 22px;margin-top:10px;color:var(--ink-2);font-size:12.5px;}
+  details.legend .body b{color:var(--ink)}
+
+  nav.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);margin:14px 0 16px;}
+  nav.tabs button{cursor:pointer;border:1px solid transparent;border-bottom:none;background:none;
+    color:var(--ink-2);padding:9px 14px;border-radius:8px 8px 0 0;font-size:13.5px;font-weight:600;
+    transform:translateY(1px);}
+  nav.tabs button:hover{color:var(--ink)}
+  nav.tabs button[aria-selected="true"]{color:var(--ink);background:var(--panel);
+    border-color:var(--line);}
+  section.tab{display:none}
+  section.tab.on{display:block}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;}
+  .panel h2{font-size:15px;margin:0 0 4px}
+  .panel p.note{color:var(--ink-2);font-size:12.5px;margin:2px 0 12px}
+
+  /* badges */
+  .badge{display:inline-flex;align-items:center;gap:4px;border-radius:6px;padding:1px 7px;
+    font-size:11px;font-weight:700;border:1px solid var(--line);white-space:nowrap;}
+  .badge.sound{background:var(--sound-bg);color:var(--sound-ink);border-color:var(--sound-line);}
+  .badge.heur{background:var(--heur-bg);color:var(--heur-ink);border-color:var(--heur-line);}
+  .chip{display:inline-block;border-radius:5px;padding:0 6px;font-size:11px;font-weight:700;
+    border:1px solid currentColor;}
+  .e-E0{color:var(--e0)} .e-E1{color:var(--e1)} .e-E2{color:var(--e2)}
+  .e-E3{color:var(--e3)} .e-E4{color:var(--e4)}
+  .v-FORCED{color:var(--forced)} .v-PERMITTED{color:var(--permitted)}
+  .v-REJECTED{color:var(--rejected)} .v-OBSERVATIONALLY_EQUIVALENT{color:var(--oe)}
+  .v-NONIDENTIFIABLE{color:var(--nonid)} .v-REPRESENTATION_DEPENDENT{color:var(--repdep)}
+  .v-APPARATUS_LIMITED{color:var(--repdep)} .v-AMBIGUOUS{color:var(--nonid)}
+  .v-none{color:var(--none)}
+  .warnmark{color:var(--warn-ink);font-weight:700;cursor:help}
+
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+  .controls label{font-size:12px;color:var(--ink-2);display:flex;gap:6px;align-items:center}
+  select,input[type=text]{background:var(--panel-2);color:var(--ink);border:1px solid var(--line);
+    border-radius:7px;padding:5px 8px;font-size:12.5px;}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:760px}
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{position:sticky;top:0;background:var(--panel-2);font-size:11px;text-transform:uppercase;
+    letter-spacing:.4px;color:var(--ink-2);cursor:pointer;user-select:none;white-space:nowrap}
+  tbody tr:hover{background:var(--panel-2)}
+  tr.warned{cursor:pointer}
+  tr.detail td{background:var(--panel-2);color:var(--ink-2);font-size:12px}
+  tr.detail .kv{margin:2px 0}
+  .muted{color:var(--ink-2)}
+
+  /* matrix */
+  table.matrix td,table.matrix th{text-align:center}
+  table.matrix td.rk{text-align:left;font-weight:700}
+  .cell{display:inline-block;min-width:30px;border-radius:6px;padding:3px 8px;font-weight:700}
+
+  /* diff */
+  .metric{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+  .metric .box{border:1px solid var(--line);border-radius:10px;padding:10px 16px;background:var(--panel-2)}
+  .metric .box .n{font-size:22px;font-weight:800}
+  .metric .box .l{font-size:11px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.3px}
+  ul.motifs{list-style:none;padding:0;margin:0;display:flex;gap:8px;flex-wrap:wrap}
+  ul.motifs li{background:var(--sound-bg);color:var(--sound-ink);border:1px solid var(--sound-line);
+    border-radius:999px;padding:2px 11px;font-size:12px;font-weight:600}
+  ul.divergent li{background:var(--warn-bg);color:var(--warn-ink);border-color:var(--warn-line)}
+
+  /* graph */
+  svg{max-width:100%;height:auto;display:block}
+  .g-node{fill:var(--panel-2);stroke:var(--accent)}
+  .g-label{fill:var(--ink);font-size:12px;font-weight:700}
+  .g-port{fill:var(--ink-2);font-size:10.5px}
+  .g-edge{stroke:var(--ink-2);stroke-width:1.6}
+  .g-edge-label{fill:var(--ink-2);font-size:10px}
+
+  .families{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 14px}
+  .fam{border:1px solid var(--oe);border-radius:10px;padding:10px 14px;background:var(--panel-2);min-width:180px}
+  .fam h3{margin:0 0 3px;font-size:14px}
+  .fam .ob{font-size:12px;color:var(--ink-2)}
+  .kvrow{display:flex;gap:8px;margin:3px 0;font-size:12.5px}
+  .kvrow .k{color:var(--ink-2);min-width:150px}
+  footer.app{color:var(--ink-2);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+
+<div class="wrap">
+  <header class="app">
+    <div>
+      <h1>PIR Workbench <span class="muted" style="font-size:13px">v0.1</span></h1>
+      <div class="sub">Read-only view over the lowered PIR corpus &middot; verdict &amp; evidence honesty preserved</div>
+    </div>
+    <div class="grow"></div>
+    <span class="pill ro">● read-only</span>
+    <span class="pill" id="src">bundle</span>
+    <button class="tgl" id="themeBtn" type="button">◐ Theme</button>
+  </header>
+
+  <div class="counts" id="kpis"></div>
+
+  <details class="legend">
+    <summary>Honesty key — how to read a fact (SOUND vs HEURISTIC · evidence E0–E4 · L-level · warnings)</summary>
+    <div class="body">
+      <div><span class="badge sound">SOUND</span> analyzer output rests on exact/interval-certified reasoning.
+        <span class="badge heur">HEURISTIC ⚠</span> <b>is not certified</b> — a HEURISTIC or E3 result must never be read as a proof.</div>
+      <div><b>Evidence level</b> (orthogonal to L):
+        <span class="chip e-E0">E0</span> exact theorem/arithmetic ·
+        <span class="chip e-E1">E1</span> interval-certified ·
+        <span class="chip e-E2">E2</span> statistical w/ stated coverage ·
+        <span class="chip e-E3">E3</span> simulation-conditioned ·
+        <span class="chip e-E4">E4</span> proxy/indirect.</div>
+      <div><b>PIR level</b> (structural altitude): L0 raw records · L1 operational acts · L2 structural facts · L3 candidate grammars.</div>
+      <div><b>Verdict</b> is SPEC-locked: FORCED, PERMITTED, REJECTED, NONIDENTIFIABLE, OBSERVATIONALLY_EQUIVALENT, APPARATUS_LIMITED, REPRESENTATION_DEPENDENT, AMBIGUOUS. Facts with no verdict carry raw structure only.</div>
+      <div><span class="warnmark">⚠</span> a fact carries located warnings — hover or expand the row to read them verbatim.</div>
+    </div>
+  </details>
+
+  <nav class="tabs" id="tabs"></nav>
+
+  <section class="tab" data-tab="facts">
+    <div class="panel">
+      <h2>Fact table</h2>
+      <p class="note">Every lowered <code>pir.Fact</code>. L (structural level) and E (evidence level) are shown as orthogonal axes; the SOUND/HEURISTIC badge and located warnings are never flattened.</p>
+      <div class="controls">
+        <label>verdict <select id="fVerdict"></select></label>
+        <label>evidence <select id="fEvidence"></select></label>
+        <label>tag <select id="fTag"></select></label>
+        <label>layer <select id="fLayer"></select></label>
+        <label>search <input type="text" id="fSearch" placeholder="analyzer / fact id / assumption"></label>
+        <span class="muted" id="fCount"></span>
+      </div>
+      <div class="tablewrap">
+        <table id="factTable">
+          <thead><tr>
+            <th data-k="fact_id">Fact</th><th data-k="analyzer">Analyzer</th><th data-k="tag">Tag</th>
+            <th data-k="pir_level">L</th><th data-k="evidence_level">E</th><th data-k="verdict">Verdict</th>
+            <th data-k="layer">Layer</th><th data-k="namespace">Namespace</th><th data-k="warns">⚠</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab" data-tab="provenance">
+    <div class="panel">
+      <h2>Provenance &amp; assumption invalidation</h2>
+      <p class="note">Select an assumption; the workbench replays <code>FactStore.invalidate_assumption</code> offline (direct dependants + transitive closure over <code>depends_on_facts</code>) and highlights every fact that would be <b>DOWNGRADED</b>. Nothing committed is mutated.</p>
+      <div class="controls">
+        <label>assumption <select id="pAsm"></select></label>
+        <span class="muted" id="pXcheck"></span>
+      </div>
+      <div id="pResult"></div>
+    </div>
+  </section>
+
+  <section class="tab" data-tab="matrix">
+    <div class="panel">
+      <h2>Verdict × evidence matrix</h2>
+      <p class="note">Counts of facts by SPEC verdict (rows) and evidence level (columns). Scarcity of high-evidence certified verdicts is meant to be visible at a glance — colour tracks evidence, not desirability.</p>
+      <div class="tablewrap"><table class="matrix" id="matrix"></table></div>
+    </div>
+  </section>
+
+  <section class="tab" data-tab="lattice">
+    <div class="panel">
+      <h2>Candidate lattice</h2>
+      <p class="note">GVAR rules fire on the shared predicate set and emit candidate grammar families plus their discriminating <em>test obligations</em>. The lattice returns a SPEC-locked verdict; equivalent families are retained in parallel as L3 hypotheses, never pruned.</p>
+      <div id="latHead"></div>
+      <div class="families" id="latFams"></div>
+      <h3 style="font-size:13px;margin:6px 0 4px">GVAR rules</h3>
+      <div class="tablewrap"><table id="latRules"><thead><tr>
+        <th>Rule</th><th>Family</th><th>Requires</th><th>Forbids</th><th>Discriminator</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="tab" data-tab="diff">
+    <div class="panel">
+      <h2>Cross-domain diff — B9 (Josephson circuit) vs BEC</h2>
+      <p class="note">Similarity and confidence are reported <b>separately</b>: a high feature-similarity is not a claim of shared ontology. The diff names the correlator, the shared invariant motifs, the divergent features, the apparatus differences, and the least-cost discriminating intervention.</p>
+      <div id="diffBody"></div>
+    </div>
+  </section>
+
+  <section class="tab" data-tab="graph">
+    <div class="panel">
+      <h2>Structural graph — B9 act-trace</h2>
+      <p class="note">Nodes are operational acts (PREPARE / EVOLVE / MEASURE …); edges are time / coordinate relations from <code>circuit_semantics.structural_graph</code>.</p>
+      <div id="graphBody"></div>
+    </div>
+  </section>
+
+  <footer class="app" id="foot"></footer>
+</div>
+
+<script id="pir-bundle" type="application/json">/*__PIR_BUNDLE__*/</script>
+<script>
+(function(){
+  "use strict";
+  var B;
+  try { B = JSON.parse(document.getElementById("pir-bundle").textContent); }
+  catch(e){ document.body.innerHTML = "<div class='wrap'><p>Could not parse the PIR bundle. Run <code>python3 pir_workbench/build.py</code> to regenerate.</p></div>"; return; }
+  var el=function(id){return document.getElementById(id);};
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});};
+  var vClass=function(v){return v? "v-"+v : "v-none";};
+  var shortId=function(id){return String(id).replace(/^fct_sha256_/,"").replace(/^art_sha256_/,"").slice(0,12);};
+
+  /* ---- theme toggle (respects OS default until user overrides) ---- */
+  el("themeBtn").addEventListener("click",function(){
+    var r=document.documentElement;
+    var cur=r.getAttribute("data-theme");
+    if(!cur){ var dark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches; cur=dark?"dark":"light"; }
+    r.setAttribute("data-theme", cur==="dark"?"light":"dark");
+  });
+
+  /* ---- KPIs ---- */
+  var m=B.meta||{};
+  var kpi=[["benchmarks",m.n_benchmarks],["facts",m.n_facts],
+    ["verdicts",Object.keys(B.distributions.verdicts).filter(function(v){return v!=="(none)";}).length],
+    ["SOUND facts",B.facts.filter(function(f){return f.analyzer.tag==="SOUND";}).length],
+    ["HEURISTIC facts",B.facts.filter(function(f){return f.analyzer.tag==="HEURISTIC";}).length]];
+  el("kpis").innerHTML=kpi.map(function(k){
+    return "<div class='kpi'><div class='n'>"+esc(k[1])+"</div><div class='l'>"+esc(k[0])+"</div></div>";}).join("");
+  el("src").textContent="bundle v"+(m.bundle_version||"?");
+  el("foot").innerHTML="Generated from <code>build/pir_view/bundle.json</code>. "+esc(m.note||"")+
+    " &mdash; The committed certificates and PIR facts remain authoritative; this page only renders them.";
+
+  /* ---- tabs ---- */
+  var TABS=[["facts","Facts"],["provenance","Provenance"],["matrix","Verdict × Evidence"],
+    ["lattice","Candidate lattice"],["diff","Cross-domain diff"],["graph","Structural graph"]];
+  var nav=el("tabs");
+  nav.innerHTML=TABS.map(function(t,i){
+    return "<button role='tab' data-t='"+t[0]+"' aria-selected='"+(i===0)+"'>"+esc(t[1])+"</button>";}).join("");
+  function show(name){
+    Array.prototype.forEach.call(nav.children,function(b){b.setAttribute("aria-selected", b.dataset.t===name);});
+    Array.prototype.forEach.call(document.querySelectorAll("section.tab"),function(s){
+      s.classList.toggle("on", s.dataset.tab===name);});
+  }
+  nav.addEventListener("click",function(e){ if(e.target.dataset.t) show(e.target.dataset.t); });
+  show("facts");
+
+  /* ================= FACTS ================= */
+  var facts=B.facts.slice();
+  function opts(sel,vals,label){
+    el(sel).innerHTML="<option value=''>"+label+"</option>"+
+      vals.map(function(v){return "<option>"+esc(v)+"</option>";}).join("");
+  }
+  var uniq=function(f){var s={};facts.forEach(f);return Object.keys(s).sort();
+    function f2(){} };
+  function distinct(fn){var s={};facts.forEach(function(f){var v=fn(f);if(v!=null&&v!=="")s[v]=1;});return Object.keys(s).sort();}
+  opts("fVerdict",distinct(function(f){return f.verdict;}),"all verdicts");
+  opts("fEvidence",distinct(function(f){return f.evidence_level;}),"all evidence");
+  opts("fTag",distinct(function(f){return f.analyzer.tag;}),"all tags");
+  opts("fLayer",distinct(function(f){return f.layer;}),"all layers");
+  var sortK="fact_id", sortDir=1;
+  function factVal(f,k){
+    if(k==="analyzer")return f.analyzer.id;
+    if(k==="tag")return f.analyzer.tag;
+    if(k==="warns")return (f.warnings||[]).length;
+    return f[k];
+  }
+  function renderFacts(){
+    var v=el("fVerdict").value,ev=el("fEvidence").value,tg=el("fTag").value,ly=el("fLayer").value,
+        q=el("fSearch").value.trim().toLowerCase();
+    var rows=facts.filter(function(f){
+      if(v && (f.verdict||"")!==v)return false;
+      if(ev && f.evidence_level!==ev)return false;
+      if(tg && f.analyzer.tag!==tg)return false;
+      if(ly && f.layer!==ly)return false;
+      if(q){
+        var hay=(f.fact_id+" "+f.analyzer.id+" "+(f.assumptions||[]).join(" ")+" "+(f.namespace||"")).toLowerCase();
+        if(hay.indexOf(q)<0)return false;
+      }
+      return true;
+    });
+    rows.sort(function(a,b){
+      var x=factVal(a,sortK),y=factVal(b,sortK);
+      if(x==null)x=""; if(y==null)y="";
+      return (x>y?1:x<y?-1:0)*sortDir;
+    });
+    el("fCount").textContent=rows.length+" / "+facts.length+" facts";
+    var tb=el("factTable").querySelector("tbody");
+    tb.innerHTML=rows.map(function(f,i){
+      var w=(f.warnings||[]);
+      var tag=f.analyzer.tag==="SOUND"
+        ? "<span class='badge sound'>SOUND</span>"
+        : "<span class='badge heur'>HEURISTIC ⚠</span>";
+      var warncell=w.length? "<span class='warnmark' title='"+esc(w.map(function(x){return x.message;}).join(' | '))+"'>⚠ "+w.length+"</span>":"<span class='muted'>—</span>";
+      var main="<tr class='"+(w.length?"warned":"")+"' data-i='"+i+"'>"+
+        "<td class='mono'>"+esc(shortId(f.fact_id))+"</td>"+
+        "<td class='mono'>"+esc(f.analyzer.id)+"</td>"+
+        "<td>"+tag+"</td>"+
+        "<td>"+esc(f.pir_level)+"</td>"+
+        "<td><span class='chip e-"+esc(f.evidence_level)+"'>"+esc(f.evidence_level)+"</span></td>"+
+        "<td><b class='"+vClass(f.verdict)+"'>"+esc(f.verdict||"—")+"</b></td>"+
+        "<td>"+esc(f.layer)+"</td>"+
+        "<td class='muted'>"+esc(f.namespace)+"</td>"+
+        "<td>"+warncell+"</td></tr>";
+      var det="";
+      var detId="det-"+i;
+      var body=[];
+      if((f.assumptions||[]).length) body.push("<div class='kv'><b>assumptions:</b> "+esc(f.assumptions.join(", "))+"</div>");
+      if((f.depends_on_facts||[]).length) body.push("<div class='kv'><b>depends on:</b> "+esc(f.depends_on_facts.map(shortId).join(", "))+"</div>");
+      if((f.measurement_interface||[]).length) body.push("<div class='kv'><b>measurement interface:</b> "+esc(f.measurement_interface.join(", "))+"</div>");
+      w.forEach(function(x){ body.push("<div class='kv'>⚠ <b>"+esc(x.location||"")+":</b> "+esc(x.message)+"</div>"); });
+      body.push("<div class='kv'><b>content:</b> <span class='mono'>"+esc(JSON.stringify(f.content))+"</span></div>");
+      det="<tr class='detail' id='"+detId+"' style='display:none'><td colspan='9'>"+body.join("")+"</td></tr>";
+      return main+det;
+    }).join("");
+    Array.prototype.forEach.call(tb.querySelectorAll("tr[data-i]"),function(tr){
+      tr.addEventListener("click",function(){
+        var d=el("det-"+tr.dataset.i); if(d) d.style.display=d.style.display==="none"?"":"none";
+      });
+    });
+  }
+  ["fVerdict","fEvidence","fTag","fLayer"].forEach(function(id){el(id).addEventListener("change",renderFacts);});
+  el("fSearch").addEventListener("input",renderFacts);
+  Array.prototype.forEach.call(el("factTable").querySelectorAll("th[data-k]"),function(th){
+    th.addEventListener("click",function(){
+      var k=th.dataset.k; if(k==="analyzer")k="analyzer";
+      if(sortK===k)sortDir*=-1; else {sortK=k;sortDir=1;} renderFacts();
+    });
+  });
+  renderFacts();
+
+  /* ================= PROVENANCE / INVALIDATION ================= */
+  // Replicate FactStore.invalidate_assumption exactly: direct dependants by
+  // assumption membership, then transitive closure over depends_on_facts.
+  function dependentsOf(seed){
+    var out={}, changed=true;
+    while(changed){ changed=false;
+      facts.forEach(function(f){
+        if(out[f.fact_id])return;
+        var dep=f.depends_on_facts||[];
+        var hit = dep.indexOf(seed)>=0 || dep.some(function(d){return out[d];});
+        if(hit){out[f.fact_id]=1;changed=true;}
+      });
+    }
+    return out;
+  }
+  function invalidate(asm){
+    var direct=facts.filter(function(f){return (f.assumptions||[]).indexOf(asm)>=0;}).map(function(f){return f.fact_id;});
+    var aff={}; direct.forEach(function(id){aff[id]=1; var d=dependentsOf(id); for(var k in d)aff[k]=1;});
+    return Object.keys(aff).sort();
+  }
+  var allAsm={};
+  facts.forEach(function(f){(f.assumptions||[]).forEach(function(a){allAsm[a]=(allAsm[a]||0)+1;});});
+  var asmList=Object.keys(allAsm).sort();
+  var demoAsm=(B.invalidation_demo||{}).assumption;
+  el("pAsm").innerHTML=asmList.map(function(a){
+    var sel=a===demoAsm?" selected":"";
+    return "<option"+sel+">"+esc(a)+"</option>";}).join("");
+  function renderProv(){
+    var asm=el("pAsm").value;
+    var aff=invalidate(asm);
+    var byId={}; facts.forEach(function(f){byId[f.fact_id]=f;});
+    // cross-check against the committed demo when the demo assumption is selected
+    var xc=el("pXcheck");
+    if(asm===demoAsm){
+      var demo=(B.invalidation_demo.downgraded_facts||[]).slice().sort();
+      var same=demo.length===aff.length && demo.every(function(v,i){return v===aff[i];}) ;
+      // demo was computed on the B9 store only; require it to be a subset of the corpus result
+      var subset=demo.every(function(d){return aff.indexOf(d)>=0;});
+      xc.innerHTML = (same||subset)
+        ? "<span class='badge sound'>✓ matches committed demo</span> ("+demo.length+" downgraded in the B9 store)"
+        : "<span class='badge heur'>⚠ differs from committed demo</span>";
+    } else { xc.textContent=""; }
+    var html="<p class='muted'>Assumption <code>"+esc(asm)+"</code> underwrites <b>"+aff.length+"</b> fact(s). Invalidating it would DOWNGRADE:</p>";
+    if(!aff.length){ html+="<p class='muted'>— none —</p>"; }
+    else{
+      html+="<div class='tablewrap'><table><thead><tr><th>Fact</th><th>Analyzer</th><th>Verdict → </th><th>Evidence</th><th>Assumptions</th></tr></thead><tbody>"+
+        aff.map(function(id){var f=byId[id];if(!f)return "";
+          return "<tr><td class='mono'>"+esc(shortId(id))+"</td><td class='mono'>"+esc(f.analyzer.id)+"</td>"+
+            "<td><b class='"+vClass(f.verdict)+"'>"+esc(f.verdict||"—")+"</b> → <b class='v-none'>DOWNGRADED</b></td>"+
+            "<td><span class='chip e-"+esc(f.evidence_level)+"'>"+esc(f.evidence_level)+"</span></td>"+
+            "<td class='muted'>"+esc((f.assumptions||[]).join(", "))+"</td></tr>";
+        }).join("")+"</tbody></table></div>";
+    }
+    el("pResult").innerHTML=html;
+  }
+  el("pAsm").addEventListener("change",renderProv);
+  renderProv();
+
+  /* ================= VERDICT × EVIDENCE MATRIX ================= */
+  (function(){
+    var EV=["E0","E1","E2","E3","E4"];
+    var mat=B.verdict_matrix||{};
+    var verdicts=Object.keys(mat).sort(function(a,b){ if(a==="(none)")return 1; if(b==="(none)")return -1; return a<b?-1:1;});
+    var colTot={}, grand=0;
+    verdicts.forEach(function(v){EV.forEach(function(e){var n=(mat[v]||{})[e]||0;colTot[e]=(colTot[e]||0)+n;grand+=n;});});
+    var maxCell=0; verdicts.forEach(function(v){EV.forEach(function(e){maxCell=Math.max(maxCell,(mat[v]||{})[e]||0);});});
+    var head="<thead><tr><th class='rk'>verdict \\ evidence</th>"+EV.map(function(e){
+      return "<th><span class='chip e-"+e+"'>"+e+"</span></th>";}).join("")+"<th>Σ</th></tr></thead>";
+    var body="<tbody>"+verdicts.map(function(v){
+      var rowTot=0;
+      var evVar={E0:"--e0",E1:"--e1",E2:"--e2",E3:"--e3",E4:"--e4"};
+      var cells=EV.map(function(e){
+        var n=(mat[v]||{})[e]||0; rowTot+=n;
+        if(!n)return "<td class='muted'>·</td>";
+        var a=Math.round(14+56*(n/(maxCell||1)));
+        var bg="color-mix(in srgb, var("+evVar[e]+") "+a+"%, var(--panel))";
+        return "<td><span class='cell' style='background:"+bg+";color:var(--ink)'>"+n+"</span></td>";
+      }).join("");
+      var label=v==="(none)"?"<span class='muted'>(no verdict)</span>":"<b class='"+vClass(v)+"'>"+esc(v)+"</b>";
+      return "<tr><td class='rk'>"+label+"</td>"+cells+"<td><b>"+rowTot+"</b></td></tr>";
+    }).join("")+
+      "<tr><td class='rk muted'>Σ</td>"+EV.map(function(e){return "<td><b>"+(colTot[e]||0)+"</b></td>";}).join("")+"<td><b>"+grand+"</b></td></tr>"+
+      "</tbody>";
+    el("matrix").innerHTML=head+body;
+  })();
+
+  /* ================= CANDIDATE LATTICE ================= */
+  (function(){
+    var L=B.candidate_lattice; if(!L){el("latHead").textContent="(no lattice in bundle)";return;}
+    el("latHead").innerHTML=
+      "<div class='kvrow'><span class='k'>equivalence class</span><span class='mono'>"+esc(L.equivalence_class_id)+"</span></div>"+
+      "<div class='kvrow'><span class='k'>shared predicates</span><span>"+esc((L.predicates||[]).join(", "))+"</span></div>"+
+      "<div class='kvrow'><span class='k'>verdict</span><b class='"+vClass(L.verdict)+"'>"+esc(L.verdict)+"</b></div>"+
+      (L.detail&&L.detail.required_interventions?"<div class='kvrow'><span class='k'>required interventions</span><span>"+esc(L.detail.required_interventions.join(", "))+"</span></div>":"");
+    el("latFams").innerHTML=(L.hypotheses||[]).map(function(h){
+      var di=(h.distinguishing_interventions||[]).map(function(x){return x.intervention_id+" (sep: "+x.predicted_separation+")";}).join("; ");
+      return "<div class='fam'><h3>"+esc(h.family)+"</h3>"+
+        "<div class='ob'>status: "+esc(h.status)+"</div>"+
+        "<div class='ob'>discriminator: "+esc(di||"—")+"</div></div>";
+    }).join("");
+    var tb=el("latRules").querySelector("tbody");
+    tb.innerHTML=(L.rules||[]).map(function(r){
+      var fired=(L.compatible_families||[]).indexOf(r.family)>=0;
+      var ob=r.test_obligation?esc(r.test_obligation.intervention):"—";
+      return "<tr style='"+(fired?"":"opacity:.5")+"'><td class='mono'>"+esc(r.rule_id)+(fired?" ✓":"")+"</td>"+
+        "<td>"+esc(r.family)+"</td><td>"+esc((r.requires_predicates||[]).join(", "))+"</td>"+
+        "<td>"+esc((r.forbids_predicates||[]).join(", ")||"—")+"</td><td class='mono'>"+ob+"</td></tr>";
+    }).join("");
+  })();
+
+  /* ================= CROSS-DOMAIN DIFF ================= */
+  (function(){
+    var d=B.cross_domain_diff; if(!d){el("diffBody").textContent="(no diff)";return;}
+    var pct=function(x){return (x*100).toFixed(0)+"%";};
+    var html="<div class='metric'>"+
+      "<div class='box'><div class='n'>"+pct(d.similarity)+"</div><div class='l'>feature similarity</div></div>"+
+      "<div class='box'><div class='n'>"+pct(d.confidence)+"</div><div class='l'>confidence (separate)</div></div>"+
+      "<div class='box'><div class='n mono' style='font-size:14px'>"+esc(d.correlator)+"</div><div class='l'>correlator</div></div>"+
+      "</div>";
+    html+="<div class='kvrow'><span class='k'>ontology claim</span><span class='muted'>"+esc(d.ontology_claim)+"</span></div>";
+    html+="<div class='kvrow'><span class='k'>least-cost discriminator</span><span class='mono'>"+esc(d.least_cost_discriminator)+"</span></div>";
+    html+="<div style='margin:12px 0 4px'><b>Shared invariant motifs</b></div><ul class='motifs'>"+
+      (d.shared_motifs||[]).map(function(x){return "<li>"+esc(x)+"</li>";}).join("")+"</ul>";
+    html+="<div style='margin:12px 0 4px'><b>Divergent features</b></div><ul class='motifs divergent'>"+
+      (d.divergent||[]).map(function(x){return "<li>"+esc(x)+"</li>";}).join("")+"</ul>";
+    html+="<div style='margin:14px 0 4px'><b>Apparatus differences</b></div>"+
+      "<div class='tablewrap'><table><thead><tr><th>key</th><th>B9 (circuit)</th><th>BEC</th></tr></thead><tbody>"+
+      (d.apparatus_differences||[]).map(function(a){
+        return "<tr><td class='mono'>"+esc(a.key)+"</td><td>"+esc(a.a==null?"—":a.a)+"</td><td>"+esc(a.b==null?"—":a.b)+"</td></tr>";
+      }).join("")+"</tbody></table></div>";
+    el("diffBody").innerHTML=html;
+  })();
+
+  /* ================= STRUCTURAL GRAPH ================= */
+  (function(){
+    var g=B.structural_graph; if(!g||!g.nodes){el("graphBody").textContent="(no graph)";return;}
+    var nodes=g.nodes.slice().sort(function(a,b){return (a.order||0)-(b.order||0);});
+    var W=170, H=74, GAP=60, PAD=16, y=30;
+    var totalW=PAD*2+nodes.length*W+(nodes.length-1)*GAP;
+    var pos={}; nodes.forEach(function(n,i){pos[n.id]=PAD+i*(W+GAP);});
+    var svg="<svg viewBox='0 0 "+totalW+" "+(y+H+40)+"' width='"+totalW+"' role='img' aria-label='B9 act trace'>";
+    (g.edges||[]).forEach(function(e){
+      var x1=pos[e.from]+W, x2=pos[e.to], ym=y+H/2;
+      svg+="<line class='g-edge' x1='"+x1+"' y1='"+ym+"' x2='"+x2+"' y2='"+ym+"' marker-end='url(#arw)'/>";
+      svg+="<text class='g-edge-label' x='"+((x1+x2)/2)+"' y='"+(ym-6)+"' text-anchor='middle'>"+esc(e.kind)+"</text>";
+    });
+    nodes.forEach(function(n){
+      var x=pos[n.id];
+      svg+="<rect class='g-node' x='"+x+"' y='"+y+"' rx='9' width='"+W+"' height='"+H+"'/>";
+      svg+="<text class='g-label' x='"+(x+12)+"' y='"+(y+24)+"'>"+esc(n.op)+"</text>";
+      svg+="<text class='g-port' x='"+(x+12)+"' y='"+(y+44)+"'>"+esc((n.ports||[]).join(", "))+"</text>";
+      svg+="<text class='g-port' x='"+(x+12)+"' y='"+(y+62)+"'>#"+esc(n.order)+" · "+esc(shortId(n.id))+"</text>";
+    });
+    svg+="<defs><marker id='arw' markerWidth='9' markerHeight='9' refX='7' refY='3' orient='auto'>"+
+      "<path d='M0,0 L7,3 L0,6 Z' fill='var(--ink-2)'/></marker></defs></svg>";
+    el("graphBody").innerHTML="<div class='tablewrap' style='border:none'>"+svg+"</div>";
+  })();
+})();
+</script>
+</body>
+</html>

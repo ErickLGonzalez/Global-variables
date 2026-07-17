@@ -1,8 +1,10 @@
 # P9 — PIR Workbench UI: scope for a future session
 
-**Status:** SCOPED, not started. Deferred by architecture (research-first repo);
-Stages 1–3 (P0–P8) are complete on `main`. This document is the handoff so a
-later session can execute P9 without re-deriving context.
+**Status:** DONE. Implemented as `pir_workbench/` (template + stdlib build) over
+the `ci/export_pir_view.py` data layer; see `docs/pir-workbench-v0.1.md` for how
+to regenerate and open it, and `tests/test_pir_workbench.py` for the honesty /
+read-only / self-contained gate. This document is retained as the original scope
+and acceptance record. Stages 1–3 (P0–P8) remain complete on `main`.
 
 ## Why P9 is its own session
 P9 is the first **non-substrate, presentation-layer** direction in the PIR

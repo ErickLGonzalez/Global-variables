@@ -132,10 +132,17 @@ substrate, no benchmark/verdict/certificate/atlas change:
 | **P6** forward recompilation (held-out comparison) | `pir/forward.py` | `tests/test_pir_s3.py` |
 | **P7** intervention search (OED objectives) | `pir/intervention_search.py` | `tests/test_pir_s3.py` |
 | **P8** BEC domain + cross-domain PIR-Diff | `pir/domains/bec.py`, `pir/diff.py` | `tests/test_pir_s3.py` |
+| **P9a** full-corpus view exporter (data layer) | `ci/export_pir_view.py` | `tests/test_pir_export.py` |
+| **P9b** read-only workbench UI (presentation layer) | `pir_workbench/{template.html,build.py}` | `tests/test_pir_workbench.py` |
 
-Deliberately deferred: **P9 workbench UI** (research-first repo; CLI/CI/JSON
-artifacts suffice) — scoped for a future session in
-`docs/pir-p9-workbench-scope.md`.
+**P9 workbench UI — implemented.** A single self-contained page (stdlib-only
+build, no external requests) renders the six read-only surfaces — fact table,
+provenance/invalidation, verdict×evidence matrix, candidate lattice,
+cross-domain diff, structural graph — over the exported view bundle. It is
+strictly presentation: no fact, verdict, certificate, or atlas cell originates
+or changes there, and SOUND/HEURISTIC + evidence-level honesty is preserved (no
+HEURISTIC/E3 result reads as certified). See `docs/pir-workbench-v0.1.md`;
+original scope in `docs/pir-p9-workbench-scope.md`.
 
 **Full benchmark-suite coverage.** Every committed benchmark certificate is now
 lowered into PIR facts (23 benchmarks):

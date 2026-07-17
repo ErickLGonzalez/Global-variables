@@ -16,6 +16,7 @@ Bundle sections:
   invalidation_demo   — invalidate asm:hard_wall_truncation -> downgraded facts
   cross_domain_diff   — B9 vs BEC (similarity, confidence, correlator, apparatus)
   structural_graph    — the B9 act-trace graph
+  candidate_lattice   — GVAR rules -> compatible families, verdict, obligations
   corpus_analysis     — analyzer-runtime run over the whole corpus
 """
 
@@ -37,6 +38,46 @@ from pir.runtime import AnalyzerRuntime, detect_conflicts
 from pir import analyzers as A
 from pir.diff import cross_domain_diff
 from pir.intervention_search import AdmissibleIntervention
+from pir import candidates as C
+
+
+# GVAR rule fixture (the P5a documented lattice): three competing grammar
+# families over the shared predicate set {Sym, Pos}. Hamiltonian and
+# gradient-flow both fire and are observationally equivalent under the null
+# intervention set; quantum-CPTP needs Cmp and stays out. Mirrors
+# tests/test_pir_candidates.py so the exported lattice matches the certified one.
+_GVAR_RULES = [
+    {"rule_id": "r_ham", "family": "hamiltonian",
+     "requires_predicates": ["Sym", "Pos"],
+     "test_obligation": {"intervention": "int_time_reversal",
+                         "separates": ["gradient_flow"]}},
+    {"rule_id": "r_grad", "family": "gradient_flow",
+     "requires_predicates": ["Pos"], "forbids_predicates": ["Uni"],
+     "test_obligation": {"intervention": "int_time_reversal",
+                         "separates": ["hamiltonian"]}},
+    {"rule_id": "r_cptp", "family": "quantum_cptp",
+     "requires_predicates": ["Pos", "Cmp"]},
+]
+
+
+def build_candidate_lattice() -> Dict:
+    """Evaluate the documented GVAR lattice into a renderable, read-only view."""
+    predicates = {"Sym", "Pos"}
+    cands = C.apply_rules(_GVAR_RULES, predicates)
+    result = C.evaluate(cands, declared_interventions=[])
+    hyps = C.to_hypotheses(cands, "eqc_demo")
+    fact = C.lattice_fact(result, "eqc_demo")
+    return {
+        "equivalence_class_id": "eqc_demo",
+        "predicates": sorted(predicates),
+        "rules": _GVAR_RULES,
+        "verdict": result.verdict,
+        "compatible_families": result.compatible,
+        "obligations": [o for o in result.obligations if o],
+        "detail": result.detail,
+        "hypotheses": [h.to_dict() for h in hyps],
+        "lattice_fact": fact.to_dict(),
+    }
 
 
 def collect_facts() -> Dict[str, List]:
@@ -115,6 +156,7 @@ def build_bundle() -> Dict:
                               "downgraded_facts": downgraded},
         "cross_domain_diff": diff.to_dict(),
         "structural_graph": graph.to_dict(),
+        "candidate_lattice": build_candidate_lattice(),
         "corpus_analysis": {"order": report.order, "quarantined": report.quarantined,
                             "conflicts": detect_conflicts(corpus),
                             "n_corpus_facts": len(corpus)},
