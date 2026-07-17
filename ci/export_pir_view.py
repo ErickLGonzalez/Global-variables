@@ -37,6 +37,7 @@ from pir.runtime import AnalyzerRuntime, detect_conflicts
 from pir import analyzers as A
 from pir.diff import cross_domain_diff
 from pir.intervention_search import AdmissibleIntervention
+from pir import candidates as CAND
 
 
 def collect_facts() -> Dict[str, List]:
@@ -87,6 +88,28 @@ def build_bundle() -> Dict:
                              {"id": "apparatus:josephson_circuit", "route": "cal:spectroscopy_route"},
                              bec.apparatus(), interventions, ["h_circuit", "h_bec"])
 
+    # candidate lattice demo (GVAR rules -> compatible families -> verdict)
+    cand_rules = [
+        {"rule_id": "r_ham", "family": "hamiltonian",
+         "requires_predicates": ["Sym", "Pos"],
+         "test_obligation": {"intervention": "int_time_reversal",
+                             "separates": ["gradient_flow"]}},
+        {"rule_id": "r_grad", "family": "gradient_flow",
+         "requires_predicates": ["Pos"], "forbids_predicates": ["Uni"],
+         "test_obligation": {"intervention": "int_time_reversal",
+                             "separates": ["hamiltonian"]}},
+    ]
+    cands = CAND.apply_rules(cand_rules, {"Sym", "Pos"})
+    lat = CAND.evaluate(cands, declared_interventions=[])
+    candidate_lattice = {
+        "equivalence_class": "eqc_demo",
+        "verdict": lat.verdict,
+        "compatible_families": lat.compatible,
+        "detail": lat.detail,
+        "test_obligations": [c.test_obligation for c in cands if c.test_obligation],
+        "hypotheses": [h.to_dict() for h in CAND.to_hypotheses(cands, "eqc_demo")],
+    }
+
     # structural graph of the B9 act-trace
     graph = CS.structural_graph(b9_events)
 
@@ -114,6 +137,7 @@ def build_bundle() -> Dict:
         "invalidation_demo": {"assumption": "asm:hard_wall_truncation",
                               "downgraded_facts": downgraded},
         "cross_domain_diff": diff.to_dict(),
+        "candidate_lattice": candidate_lattice,
         "structural_graph": graph.to_dict(),
         "corpus_analysis": {"order": report.order, "quarantined": report.quarantined,
                             "conflicts": detect_conflicts(corpus),
